@@ -102,13 +102,19 @@ Defined once in `app/globals.css` (`@theme`) and consumed as Tailwind tokens:
 
 ## Placeholders — what still needs real assets
 
-Everything marked **TODO** on screen (a gold-dot pill) is a stand-in. **Never
-use stock photography** — one stock image undoes the whole thing. Replace:
+**Real venue photography is now in place** for every collection card and every
+venue hero, extracted from the Room 7 brand book (`/public/venues/*.webp`, set
+per venue in `content/venues.ts` via `heroImage` / `heroPosition`). Swap these
+for higher-resolution originals when available (the brand-book copies are
+~700px). Everything still marked **TODO** on screen (a gold-dot pill) is a
+stand-in. **Never use stock photography** — one stock image undoes the whole
+thing. Still to replace:
 
-- **Hero film / photography** — the Jay's stained-glass bar. Muted, autoplay,
-  loop, poster first, < 3MB. (`components/home/Hero.tsx`)
-- **Venue / feature imagery** — the on-brand gradient placeholders describe the
-  shot needed. Shoot **the night — people in the rooms**, not empty interiors.
+- **Hero film / photography** — the homepage hero still uses the stained-glass
+  motif; drop in the Jay's hero film (muted, autoplay, loop, poster, < 3MB).
+- **Galleries, scene sequences, founder portrait, event/careers bands** — still
+  on-brand gradient placeholders that describe the shot needed. Shoot **the
+  night — people in the rooms**, not empty interiors.
 - **Logo + monogram** — `public/brand/*.svg` and `components/brand/Logo.tsx`
   are clean placeholders matching the brand-book spec (script "Room" + tall
   "7", deco rule with diamond terminals). Swap for the final custom lettering;
