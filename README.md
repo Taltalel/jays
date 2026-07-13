@@ -140,12 +140,32 @@ use stock photography** — one stock image undoes the whole thing. Replace:
 
 ## Build status
 
-**Live now:** design system, layout (header/nav/footer), and the full
-homepage — hero, statement, the collection (three destinations / four rooms),
-the standard, founder, press strip, private-events + careers bands, the
-playlist, the feed, newsletter.
+**Complete — 27 statically-exported routes:**
 
-**Next (per the brief's build order):** venue template + four venue pages →
-collection index + about + founder page → private events / careers / contact
-with forms → press hub + release template → SEO/schema per route → perf &
-a11y pass.
+- Homepage (all sections)
+- `/collection` + the four venue pages (`/collection/{jays,naked-taco,highbar,riviera}`)
+  with rich, unique copy, the _The Room / The Table / The Night_ scene
+  sequence, gallery lightbox, live map, and `Restaurant` schema
+- `/about` (with the "Why Room 7" story + the standard) and the dedicated
+  founder page `/about/jay-shirodkar`
+- `/private-events` (capacity table + inquiry form)
+- `/press` + per-release pages (`NewsArticle` schema, boilerplate)
+- `/careers` (roles filterable by venue) + `/careers/[venue]`
+- `/contact` (four routes + form + map)
+- `/gift-cards`, `/privacy`, `/terms`, `/cookies`
+- `robots.txt`, `sitemap.xml`, per-route metadata + OG
+
+**Launch checklist (needs client input / assets):**
+
+- Replace every on-screen **TODO** placeholder with real photography, the final
+  logo lettering, the hero film, and outlet logos.
+- Wire integrations: newsletter (Klaviyo/Mailchimp), Instagram feed, the
+  Spotify playlist, form endpoint (`NEXT_PUBLIC_FORM_ENDPOINT`), reservation
+  gift-card links, GA4 + Search Console.
+- Confirm real private-event capacities in `content/events.ts`.
+- **The backlink plan (highest-leverage SEO):** add a footer link — _"A Room 7
+  venue" → room7hospitality.com_ — on each venue's own site
+  (jaysfortlauderdale.com, lovenakedtaco.com, therivierarestaurant.com). Replace
+  lovenakedtaco.com's "Yes Hospitality Group" footer/`publisher` with Room 7,
+  and **fix its broken canonical** (currently points at the Vercel preview URL).
+- Have counsel review the legal pages.
