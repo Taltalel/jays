@@ -1,0 +1,257 @@
+/**
+ * ROOM 7 — VENUE DATA
+ * -------------------------------------------------------------------------
+ * Single source of truth for the four rooms. Edit copy here; components read
+ * from it. Addresses, hours, phones and reservation links are VERIFIED — do
+ * not change them without re-checking the live venue sites.
+ *
+ * NOTE ON HIGHBAR: HighBar is Naked Taco's rooftop — same building, same
+ * address on Collins Ave. It is not a separate venue in another location.
+ */
+
+export type Reservation = {
+  provider: "OpenTable" | "Resy" | "SevenRooms";
+  url: string;
+};
+
+export type Venue = {
+  slug: "jays" | "naked-taco" | "highbar" | "riviera";
+  name: string;
+  nickname: string; // "The Cathedral"
+  destination: string; // human location label used on the group site
+  flagship?: boolean;
+  /** Room 7's line for the venue — the GROUP's view, written fresh here. */
+  descriptor: string;
+  /** Longer group-voice intro used on the collection + venue hero. */
+  lede: string;
+  address: {
+    street: string;
+    locality: string; // e.g. "Fort Lauderdale, FL 33301"
+    context?: string; // e.g. "inside Dream South Beach by Hyatt"
+  };
+  geo?: { lat: number; lng: number };
+  phone?: string;
+  email?: string;
+  website: { label: string; url: string };
+  instagram: { handle: string; url: string };
+  reservation?: Reservation;
+  hours: { label: string; value: string }[];
+  cuisine: string;
+  priceRange: string; // schema-friendly
+  /** The Room / The Table / The Night — group-voice, unique to this site. */
+  scenes: {
+    room: string;
+    table: string;
+    night: string;
+  };
+  /** Two or three short group-voice paragraphs for the venue page story. */
+  story: string[];
+  /** Rooftop relationship for the Collins Ave building. */
+  pairedWith?: "naked-taco" | "highbar";
+};
+
+export const venues: Venue[] = [
+  {
+    slug: "jays",
+    name: "Jay's",
+    nickname: "The Cathedral",
+    destination: "Fort Lauderdale",
+    flagship: true,
+    descriptor: "A steakhouse with a congregation, inside a 1920s church.",
+    lede: "Stone, stained glass and candlelight — where dinner keeps the hours of a cabaret.",
+    address: {
+      street: "441 NE 3rd Ave",
+      locality: "Fort Lauderdale, FL 33301",
+      context: "Flagler Village",
+    },
+    geo: { lat: 26.1289, lng: -80.1401 },
+    website: { label: "jaysfortlauderdale.com", url: "https://jaysfortlauderdale.com" },
+    instagram: { handle: "@jaysfortlauderdale", url: "https://instagram.com/jaysfortlauderdale" },
+    reservation: {
+      provider: "OpenTable",
+      url: "https://www.opentable.com/restref/client/?restref=1426036",
+    },
+    hours: [
+      { label: "Mon", value: "Closed" },
+      { label: "Tue–Thu", value: "4–11PM" },
+      { label: "Fri–Sat", value: "4PM–12:30AM" },
+      { label: "Sun", value: "4–11PM" },
+    ],
+    cuisine: "Steakhouse, Raw Bar",
+    priceRange: "$$$$",
+    scenes: {
+      room:
+        "They kept the bones — the arches, the stone, the light through coloured glass — and moved in velvet, brass and a bar you'd confess anything to.",
+      table:
+        "Prime cuts, a raw bar with something to prove, and a cocktail list that keeps its own counsel. Order like you're staying.",
+      night:
+        "Somewhere past the second course the lights lean down and the room stops being a restaurant. Dinner becomes the opening act.",
+    },
+    story: [
+      "Some rooms you build. This one was already standing — a 1920s church that spent a century learning how to hold a crowd. Room 7 gave it a second life with the ceremony left intact.",
+      "It is our flagship because it is our thesis: dinner is never just dinner. Under the arches, over a prime cut and a drink that flirts, an evening turns into the kind of night people describe for weeks.",
+      "The Cathedral is Room 7 at full volume — old-world glamour, modern swagger, and a standard of hospitality we hold every other room to.",
+    ],
+  },
+  {
+    slug: "naked-taco",
+    name: "Naked Taco",
+    nickname: "The Riot",
+    destination: "Collins Avenue, Miami Beach",
+    descriptor: "Tacos, margaritas and mischief with a twelve-year cult following.",
+    lede: "Street level at 1111 Collins — the loud, generous heart of the building.",
+    address: {
+      street: "1111 Collins Avenue",
+      locality: "Miami Beach, FL 33139",
+      context: "inside Dream South Beach by Hyatt",
+    },
+    geo: { lat: 25.783, lng: -80.1301 },
+    phone: "(305) 534-8455",
+    website: { label: "lovenakedtaco.com", url: "https://lovenakedtaco.com" },
+    instagram: { handle: "@lovenakedtaco", url: "https://instagram.com/lovenakedtaco" },
+    reservation: {
+      provider: "OpenTable",
+      url: "https://www.opentable.com/restref/client/?restref=1524856",
+    },
+    hours: [
+      { label: "Daily", value: "7:30AM–11PM" },
+      { label: "Breakfast", value: "Daily 7:30AM–2PM" },
+      { label: "Happy Hour", value: "Mon–Fri 3–7PM · all day Tue" },
+    ],
+    cuisine: "Mexican, Tacos, Breakfast",
+    priceRange: "$$",
+    pairedWith: "highbar",
+    scenes: {
+      room:
+        "A room that runs hot from breakfast to last call — colour, noise, and a crowd that has been coming here longer than most South Beach concepts have existed.",
+      table:
+        "Tuna nachos with a reputation, birria and lobster tacos, margaritas by the round. Twelve years and 2,200 reviews say order the thing everyone tells you to.",
+      night:
+        "By happy hour it tips from lunch into party — the warm-up act for a rooftop two flights up. The night starts here; it doesn't end here.",
+    },
+    story: [
+      "Twelve years on Collins Avenue is a lifetime in a neighbourhood that reinvents itself every season. Naked Taco earned it — a cult following, the city's favourite send-off before a big night, breakfast worth the walk.",
+      "In the collection it plays the extrovert: fast, generous, unpretentious, packed. It is the room that proves elevated hospitality doesn't have to whisper.",
+      "And it comes with an upstairs. Naked Taco holds the street; HighBar holds the sky. One address, two moods, one long night.",
+    ],
+  },
+  {
+    slug: "highbar",
+    name: "HighBar",
+    nickname: "The View",
+    destination: "Rooftop at 1111 Collins Avenue",
+    descriptor: "The rooftop above Naked Taco — pool, skyline, golden hour.",
+    lede: "Two flights up from the tacos: an infinity edge, the Atlantic, and the best light in the city.",
+    address: {
+      street: "1111 Collins Avenue",
+      locality: "Miami Beach, FL 33139",
+      context: "the rooftop atop Naked Taco · Dream South Beach by Hyatt",
+    },
+    geo: { lat: 25.783, lng: -80.1301 },
+    phone: "(305) 534-8455",
+    website: { label: "lovenakedtaco.com/highbar", url: "https://lovenakedtaco.com/highbar" },
+    instagram: { handle: "@highbar305", url: "https://instagram.com/highbar305" },
+    reservation: {
+      provider: "OpenTable",
+      url: "https://www.opentable.com/restref/client/?restref=1524856",
+    },
+    hours: [
+      { label: "Sun–Thu", value: "9AM–9PM" },
+      { label: "Fri–Sat", value: "9AM–11PM" },
+      { label: "Happy Hour", value: "Mon–Fri 3–7PM" },
+    ],
+    cuisine: "Rooftop Bar, Cocktails",
+    priceRange: "$$$",
+    pairedWith: "naked-taco",
+    scenes: {
+      room:
+        "An infinity edge, a pool deck and the open Atlantic — the top floor of the same building that serves you tacos at street level.",
+      table:
+        "Cocktails built for the hour, cold and unhurried, poured while the sky does the work. Come for the light; stay for the DJ.",
+      night:
+        "Golden hour is the whole point, and then it isn't — weekend sets carry the deck long after the sun has clocked out.",
+    },
+    story: [
+      "HighBar is not a second address. It is the roof of the first one. Ride two floors up from Naked Taco and the noise drops away to a pool deck, an infinity edge and the entire Atlantic.",
+      "In the collection it is the exhale — the part of the night that slows down and looks out. Same building, same team, same standard, a completely different altitude.",
+      "Downstairs is the riot. Up here is the view. Room 7 built the staircase between them on purpose.",
+    ],
+  },
+  {
+    slug: "riviera",
+    name: "Riviera",
+    nickname: "The Coast",
+    destination: "Fort Lauderdale Beach",
+    descriptor: "An all-day oceanfront table where the light does the seasoning.",
+    lede: "Sand-side at Hotel Maren — breakfast on the veranda through golden hour and dinner.",
+    address: {
+      street: "525 S Fort Lauderdale Beach Blvd",
+      locality: "Fort Lauderdale, FL 33316",
+      context: "inside Hotel Maren, Curio Collection by Hilton",
+    },
+    geo: { lat: 26.1101, lng: -80.1052 },
+    phone: "(754) 241-2020",
+    email: "info@marenriviera.com",
+    website: { label: "therivierarestaurant.com", url: "https://therivierarestaurant.com" },
+    instagram: { handle: "@rivierafortlauderdale", url: "https://instagram.com/rivierafortlauderdale" },
+    reservation: {
+      provider: "OpenTable",
+      url: "https://www.opentable.com/restref/client/?restref=1530400",
+    },
+    hours: [
+      { label: "Breakfast", value: "Daily 7–11AM" },
+      { label: "All-day & Dinner", value: "Daily 11AM–11PM" },
+    ],
+    cuisine: "Coastal, Seafood, Raw Bar",
+    priceRange: "$$$",
+    scenes: {
+      room:
+        "Open to the ocean and easy about it — a veranda, a raw bar, and a room that reads the weather. Come in sandy; leave in no hurry.",
+      table:
+        "Prime seafood, a raw bar, cocktails with salt on the rim. A table that runs from a slow breakfast to a long dinner without changing its mind.",
+      night:
+        "Golden hour arrives on schedule and stays late. When the light turns, the room turns with it — the coast's version of the lights going down.",
+    },
+    story: [
+      "Every collection needs a room that knows how to do nothing beautifully. Riviera is ours — oceanfront, all day, in no particular rush.",
+      "It is the daylight counterpart to the church and the rooftop: the same standard of hospitality, poured over sand and salt air instead of stone and candlelight.",
+      "Breakfast on the veranda, a raw bar at lunch, cocktails as the light turns gold. The Coast is Room 7 with its shoes off — and still the best table on the beach.",
+    ],
+  },
+];
+
+export const venueBySlug = (slug: string): Venue | undefined =>
+  venues.find((v) => v.slug === slug);
+
+/** Homepage collection: THREE destinations, four rooms.
+ *  Naked Taco + HighBar share one card (one building, two experiences). */
+export const collectionCards = [
+  {
+    key: "jays",
+    title: "Jay's",
+    kicker: "The Cathedral",
+    destination: "Fort Lauderdale",
+    descriptor: "A steakhouse with a congregation, inside a 1920s church.",
+    href: "/collection/jays",
+    slugs: ["jays"] as const,
+  },
+  {
+    key: "collins",
+    title: "Naked Taco + HighBar",
+    kicker: "The Riot & The View",
+    destination: "1111 Collins Avenue",
+    descriptor: "Tacos at street level, a pool deck at golden hour — one address, two floors.",
+    href: "/collection/naked-taco",
+    secondaryHref: "/collection/highbar",
+    slugs: ["naked-taco", "highbar"] as const,
+  },
+  {
+    key: "riviera",
+    title: "Riviera",
+    kicker: "The Coast",
+    destination: "Fort Lauderdale Beach",
+    descriptor: "An all-day oceanfront table where the light does the seasoning.",
+    href: "/collection/riviera",
+    slugs: ["riviera"] as const,
+  },
+];
