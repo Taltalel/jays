@@ -3,7 +3,7 @@ import { PageHero } from "@/components/ui/PageHero";
 import { Reveal } from "@/components/ui/Reveal";
 import { Placeholder } from "@/components/ui/Placeholder";
 import { InquiryForm, type Field } from "@/components/ui/InquiryForm";
-import { whatWeHost, capacities } from "@/content/events";
+import { whatWeHost, capacities, collinsSpaces, cateringCollections, eventTerms } from "@/content/events";
 import { group } from "@/content/group";
 
 export const metadata: Metadata = {
@@ -54,42 +54,80 @@ export default function PrivateEventsPage() {
         </div>
       </section>
 
-      {/* Capacity table */}
+      {/* Capacity by venue */}
       <section className="border-y border-champagne/10 bg-forest/40">
         <div className="mx-auto max-w-5xl px-5 py-16 md:px-8 md:py-24">
           <Reveal className="mb-8">
             <p className="eyebrow mb-3">Capacities</p>
             <h2 className="h2-display text-champagne">Room by room.</h2>
           </Reveal>
-          <div className="overflow-x-auto">
-            <table className="w-full min-w-[520px] border-collapse text-left">
-              <thead>
-                <tr className="border-b border-gold/30">
-                  {["Venue", "Seated", "Standing", "Private room"].map((h) => (
-                    <th key={h} className="py-3 text-[11px] uppercase tracking-[0.15em] text-gold" style={{ fontFamily: "var(--font-label)" }}>
-                      {h}
-                    </th>
-                  ))}
-                </tr>
-              </thead>
-              <tbody>
-                {capacities.map((c) => (
-                  <tr key={c.venue} className="border-b border-champagne/10">
-                    <td className="py-4 font-display text-xl text-champagne">{c.venue}</td>
-                    <td className="py-4 text-sage">{c.seated}</td>
-                    <td className="py-4 text-sage">{c.standing}</td>
-                    <td className="py-4 text-sage">{c.privateRoom}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-          <p className="mt-4 flex items-center gap-2">
-            <span className="inline-block h-1.5 w-1.5 rounded-full bg-gold" />
-            <span className="text-[10px] uppercase tracking-[0.15em] text-sage" style={{ fontFamily: "var(--font-label)" }}>
-              TODO · confirm real capacities per venue
-            </span>
-          </p>
+          <ul className="flex flex-col">
+            {capacities.map((c, i) => (
+              <Reveal as="li" key={c.venue} delay={i * 50}>
+                <div className="flex flex-col gap-2 border-b border-champagne/10 py-5 md:flex-row md:items-baseline md:justify-between md:gap-8">
+                  <div className="md:w-1/3">
+                    <h3 className="font-display text-2xl text-champagne">{c.venue}</h3>
+                    <p className="text-[11px] uppercase tracking-[0.14em] text-gold" style={{ fontFamily: "var(--font-label)" }}>
+                      {c.nickname}
+                    </p>
+                  </div>
+                  <p className="text-sage md:flex-1">{c.note}</p>
+                  <p className="font-display text-xl text-champagne md:w-28 md:text-right">{c.capacity}</p>
+                </div>
+              </Reveal>
+            ))}
+          </ul>
+          <p className="mt-4 text-xs text-sage">* Naked Taco + HighBar host 50–275 guests across three spaces at 1111 Collins Avenue.</p>
+        </div>
+      </section>
+
+      {/* Collins Avenue — three real spaces */}
+      <section className="mx-auto max-w-7xl px-5 py-16 md:px-8 md:py-24">
+        <Reveal className="mb-10 md:mb-14">
+          <p className="eyebrow mb-3">1111 Collins Avenue</p>
+          <h2 className="h2-display max-w-2xl text-champagne">One address, three ways to throw it.</h2>
+        </Reveal>
+        <div className="grid gap-8 md:grid-cols-3 md:gap-10">
+          {collinsSpaces.map((s, i) => (
+            <Reveal key={s.name} delay={(i % 3) * 60}>
+              <p className="text-[11px] uppercase tracking-[0.15em] text-gold" style={{ fontFamily: "var(--font-label)" }}>
+                {s.kind}
+              </p>
+              <h3 className="mt-2 font-display text-2xl text-champagne">{s.name}</h3>
+              <span className="mt-3 block h-px w-14 bg-gold/50" aria-hidden="true" />
+              <p className="mt-3 text-base text-sage">{s.line}</p>
+            </Reveal>
+          ))}
+        </div>
+      </section>
+
+      {/* Catering collections + how it works */}
+      <section className="border-y border-champagne/10 bg-forest/40">
+        <div className="mx-auto grid max-w-7xl gap-12 px-5 py-16 md:grid-cols-2 md:gap-16 md:px-8 md:py-24">
+          <Reveal>
+            <p className="eyebrow mb-3">The Catering Collection</p>
+            <h2 className="h2-display text-champagne">Menus, your way.</h2>
+            <ul className="mt-8 flex flex-col">
+              {cateringCollections.map((c) => (
+                <li key={c.name} className="border-b border-champagne/10 py-4">
+                  <span className="font-display text-xl text-champagne">{c.name}</span>
+                  <p className="text-sm text-sage">{c.line}</p>
+                </li>
+              ))}
+            </ul>
+          </Reveal>
+          <Reveal delay={80}>
+            <p className="eyebrow mb-3">How It Works</p>
+            <h2 className="h2-display text-champagne">The house rules.</h2>
+            <ul className="mt-8 flex flex-col gap-4">
+              {eventTerms.map((t) => (
+                <li key={t} className="flex gap-3 text-base text-sage">
+                  <span className="mt-2 inline-block h-1.5 w-1.5 shrink-0 rounded-full bg-gold" aria-hidden="true" />
+                  <span>{t}</span>
+                </li>
+              ))}
+            </ul>
+          </Reveal>
         </div>
       </section>
 

@@ -168,7 +168,10 @@ thing. Still to replace:
 - Wire integrations: newsletter (Klaviyo/Mailchimp), Instagram feed, the
   Spotify playlist, form endpoint (`NEXT_PUBLIC_FORM_ENDPOINT`), reservation
   gift-card links, GA4 + Search Console.
-- Confirm real private-event capacities in `content/events.ts`.
+- Private-event data for Naked Taco + HighBar (three Collins Ave spaces,
+  50–275 guests, catering collections, booking terms) is filled from the real
+  Catering & Events deck. **Confirm Jay's and Riviera capacities** in
+  `content/events.ts` (their decks were >10 MB and couldn't be pulled).
 - **The backlink plan (highest-leverage SEO):** add a footer link — _"A Room 7
   venue" → room7hospitality.com_ — on each venue's own site
   (jaysfortlauderdale.com, lovenakedtaco.com, therivierarestaurant.com). Replace
