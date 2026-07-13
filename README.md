@@ -166,8 +166,9 @@ thing. Still to replace:
 - Replace every on-screen **TODO** placeholder with real photography, the final
   logo lettering, the hero film, and outlet logos.
 - Wire integrations: newsletter (Klaviyo/Mailchimp), Instagram feed, the
-  Spotify playlist, form endpoint (`NEXT_PUBLIC_FORM_ENDPOINT`), reservation
-  gift-card links, GA4 + Search Console.
+  Spotify playlist, form endpoint (`NEXT_PUBLIC_FORM_ENDPOINT`), GA4 + Search
+  Console. (Reservations and gift cards route out to each venue's own site by
+  design — no separate store to wire.)
 - Private-event data for Naked Taco + HighBar (three Collins Ave spaces,
   50–275 guests, catering collections, booking terms) is filled from the real
   Catering & Events deck. **Confirm Jay's and Riviera capacities** in

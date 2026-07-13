@@ -15,7 +15,7 @@ export default function GiftCardsPage() {
       <PageHero
         eyebrow="Gift Cards"
         title="Give the night."
-        sub="The easiest way to be someone's favourite person. Pick a room; we'll handle the rest."
+        sub="Every room sells its own. Pick one and you'll head straight there to buy."
         tone="church"
         placeholder="A candlelit table set for two"
         short
@@ -34,19 +34,17 @@ export default function GiftCardsPage() {
                 <div>
                   <p className="text-[11px] uppercase tracking-[0.15em] text-gold" style={{ fontFamily: "var(--font-label)" }}>{v.nickname}</p>
                   <h2 className="mt-1 font-display text-2xl text-champagne">{v.name}</h2>
+                  <p className="mt-1 text-xs text-sage">{v.website.label}</p>
                 </div>
-                <span className="text-[12px] uppercase tracking-[0.15em] text-champagne/80 group-hover:text-gold" style={{ fontFamily: "var(--font-label)" }}>
+                <span className="shrink-0 text-[12px] uppercase tracking-[0.15em] text-champagne/80 group-hover:text-gold" style={{ fontFamily: "var(--font-label)" }}>
                   Buy ↗
                 </span>
               </a>
             </Reveal>
           ))}
         </div>
-        <p className="mt-6 flex items-center gap-2">
-          <span className="inline-block h-1.5 w-1.5 rounded-full bg-gold" />
-          <span className="text-[10px] uppercase tracking-[0.15em] text-sage" style={{ fontFamily: "var(--font-label)" }}>
-            TODO · wire each button to the venue’s Toast / gift-card link
-          </span>
+        <p className="mt-8 text-sm text-sage">
+          Gift cards are purchased directly through each room. HighBar shares Naked Taco&apos;s, at 1111 Collins Avenue.
         </p>
       </section>
     </>
