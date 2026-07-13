@@ -40,7 +40,7 @@ export default function CollectionPage() {
                 className="venue-card group grid overflow-hidden rounded-sm border border-champagne/10 md:grid-cols-2"
               >
                 <div className={`relative aspect-[16/10] overflow-hidden md:aspect-auto md:min-h-[340px] ${i % 2 ? "md:order-2" : ""}`}>
-                  <Placeholder tone={TONES[v.slug]} seed={`idx-${v.slug}`} showLabel={false} className="venue-card__img absolute inset-0" />
+                  <Placeholder tone={TONES[v.slug]} seed={`idx-${v.slug}`} src={v.heroImage} alt={`${v.name} — ${v.nickname}`} showLabel={false} className="venue-card__img absolute inset-0" />
                   <div className="scrim absolute inset-0 md:hidden" />
                 </div>
                 <div className="flex flex-col justify-center gap-3 bg-forest/40 p-8 md:p-12">

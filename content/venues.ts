@@ -48,6 +48,12 @@ export type Venue = {
   story: string[];
   /** Rooftop relationship for the Collins Ave building. */
   pairedWith?: "naked-taco" | "highbar";
+  /** Real hero photograph (from the Room 7 brand book). */
+  heroImage?: string;
+  /** CSS object-position for the hero crop focal point. */
+  heroPosition?: string;
+  /** Extra approved photos for gallery/scenes. */
+  photos?: string[];
 };
 
 export const venues: Venue[] = [
@@ -92,6 +98,9 @@ export const venues: Venue[] = [
       "It is our flagship because it is our thesis: dinner is never just dinner. Under the arches, over a prime cut and a drink that flirts, an evening turns into the kind of night people describe for weeks.",
       "The Cathedral is Room 7 at full volume — old-world glamour, modern swagger, and a standard of hospitality we hold every other room to.",
     ],
+    heroImage: "/venues/jays-hero.webp",
+    heroPosition: "50% 22%",
+    photos: ["/venues/jays-bar.webp"],
   },
   {
     slug: "naked-taco",
@@ -134,6 +143,8 @@ export const venues: Venue[] = [
       "In the collection it plays the extrovert: fast, generous, unpretentious, packed. It is the room that proves elevated hospitality doesn't have to whisper.",
       "And it comes with an upstairs. Naked Taco holds the street; HighBar holds the sky. One address, two moods, one long night.",
     ],
+    heroImage: "/venues/naked-taco-hero.webp",
+    heroPosition: "50% 50%",
   },
   {
     slug: "highbar",
@@ -176,6 +187,8 @@ export const venues: Venue[] = [
       "In the collection it is the exhale — the part of the night that slows down and looks out. Same building, same team, same standard, a completely different altitude.",
       "Downstairs is the riot. Up here is the view. Room 7 built the staircase between them on purpose.",
     ],
+    heroImage: "/venues/highbar-hero.webp",
+    heroPosition: "50% 42%",
   },
   {
     slug: "riviera",
@@ -217,6 +230,8 @@ export const venues: Venue[] = [
       "It is the daylight counterpart to the church and the rooftop: the same standard of hospitality, poured over sand and salt air instead of stone and candlelight.",
       "Breakfast on the veranda, a raw bar at lunch, cocktails as the light turns gold. The Coast is Room 7 with its shoes off — and still the best table on the beach.",
     ],
+    heroImage: "/venues/riviera-hero.webp",
+    heroPosition: "50% 48%",
   },
 ];
 
@@ -233,6 +248,7 @@ export const collectionCards = [
     destination: "Fort Lauderdale",
     descriptor: "A steakhouse with a congregation, inside a 1920s church.",
     href: "/collection/jays",
+    image: "/venues/jays-hero.webp",
     slugs: ["jays"] as const,
   },
   {
@@ -243,6 +259,7 @@ export const collectionCards = [
     descriptor: "Tacos at street level, a pool deck at golden hour — one address, two floors.",
     href: "/collection/naked-taco",
     secondaryHref: "/collection/highbar",
+    image: "/venues/highbar-hero.webp",
     slugs: ["naked-taco", "highbar"] as const,
   },
   {
@@ -252,6 +269,7 @@ export const collectionCards = [
     destination: "Fort Lauderdale Beach",
     descriptor: "An all-day oceanfront table where the light does the seasoning.",
     href: "/collection/riviera",
+    image: "/venues/riviera-hero.webp",
     slugs: ["riviera"] as const,
   },
 ];

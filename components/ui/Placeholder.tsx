@@ -42,6 +42,10 @@ export function Placeholder({
   className,
   showLabel = true,
   style,
+  src,
+  alt,
+  objectPosition = "center",
+  priority = false,
 }: {
   tone?: Tone;
   /** What the shot should be — describe the intended photograph. */
@@ -50,7 +54,37 @@ export function Placeholder({
   className?: string;
   showLabel?: boolean;
   style?: CSSProperties;
+  /** Real photograph. When set, the gradient stand-in is replaced by the image. */
+  src?: string;
+  alt?: string;
+  /** CSS object-position for the crop focal point. */
+  objectPosition?: string;
+  /** Eager-load (above-the-fold heroes). */
+  priority?: boolean;
 }) {
+  // Real photography path. Note: callers pass their own positioning (usually
+  // `absolute inset-0`) via className, so we must NOT hardcode `relative` here
+  // — a conflicting position class collapses the image in flex containers with
+  // no definite height (e.g. the venue hero). Fall back to `relative` only when
+  // the caller doesn't position it.
+  if (src) {
+    const positioned = /\b(absolute|fixed|relative)\b/.test(className ?? "");
+    return (
+      <div className={`h-full w-full overflow-hidden ${positioned ? "" : "relative"} ${className ?? ""}`} style={style}>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={src}
+          alt={alt ?? label ?? ""}
+          className="absolute inset-0 h-full w-full object-cover"
+          style={{ objectPosition }}
+          loading={priority ? "eager" : "lazy"}
+          fetchPriority={priority ? "high" : "auto"}
+          decoding="async"
+        />
+      </div>
+    );
+  }
+
   const t = TONES[tone];
   const { x, y } = offsets(seed ?? label ?? tone);
   return (

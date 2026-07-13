@@ -17,6 +17,11 @@ export function VenueHero({ venue, paired }: { venue: Venue; paired?: Venue }) {
         tone={TONES[venue.slug]}
         label={`${venue.name} — the hero shot, alive at night`}
         seed={`${venue.slug}-hero`}
+        src={venue.heroImage}
+        alt={`${venue.name} — ${venue.nickname}`}
+        objectPosition={venue.heroPosition}
+        priority
+        showLabel={!venue.heroImage}
         className="absolute inset-0"
       />
       <div className="scrim absolute inset-0" />
