@@ -13,10 +13,13 @@ export function VenueGallery({
   name,
   tone,
   shots,
+  realPhotos = [],
 }: {
   name: string;
   tone: Tone;
   shots: string[];
+  /** Approved photographs, placed into the first tiles; the rest stay TODO. */
+  realPhotos?: string[];
 }) {
   const [open, setOpen] = useState<number | null>(null);
   const tones: Tone[] = [tone, "night", tone, "night", tone, "night", tone, "night"];
@@ -52,6 +55,8 @@ export function VenueGallery({
               tone={tones[i % tones.length]}
               seed={`${name}-g${i}`}
               label={label}
+              src={realPhotos[i]}
+              alt={realPhotos[i] ? `${name} — ${label}` : undefined}
               showLabel={false}
               className="venue-card__img absolute inset-0 transition-transform duration-700 group-hover:scale-[1.05]"
             />
@@ -83,7 +88,7 @@ export function VenueGallery({
             ×
           </button>
           <div className="relative aspect-[3/2] w-full max-w-4xl overflow-hidden rounded-sm" onClick={(e) => e.stopPropagation()}>
-            <Placeholder tone={tones[open % tones.length]} seed={`${name}-g${open}`} label={shots[open]} className="absolute inset-0" />
+            <Placeholder tone={tones[open % tones.length]} seed={`${name}-g${open}`} label={shots[open]} src={realPhotos[open]} className="absolute inset-0" />
           </div>
         </div>
       )}

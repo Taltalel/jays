@@ -32,7 +32,14 @@ export function Header() {
           : "bg-transparent"
       }`}
     >
-      <div className="mx-auto flex h-[var(--header-h)] max-w-7xl items-center justify-between px-5 md:px-8">
+      {/* top scrim — keeps the logo + nav legible over bright heroes */}
+      <div
+        aria-hidden="true"
+        className={`pointer-events-none absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-forest-deep/75 to-transparent transition-opacity duration-500 ${
+          scrolled ? "opacity-0" : "opacity-100"
+        }`}
+      />
+      <div className="relative z-[1] mx-auto flex h-[var(--header-h)] max-w-7xl items-center justify-between px-5 md:px-8">
         {/* Logo — full lockup, collapses to monogram when scrolled */}
         <Link href="/" className="logo-link relative flex items-center" aria-label="Room 7 — home">
           <Logo
