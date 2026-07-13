@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Room 7 — Naked Taco social card (PLACEHOLDER). TODO: 1200x630 PNG with real photography. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <radialGradient id="g" cx="32%" cy="34%" r="80%">
+      <stop offset="0%" stop-color="#1a2b18"/><stop offset="60%" stop-color="#0f2417"/><stop offset="100%" stop-color="#0b1a10"/>
+    </radialGradient>
+    <radialGradient id="c" cx="74%" cy="76%" r="42%">
+      <stop offset="0%" stop-color="rgba(216,190,120,0.30)"/><stop offset="100%" stop-color="rgba(216,190,120,0)"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#g)"/><rect width="1200" height="630" fill="url(#c)"/>
+  <text x="90" y="120" fill="#C6A24C" font-family="'Jost',sans-serif" font-size="22" letter-spacing="8">THE RIOT · MIAMI BEACH</text>
+  <text x="86" y="330" fill="#F1EBDA" font-family="Georgia,serif" font-size="130" font-weight="500">Naked Taco</text>
+  <rect x="92" y="372" width="520" height="2" fill="#C6A24C" opacity="0.8"/>
+  <text x="92" y="430" fill="#9DAE97" font-family="Georgia,serif" font-size="30">Tacos, margaritas and mischief on Collins Ave.</text>
+  <text x="92" y="560" fill="#C6A24C" font-family="'Jost',sans-serif" font-size="20" letter-spacing="6">A ROOM 7 VENUE</text>
+</svg>

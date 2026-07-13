@@ -1,0 +1,129 @@
+import type { Metadata } from "next";
+import { PageHero } from "@/components/ui/PageHero";
+import { Reveal } from "@/components/ui/Reveal";
+import { Placeholder } from "@/components/ui/Placeholder";
+import { InquiryForm, type Field } from "@/components/ui/InquiryForm";
+import { whatWeHost, capacities } from "@/content/events";
+import { group } from "@/content/group";
+
+export const metadata: Metadata = {
+  title: "Private Events — Take the whole room",
+  description:
+    "Buyouts, private dining and brand events across Room 7's four rooms in Fort Lauderdale and Miami Beach. Tell us the night; we'll build it.",
+  alternates: { canonical: "https://room7hospitality.com/private-events" },
+};
+
+const fields: Field[] = [
+  { name: "name", label: "Name", required: true },
+  { name: "email", label: "Email", type: "email", required: true },
+  { name: "phone", label: "Phone", type: "tel" },
+  { name: "venue", label: "Venue", type: "select", options: ["Jay's", "Naked Taco", "HighBar", "Riviera", "Not sure yet"] },
+  { name: "date", label: "Preferred date", type: "date" },
+  { name: "guests", label: "Guest count", type: "number" },
+  { name: "eventType", label: "Event type", type: "select", options: ["Buyout", "Private dining", "Brand / press", "Corporate", "Celebration", "Other"] },
+  { name: "message", label: "Tell us about the night", type: "textarea", full: true },
+];
+
+const gallery = ["A full room mid-party", "Private dining, candlelit", "A toast going up", "The bar during a buyout"];
+
+export default function PrivateEventsPage() {
+  return (
+    <>
+      <PageHero
+        eyebrow="Private Events"
+        title="Take the whole room."
+        sub="Buyouts, private dining, and the kind of party people cancel other plans for. Four rooms across two cities — pick your stage."
+        tone="night"
+        placeholder="A full room mid-party — buyout energy"
+      />
+
+      {/* What we host */}
+      <section className="mx-auto max-w-7xl px-5 py-20 md:px-8 md:py-24">
+        <Reveal className="mb-10 md:mb-14">
+          <p className="eyebrow mb-3">What We Host</p>
+          <h2 className="h2-display text-champagne">However you want the night to go.</h2>
+        </Reveal>
+        <div className="grid gap-x-12 gap-y-8 sm:grid-cols-2 lg:grid-cols-3">
+          {whatWeHost.map((w, i) => (
+            <Reveal key={w.title} delay={(i % 3) * 50}>
+              <h3 className="font-display text-2xl text-champagne">{w.title}</h3>
+              <span className="mt-3 block h-px w-14 bg-gold/50" aria-hidden="true" />
+              <p className="mt-3 text-base text-sage">{w.line}</p>
+            </Reveal>
+          ))}
+        </div>
+      </section>
+
+      {/* Capacity table */}
+      <section className="border-y border-champagne/10 bg-forest/40">
+        <div className="mx-auto max-w-5xl px-5 py-16 md:px-8 md:py-24">
+          <Reveal className="mb-8">
+            <p className="eyebrow mb-3">Capacities</p>
+            <h2 className="h2-display text-champagne">Room by room.</h2>
+          </Reveal>
+          <div className="overflow-x-auto">
+            <table className="w-full min-w-[520px] border-collapse text-left">
+              <thead>
+                <tr className="border-b border-gold/30">
+                  {["Venue", "Seated", "Standing", "Private room"].map((h) => (
+                    <th key={h} className="py-3 text-[11px] uppercase tracking-[0.15em] text-gold" style={{ fontFamily: "var(--font-label)" }}>
+                      {h}
+                    </th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                {capacities.map((c) => (
+                  <tr key={c.venue} className="border-b border-champagne/10">
+                    <td className="py-4 font-display text-xl text-champagne">{c.venue}</td>
+                    <td className="py-4 text-sage">{c.seated}</td>
+                    <td className="py-4 text-sage">{c.standing}</td>
+                    <td className="py-4 text-sage">{c.privateRoom}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <p className="mt-4 flex items-center gap-2">
+            <span className="inline-block h-1.5 w-1.5 rounded-full bg-gold" />
+            <span className="text-[10px] uppercase tracking-[0.15em] text-sage" style={{ fontFamily: "var(--font-label)" }}>
+              TODO · confirm real capacities per venue
+            </span>
+          </p>
+        </div>
+      </section>
+
+      {/* Gallery */}
+      <section className="mx-auto max-w-7xl px-5 py-16 md:px-8 md:py-20">
+        <div className="grid grid-cols-2 gap-2 md:grid-cols-4 md:gap-3">
+          {gallery.map((label, i) => (
+            <Reveal key={i} delay={(i % 4) * 40}>
+              <div className="relative aspect-square overflow-hidden rounded-sm">
+                <Placeholder tone={i % 2 ? "night" : "riot"} seed={`ev-${i}`} label={label} className="absolute inset-0" />
+              </div>
+            </Reveal>
+          ))}
+        </div>
+      </section>
+
+      {/* Inquiry form */}
+      <section className="border-t border-champagne/10 bg-forest-deep">
+        <div className="mx-auto max-w-3xl px-5 py-20 md:px-8 md:py-28">
+          <Reveal className="mb-10 text-center">
+            <p className="eyebrow mb-3">Inquire</p>
+            <h2 className="h2-display text-champagne">Tell us the night.</h2>
+            <p className="measure mx-auto mt-4 text-base text-sage">
+              A few details and we’ll come back to you within 24 hours with a plan.
+            </p>
+          </Reveal>
+          <InquiryForm
+            fields={fields}
+            inbox={group.email}
+            subject="Private event inquiry — Room 7"
+            submitLabel="Send inquiry"
+          />
+        </div>
+      </section>
+    </>
+  );
+}

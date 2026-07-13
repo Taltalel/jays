@@ -1,32 +1,46 @@
 import type { MetadataRoute } from "next";
 import { venues } from "@/content/venues";
+import { releases } from "@/content/press";
 
 export const dynamic = "force-static";
 
 const SITE = "https://room7hospitality.com";
+const now = new Date("2026-07-13");
 
-/**
- * Sitemap. Currently the homepage is live; as each route ships (collection,
- * about, press, careers, private-events, contact) add it here so it is indexed
- * the day it lands. Venue routes are pre-wired to the data file below.
- */
+const CAREER_KEYS = ["jays", "naked-taco", "highbar", "riviera", "group"];
+
 export default function sitemap(): MetadataRoute.Sitemap {
-  const now = new Date("2026-07-13");
-
-  const live: MetadataRoute.Sitemap = [
-    { url: `${SITE}/`, lastModified: now, changeFrequency: "weekly", priority: 1 },
+  const staticRoutes = [
+    { path: "/", priority: 1, cf: "weekly" as const },
+    { path: "/collection", priority: 0.9, cf: "monthly" as const },
+    { path: "/about", priority: 0.7, cf: "monthly" as const },
+    { path: "/about/jay-shirodkar", priority: 0.7, cf: "monthly" as const },
+    { path: "/private-events", priority: 0.8, cf: "monthly" as const },
+    { path: "/press", priority: 0.7, cf: "weekly" as const },
+    { path: "/careers", priority: 0.7, cf: "weekly" as const },
+    { path: "/contact", priority: 0.6, cf: "yearly" as const },
+    { path: "/gift-cards", priority: 0.5, cf: "yearly" as const },
+    { path: "/privacy", priority: 0.2, cf: "yearly" as const },
+    { path: "/terms", priority: 0.2, cf: "yearly" as const },
+    { path: "/cookies", priority: 0.2, cf: "yearly" as const },
   ];
 
-  // Venue pages — uncomment as they ship.
-  const venuePages: MetadataRoute.Sitemap = venues.map((v) => ({
-    url: `${SITE}/collection/${v.slug}/`,
+  const entries: MetadataRoute.Sitemap = staticRoutes.map((r) => ({
+    url: `${SITE}${r.path}/`,
     lastModified: now,
-    changeFrequency: "monthly",
-    priority: 0.8,
+    changeFrequency: r.cf,
+    priority: r.priority,
   }));
 
-  // Only the homepage is returned until the venue pages exist, to avoid
-  // listing URLs that 404. Concatenate `venuePages` once they are built.
-  void venuePages;
-  return live;
+  venues.forEach((v) =>
+    entries.push({ url: `${SITE}/collection/${v.slug}/`, lastModified: now, changeFrequency: "monthly", priority: 0.8 }),
+  );
+  CAREER_KEYS.forEach((k) =>
+    entries.push({ url: `${SITE}/careers/${k}/`, lastModified: now, changeFrequency: "weekly", priority: 0.5 }),
+  );
+  releases.forEach((r) =>
+    entries.push({ url: `${SITE}/press/${r.slug}/`, lastModified: new Date(r.date), changeFrequency: "yearly", priority: 0.6 }),
+  );
+
+  return entries;
 }

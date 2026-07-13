@@ -102,6 +102,26 @@ export const founderTeaser = {
   ],
 };
 
+/** Founder page — Room 7's view of Jay. MUST NOT duplicate jayshirodkar.com. */
+export const founderPage = {
+  name: "Jay Shirodkar",
+  role: "Founder, Room 7",
+  lede: "The man who decided a night out should feel like getting let in somewhere.",
+  story: [
+    "Jay Shirodkar builds rooms the way other people throw parties — with a guest list in mind and a feeling he's chasing. Room 7 is the house he built to hold all of them.",
+    "It started with a church. A 1920s sanctuary in Flagler Village that most people would have flattened, he restored instead — stained glass, stone, soaring arches — and turned into Jay's: a steakhouse where dinner keeps the hours of a cabaret. Once he'd proven a room could have a past and a pulse at the same time, the rest of the collection followed.",
+    "The thread through all of it is the same conviction: hospitality is a standard, not a script. Warmth first. Design that means something. A night people describe to everyone who wasn't there. Room 7 is that conviction, given four addresses.",
+  ],
+  links: [
+    { label: "jayshirodkar.com", url: "https://jayshirodkar.com", external: true },
+    { label: "@shirodkarfamily", url: "https://instagram.com/shirodkarfamily", external: true },
+  ],
+  pressQuotes: [
+    { quote: "The most ambitious operator to bet on downtown Fort Lauderdale in a decade.", source: "South Florida Sun-Sentinel" },
+    { quote: "He restored a church and filled it with a party. It works.", source: "Miami New Times" },
+  ],
+};
+
 /** Press outlets for the homepage strip + press hub. */
 export const pressOutlets = [
   "New York Post",
