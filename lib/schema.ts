@@ -16,7 +16,7 @@ export const organizationSchema = {
   name: group.name,
   alternateName: "Room 7 Hospitality",
   url: SITE,
-  logo: `${SITE}/brand/logo.svg`,
+  logo: `${SITE}/brand/logo.png`,
   slogan: group.tagline,
   description:
     "Fort Lauderdale hospitality group operating Jay's, Naked Taco, HighBar and Riviera across South Florida.",
@@ -91,7 +91,7 @@ export function newsArticleSchema(release: {
     publisher: {
       "@type": "Organization",
       name: group.name,
-      logo: { "@type": "ImageObject", url: `${SITE}/brand/logo.svg` },
+      logo: { "@type": "ImageObject", url: `${SITE}/brand/logo.png` },
     },
     author: { "@type": "Organization", name: group.name },
   };

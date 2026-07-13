@@ -36,13 +36,12 @@ export function Header() {
         {/* Logo — full lockup, collapses to monogram when scrolled */}
         <Link href="/" className="logo-link relative flex items-center" aria-label="Room 7 — home">
           <Logo
-            withTagline
-            className={`h-11 w-auto transition-all duration-500 ${
+            className={`h-14 w-auto transition-all duration-500 ${
               scrolled ? "pointer-events-none absolute opacity-0" : "opacity-100"
             }`}
           />
           <Monogram
-            className={`h-9 w-9 transition-all duration-500 ${
+            className={`h-9 w-auto transition-all duration-500 ${
               scrolled ? "opacity-100" : "pointer-events-none absolute opacity-0"
             }`}
           />

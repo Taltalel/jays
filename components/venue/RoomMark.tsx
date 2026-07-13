@@ -9,7 +9,7 @@ export function RoomMark() {
         href="/"
         className="logo-link mx-auto flex max-w-7xl items-center justify-center gap-3 px-5 py-10 text-champagne/70 transition-colors hover:text-champagne md:px-8"
       >
-        <Monogram className="h-6 w-6" />
+        <Monogram className="h-7 w-auto" />
         <span className="text-[11px] uppercase tracking-[0.2em]" style={{ fontFamily: "var(--font-label)" }}>
           A Room 7 venue
         </span>

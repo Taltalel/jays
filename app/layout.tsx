@@ -53,16 +53,17 @@ export const metadata: Metadata = {
     title: "Room 7 — Elevated Hospitality",
     description:
       "Four rooms, one house. The Fort Lauderdale hospitality group behind Jay's, Naked Taco, HighBar and Riviera.",
-    images: [{ url: "/og/room7.svg", width: 1200, height: 630, alt: "Room 7 — Elevated Hospitality" }],
+    images: [{ url: "/og/room7.png", width: 1200, height: 630, alt: "Room 7 — Elevated Hospitality" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Room 7 — Elevated Hospitality",
     description: "Four rooms, one house. Elevated hospitality across South Florida.",
-    images: ["/og/room7.svg"],
+    images: ["/og/room7.png"],
   },
   icons: {
-    icon: [{ url: "/favicon.svg", type: "image/svg+xml" }],
+    icon: [{ url: "/favicon.png", type: "image/png", sizes: "128x128" }],
+    apple: [{ url: "/apple-icon.png", sizes: "180x180" }],
   },
 };
 
