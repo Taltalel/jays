@@ -29,7 +29,7 @@ export function Hero() {
 
       {/* Content */}
       <div className="relative z-10 flex flex-col items-center px-6 text-center">
-        <p className="eyebrow mb-6">Fort Lauderdale · Miami Beach</p>
+        <p className="eyebrow mb-6">South Florida</p>
         <h1 className="h1-hero text-champagne">
           Four rooms.
           <br />
