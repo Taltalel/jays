@@ -58,8 +58,10 @@ export type Venue = {
   heroImage?: string;
   /** CSS object-position for the hero crop focal point. */
   heroPosition?: string;
-  /** Extra approved photos for gallery/scenes. */
+  /** Extra approved photos for the gallery. */
   photos?: string[];
+  /** Real images for the The Room / The Table / The Night scenes. */
+  sceneImages?: { room?: string; table?: string; night?: string };
 };
 
 export const venues: Venue[] = [
@@ -111,8 +113,21 @@ export const venues: Venue[] = [
       "The Cathedral is Room 7 at full volume — old-world glamour, modern swagger, and a standard of hospitality we hold every other room to.",
     ],
     heroImage: "/venues/jays-hero.webp",
-    heroPosition: "50% 22%",
-    photos: ["/venues/jays-bar.webp"],
+    heroPosition: "50% 35%",
+    photos: [
+      "/venues/jays-interior.webp",
+      "/venues/jays-tomahawk.webp",
+      "/venues/jays-lobster.webp",
+      "/venues/jays-cocktail.webp",
+      "/venues/jays-seafood.webp",
+      "/venues/jays-rawbar.webp",
+      "/venues/jays-bar.webp",
+    ],
+    sceneImages: {
+      room: "/venues/jays-interior.webp",
+      table: "/venues/jays-tomahawk.webp",
+      night: "/venues/jays-cocktail.webp",
+    },
   },
   {
     slug: "naked-taco",

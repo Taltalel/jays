@@ -42,6 +42,9 @@ export function VenueScenes({ venue }: { venue: Venue }) {
                     tone={tones[i]}
                     seed={`${venue.slug}-${s.key}`}
                     label={`${venue.name} · ${s.label}`}
+                    src={venue.sceneImages?.[s.key]}
+                    alt={`${venue.name} — ${s.label}`}
+                    showLabel={!venue.sceneImages?.[s.key]}
                     className="absolute inset-0"
                   />
                 </div>

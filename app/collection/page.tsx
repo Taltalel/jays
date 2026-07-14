@@ -28,6 +28,8 @@ export default function CollectionPage() {
         sub="One house, four souls — a church, a riot, a rooftop and the coast. Each keeps its own character; all keep the same standard."
         tone="church"
         placeholder="The collection — a room alive at night"
+        image="/venues/jays-hero.webp"
+        imagePosition="50% 40%"
         short
       />
 

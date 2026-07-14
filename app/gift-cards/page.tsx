@@ -18,6 +18,8 @@ export default function GiftCardsPage() {
         sub="Every room sells its own. Pick one and you'll head straight there to buy."
         tone="church"
         placeholder="A candlelit table set for two"
+        image="/venues/jays-cocktail.webp"
+        imagePosition="50% 40%"
         short
       />
 

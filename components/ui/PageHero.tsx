@@ -10,6 +10,8 @@ export function PageHero({
   sub,
   tone = "night",
   placeholder,
+  image,
+  imagePosition,
   children,
   short = false,
 }: {
@@ -18,12 +20,25 @@ export function PageHero({
   sub?: string;
   tone?: Tone;
   placeholder: string;
+  /** Real hero photograph; falls back to the gradient when absent. */
+  image?: string;
+  imagePosition?: string;
   children?: ReactNode;
   short?: boolean;
 }) {
   return (
     <section className={`relative flex w-full items-end overflow-hidden ${short ? "min-h-[52vh]" : "min-h-[68vh]"}`}>
-      <Placeholder tone={tone} label={placeholder} seed={title} className="absolute inset-0" />
+      <Placeholder
+        tone={tone}
+        label={placeholder}
+        seed={title}
+        src={image}
+        alt={image ? title : undefined}
+        objectPosition={imagePosition}
+        priority
+        showLabel={!image}
+        className="absolute inset-0"
+      />
       <div className="scrim absolute inset-0" />
       <div className="relative mx-auto w-full max-w-7xl px-5 pb-14 pt-32 md:px-8 md:pb-20">
         <p className="eyebrow mb-4">{eyebrow}</p>

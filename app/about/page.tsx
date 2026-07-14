@@ -24,6 +24,8 @@ export default function AboutPage() {
         sub={manifesto.hook}
         tone="night"
         placeholder="A room, half-lit — the house at rest"
+        image="/venues/jays-interior.webp"
+        imagePosition="50% 45%"
       />
 
       {/* The group */}
