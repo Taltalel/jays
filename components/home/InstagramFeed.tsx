@@ -1,53 +1,82 @@
 import { Placeholder } from "@/components/ui/Placeholder";
 import { Reveal } from "@/components/ui/Reveal";
-import { venues } from "@/content/venues";
-
-const tones = ["church", "riot", "view", "coast", "night", "beach"] as const;
+import { venues, venueBySlug } from "@/content/venues";
 
 /**
- * Instagram feed. TODO: wire a lightweight live embed (Behold / official
- * Instagram embed) pulling the venue accounts. Tiles below are placeholders
- * that link out to each venue's real account until the feed is connected.
+ * The Feed — surfaces every venue's Instagram. Tiles use real venue imagery
+ * and link to the matching account; the follow row lists all four rooms.
+ * TODO: connect a live embed (Behold / official Instagram) to pull live posts
+ * — needs an access token. Until then these route to each real profile.
  */
-export function InstagramFeed() {
-  const handles = venues.map((v) => v.instagram);
 
+// Real imagery mapped to the account it belongs to.
+const feed: { img?: string; slug: "jays" | "naked-taco" | "highbar" | "riviera"; tone: "church" | "riot" | "view" | "coast" }[] = [
+  { img: "/venues/jays-interior.webp", slug: "jays", tone: "church" },
+  { img: "/venues/naked-taco-hero.webp", slug: "naked-taco", tone: "riot" },
+  { img: "/venues/highbar-hero.webp", slug: "highbar", tone: "view" },
+  { img: "/venues/riviera-hero.webp", slug: "riviera", tone: "coast" },
+  { img: "/venues/jays-cocktail.webp", slug: "jays", tone: "church" },
+  { img: "/venues/jays-tomahawk.webp", slug: "jays", tone: "church" },
+  { img: "/venues/jays-lobster.webp", slug: "jays", tone: "church" },
+  { img: "/venues/jays-seafood.webp", slug: "jays", tone: "church" },
+];
+
+export function InstagramFeed() {
   return (
     <section className="mx-auto max-w-7xl px-5 py-16 md:px-8 md:py-24">
-      <Reveal className="mb-8 flex flex-col items-start gap-3 md:mb-12 md:flex-row md:items-end md:justify-between">
-        <div>
-          <p className="eyebrow mb-3">The Feed</p>
-          <h2 className="h2-display text-champagne">The night, as it happens.</h2>
-        </div>
-        <p className="text-sm text-sage">
-          Follow along —{" "}
-          {handles.slice(0, 3).map((h, i) => (
-            <span key={h.handle}>
-              <a href={h.url} target="_blank" rel="noopener noreferrer" className="text-gold hover:text-gold-light">
-                {h.handle}
-              </a>
-              {i < 2 ? " · " : ""}
-            </span>
-          ))}
-        </p>
+      <Reveal className="mb-8 md:mb-12">
+        <p className="eyebrow mb-3">The Feed</p>
+        <h2 className="h2-display text-champagne">The night, as it happens.</h2>
       </Reveal>
 
-      <div className="grid grid-cols-2 gap-2 sm:grid-cols-3 md:grid-cols-6 md:gap-3">
-        {tones.map((tone, i) => {
-          const handle = handles[i % handles.length];
+      {/* Follow the rooms — every account */}
+      <Reveal>
+        <div className="mb-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+          {venues.map((v) => (
+            <a
+              key={v.slug}
+              href={v.instagram.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group flex items-center justify-between rounded-sm border border-champagne/10 bg-forest/40 px-5 py-4 transition-colors hover:border-gold/40"
+            >
+              <span>
+                <span className="block font-display text-lg text-champagne">{v.name}</span>
+                <span className="text-[11px] uppercase tracking-[0.14em] text-sage" style={{ fontFamily: "var(--font-label)" }}>
+                  {v.instagram.handle}
+                </span>
+              </span>
+              <span className="ml-3 shrink-0 whitespace-nowrap text-[11px] uppercase tracking-[0.15em] text-champagne/80 group-hover:text-gold" style={{ fontFamily: "var(--font-label)" }}>
+                Follow ↗
+              </span>
+            </a>
+          ))}
+        </div>
+      </Reveal>
+
+      {/* Tiles */}
+      <div className="grid grid-cols-2 gap-2 sm:grid-cols-4 md:gap-3">
+        {feed.map((t, i) => {
+          const v = venueBySlug(t.slug)!;
           return (
-            <Reveal key={i} delay={(i % 6) * 40}>
+            <Reveal key={i} delay={(i % 4) * 40}>
               <a
-                href={handle.url}
+                href={v.instagram.url}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group relative block aspect-square overflow-hidden rounded-sm"
-                aria-label={`Instagram — ${handle.handle}`}
+                aria-label={`Instagram — ${v.instagram.handle}`}
               >
-                <Placeholder tone={tone} seed={`ig-${i}`} showLabel={false} className="venue-card__img absolute inset-0 transition-transform duration-700 group-hover:scale-[1.06]" />
+                <Placeholder
+                  tone={t.tone}
+                  seed={`ig-${i}`}
+                  src={t.img}
+                  showLabel={false}
+                  className="venue-card__img absolute inset-0 transition-transform duration-700 group-hover:scale-[1.06]"
+                />
                 <span className="absolute inset-0 flex items-end bg-gradient-to-t from-forest-deep/80 to-transparent p-3 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
                   <span className="text-[10px] uppercase tracking-[0.14em] text-champagne" style={{ fontFamily: "var(--font-label)" }}>
-                    {handle.handle}
+                    {v.instagram.handle}
                   </span>
                 </span>
               </a>
@@ -59,7 +88,7 @@ export function InstagramFeed() {
       <p className="mt-4 flex items-center gap-2">
         <span className="inline-block h-1.5 w-1.5 rounded-full bg-gold" />
         <span className="text-[10px] uppercase tracking-[0.15em] text-sage" style={{ fontFamily: "var(--font-label)" }}>
-          TODO · connect the live Instagram feed
+          TODO · connect a live Instagram feed (token needed) — tiles link to each account
         </span>
       </p>
     </section>
