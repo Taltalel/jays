@@ -156,7 +156,7 @@ export default function PrivateEventsPage() {
           </Reveal>
           <InquiryForm
             fields={fields}
-            inbox={group.email}
+            inbox={group.inboxes.events}
             subject="Private event inquiry — Room 7"
             submitLabel="Send inquiry"
           />

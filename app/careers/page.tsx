@@ -1,27 +1,19 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { PageHero } from "@/components/ui/PageHero";
 import { Reveal } from "@/components/ui/Reveal";
-import { RolesBrowser } from "@/components/careers/RolesBrowser";
-import { InquiryForm, type Field } from "@/components/ui/InquiryForm";
-import { whyRoom7Careers } from "@/content/careers";
+import { InquiryForm } from "@/components/ui/InquiryForm";
+import { whyRoom7Careers, teams, venueLabels, venueLocations, careersFields, type VenueKey } from "@/content/careers";
 import { group } from "@/content/group";
 
 export const metadata: Metadata = {
   title: "Careers — Join the house",
   description:
-    "Open roles across Room 7's four rooms in Fort Lauderdale and Miami Beach. We hire for warmth first and teach the rest.",
+    "Apply to work at any Room 7 room — Jay's, Naked Taco, HighBar or Riviera — for any position. We hire for warmth first and teach the rest.",
   alternates: { canonical: "https://room7hospitality.com/careers" },
 };
 
-const fields: Field[] = [
-  { name: "name", label: "Name", required: true },
-  { name: "email", label: "Email", type: "email", required: true },
-  { name: "phone", label: "Phone", type: "tel" },
-  { name: "role", label: "Role of interest", type: "text" },
-  { name: "venue", label: "Which room", type: "select", options: ["Jay's", "Naked Taco", "HighBar", "Riviera", "The Group", "Open to any"] },
-  { name: "portfolio", label: "Resume / LinkedIn (URL)", type: "text" },
-  { name: "message", label: "Tell us about you", type: "textarea", full: true },
-];
+const order: VenueKey[] = ["jays", "naked-taco", "highbar", "riviera", "group"];
 
 export default function CareersPage() {
   return (
@@ -29,7 +21,7 @@ export default function CareersPage() {
       <PageHero
         eyebrow="Careers"
         title="Join the house."
-        sub="We hire for warmth first and teach the rest. If you make rooms feel good, there's a seat for you."
+        sub="We hire for warmth first and teach the rest. Pick a room, apply for any position, and we'll take it from there."
         tone="riot"
         placeholder="The team, working — real people, mid-service"
       />
@@ -47,32 +39,50 @@ export default function CareersPage() {
         </div>
       </section>
 
-      {/* Open roles */}
+      {/* Choose your room */}
       <section className="border-y border-champagne/10 bg-forest/40">
         <div className="mx-auto max-w-6xl px-5 py-16 md:px-8 md:py-24">
           <Reveal className="mb-8">
-            <p className="eyebrow mb-3">Open Roles</p>
-            <h2 className="h2-display text-champagne">Find your room.</h2>
+            <p className="eyebrow mb-3">Where do you want to work?</p>
+            <h2 className="h2-display text-champagne">Pick a room.</h2>
           </Reveal>
-          <Reveal>
-            <RolesBrowser />
-          </Reveal>
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {order.map((k, i) => (
+              <Reveal key={k} delay={(i % 3) * 50}>
+                <Link
+                  href={`/careers/${k}`}
+                  className="group flex h-full items-center justify-between rounded-sm border border-champagne/10 bg-forest-deep/60 p-6 transition-colors hover:border-gold/40"
+                >
+                  <div>
+                    <h3 className="font-display text-2xl text-champagne">{venueLabels[k]}</h3>
+                    <p className="text-sm text-sage">{venueLocations[k]}</p>
+                  </div>
+                  <span className="text-[12px] uppercase tracking-[0.15em] text-champagne/80 group-hover:text-gold" style={{ fontFamily: "var(--font-label)" }}>
+                    Apply →
+                  </span>
+                </Link>
+              </Reveal>
+            ))}
+          </div>
+          <p className="mt-8 text-sm text-sage">
+            We hire across {teams.slice(0, -1).join(", ")} and {teams[teams.length - 1].toLowerCase()}. No open role listed is no problem — apply for any position and tell us where you shine.
+          </p>
         </div>
       </section>
 
       {/* Application form */}
-      <section id="apply" className="border-t border-champagne/10 bg-forest-deep scroll-mt-24">
+      <section id="apply" className="scroll-mt-24 border-t border-champagne/10 bg-forest-deep">
         <div className="mx-auto max-w-3xl px-5 py-20 md:px-8 md:py-28">
           <Reveal className="mb-10 text-center">
             <p className="eyebrow mb-3">Apply</p>
-            <h2 className="h2-display text-champagne">Introduce yourself.</h2>
+            <h2 className="h2-display text-champagne">Apply for any position.</h2>
             <p className="measure mx-auto mt-4 text-base text-sage">
-              Applying for a role or just want us to know you exist — both work. We read everything.
+              Tell us which room and what you do — we read every application.
             </p>
           </Reveal>
           <InquiryForm
-            fields={fields}
-            inbox={group.email}
+            fields={careersFields}
+            inbox={group.inboxes.careers}
             subject="Careers application — Room 7"
             submitLabel="Send application"
             confirm="Thank you — we've got it. If there's a fit, you'll hear from us."

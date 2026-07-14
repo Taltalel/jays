@@ -27,12 +27,15 @@ export function InquiryForm({
   subject,
   submitLabel = "Send",
   confirm = "Thank you — we'll come back to you within 24 hours.",
+  defaults,
 }: {
   fields: Field[];
   inbox: string;
   subject: string;
   submitLabel?: string;
   confirm?: string;
+  /** Preset field values (e.g. the venue on /careers/[venue]). */
+  defaults?: Record<string, string>;
 }) {
   const [status, setStatus] = useState<"idle" | "sending" | "done" | "error">("idle");
   const [error, setError] = useState<string>("");
@@ -122,9 +125,9 @@ export function InquiryForm({
             {f.required && <span className="text-gold"> *</span>}
           </label>
           {f.type === "textarea" ? (
-            <textarea id={f.name} name={f.name} rows={5} placeholder={f.placeholder} className={inputCls} />
+            <textarea id={f.name} name={f.name} rows={5} placeholder={f.placeholder} defaultValue={defaults?.[f.name]} className={inputCls} />
           ) : f.type === "select" ? (
-            <select id={f.name} name={f.name} className={inputCls} defaultValue="">
+            <select id={f.name} name={f.name} className={inputCls} defaultValue={defaults?.[f.name] ?? ""}>
               <option value="" disabled>
                 Choose…
               </option>
@@ -135,7 +138,7 @@ export function InquiryForm({
               ))}
             </select>
           ) : (
-            <input id={f.name} name={f.name} type={f.type ?? "text"} placeholder={f.placeholder} className={inputCls} />
+            <input id={f.name} name={f.name} type={f.type ?? "text"} placeholder={f.placeholder} defaultValue={defaults?.[f.name]} className={inputCls} />
           )}
         </div>
       ))}

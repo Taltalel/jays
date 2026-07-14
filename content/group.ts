@@ -16,14 +16,18 @@ export const group = {
   },
   // Placeholder until the group inbox is live (currently events@yesfbm.com).
   email: "hello@room7hospitality.com",
+  // Where each form routes.
+  inboxes: {
+    general: "hello@room7hospitality.com",
+    events: "jaclyn@yesfbm.com",
+    careers: "marketing@yesfbm.com",
+    press: "hello@room7hospitality.com",
+  },
   founder: {
     name: "Jay Shirodkar",
     site: "https://jayshirodkar.com",
     instagram: { handle: "@shirodkarfamily", url: "https://instagram.com/shirodkarfamily" },
   },
-  socials: [
-    { label: "Instagram", url: "https://instagram.com/jaysfortlauderdale" },
-  ],
 };
 
 /** The manifesto — used on Home and About. */

@@ -83,15 +83,26 @@ export function Footer() {
               <a href={`mailto:${group.email}`} className="text-champagne transition-colors hover:text-gold">
                 {group.email}
               </a>
-              <a
-                href={group.socials[0].url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-champagne transition-colors hover:text-gold"
-              >
-                Instagram ↗
-              </a>
             </address>
+
+            <p className="eyebrow mb-3 mt-8">Follow the rooms</p>
+            <ul className="flex flex-col gap-2">
+              {venues.map((v) => (
+                <li key={v.slug}>
+                  <a
+                    href={v.instagram.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group inline-flex items-baseline gap-2 text-sm text-champagne/85 transition-colors hover:text-gold"
+                  >
+                    <span>{v.instagram.handle}</span>
+                    <span className="text-[10px] uppercase tracking-[0.14em] text-sage" style={{ fontFamily: "var(--font-label)" }}>
+                      {v.name}
+                    </span>
+                  </a>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
 
