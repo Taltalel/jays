@@ -239,6 +239,30 @@ body {
   }
 }
 
+/* Hero horizon — each room's etching fades in, left to right (opacity only,
+   so it never overrides the SVG group transforms). */
+.hero-horizon .hz {
+  opacity: 0;
+  animation: hz-fade 1000ms var(--ease-room) forwards;
+}
+.hero-horizon .hz1 {
+  animation-delay: 250ms;
+}
+.hero-horizon .hz2 {
+  animation-delay: 500ms;
+}
+.hero-horizon .hz3 {
+  animation-delay: 750ms;
+}
+.hero-horizon .hz4 {
+  animation-delay: 1000ms;
+}
+@keyframes hz-fade {
+  to {
+    opacity: 1;
+  }
+}
+
 /* =========================================================================
    MOTION — respect prefers-reduced-motion (disable all of it)
    ========================================================================= */
