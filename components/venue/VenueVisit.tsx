@@ -52,15 +52,50 @@ export function VenueVisit({ venue }: { venue: Venue }) {
                   Reserve
                 </CTA>
               )}
+              {venue.menuUrl && (
+                <CTA href={venue.menuUrl} external variant="outline">
+                  Menu
+                </CTA>
+              )}
               <CTA href={`https://www.google.com/maps/search/?api=1&query=${q}`} external variant="text">
                 Directions
               </CTA>
             </div>
+
+            {venue.delivery && venue.delivery.length > 0 && (
+              <div className="pt-2">
+                <p className="text-[11px] uppercase tracking-[0.15em] text-gold" style={{ fontFamily: "var(--font-label)" }}>
+                  Order in
+                </p>
+                <div className="mt-2 flex flex-wrap gap-x-5 gap-y-1">
+                  {venue.delivery.map((d) => (
+                    <a key={d.label} href={d.url} target="_blank" rel="noopener noreferrer" className="text-sm text-champagne underline underline-offset-4 decoration-champagne/40 hover:text-gold">
+                      {d.label} ↗
+                    </a>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {venue.socials && venue.socials.length > 0 && (
+              <div className="pt-1">
+                <p className="text-[11px] uppercase tracking-[0.15em] text-gold" style={{ fontFamily: "var(--font-label)" }}>
+                  Follow
+                </p>
+                <div className="mt-2 flex flex-wrap gap-x-5 gap-y-1">
+                  {venue.socials.map((s) => (
+                    <a key={s.label} href={s.url} target="_blank" rel="noopener noreferrer" className="text-sm text-champagne underline underline-offset-4 decoration-champagne/40 hover:text-gold">
+                      {s.label} ↗
+                    </a>
+                  ))}
+                </div>
+              </div>
+            )}
           </div>
         </div>
 
         {/* Real map — Google Maps embed, no API key required */}
-        <div className="relative aspect-[4/3] overflow-hidden rounded-sm border border-champagne/10 md:aspect-auto md:min-h-[420px]">
+        <div className="relative aspect-[4/3] overflow-hidden rounded-sm border border-champagne/10 bg-forest md:aspect-auto md:min-h-[420px]">
           <iframe
             title={`Map — ${venue.name}`}
             src={`https://www.google.com/maps?q=${q}&output=embed`}

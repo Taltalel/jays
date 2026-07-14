@@ -2,8 +2,7 @@ import { group } from "@/content/group";
 
 export type LegalSection = { heading: string; body: string[] };
 
-/** Shared layout for Privacy / Terms / Cookies. Copy is a starting point —
- *  TODO: have counsel review before launch. */
+/** Shared layout for Privacy / Terms / Cookies. */
 export function LegalPage({
   title,
   updated,
@@ -43,19 +42,13 @@ export function LegalPage({
       <div className="mt-12 rounded-sm border border-gold/20 bg-forest/40 p-5">
         <p className="text-sm text-sage">
           Questions? Write to{" "}
-          <a href={`mailto:${group.email}`} className="text-champagne hover:text-gold">
+          <a href={`mailto:${group.email}`} className="text-champagne underline underline-offset-4 decoration-champagne/40 hover:text-gold">
             {group.email}
           </a>
           .
         </p>
       </div>
 
-      <p className="mt-6 flex items-center gap-2">
-        <span className="inline-block h-1.5 w-1.5 rounded-full bg-gold" />
-        <span className="text-[10px] uppercase tracking-[0.15em] text-sage/80" style={{ fontFamily: "var(--font-label)" }}>
-          TODO · placeholder policy — replace with counsel-reviewed copy
-        </span>
-      </p>
     </article>
   );
 }

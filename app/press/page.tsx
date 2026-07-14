@@ -82,7 +82,7 @@ export default function PressPage() {
           </div>
           <ul className="mt-12 flex flex-wrap items-center justify-center gap-x-8 gap-y-4 opacity-80">
             {pressOutlets.map((o) => (
-              <li key={o} className="font-display text-lg text-champagne/55">{o}</li>
+              <li key={o} className="font-display text-lg text-champagne/70">{o}</li>
             ))}
           </ul>
         </div>

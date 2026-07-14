@@ -64,9 +64,14 @@ body {
   border-radius: 2px;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+/* In @layer base so Tailwind text-colour utilities (e.g. text-gold,
+   text-forest-deep on a CTA) win over this inherit reset. Unlayered, this
+   rule would beat every utility and force links to the inherited colour. */
+@layer base {
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
 }
 
 /* =========================================================================

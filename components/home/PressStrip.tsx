@@ -52,7 +52,7 @@ export function PressStrip() {
           {pressOutlets.map((o) => (
             <li
               key={o}
-              className="font-display text-lg text-champagne/55 transition-colors hover:text-champagne/80 md:text-xl"
+              className="font-display text-lg text-champagne/70 transition-colors hover:text-champagne/80 md:text-xl"
             >
               {o}
             </li>

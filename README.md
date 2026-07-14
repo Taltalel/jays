@@ -178,4 +178,22 @@ thing. Still to replace:
   (jaysfortlauderdale.com, lovenakedtaco.com, therivierarestaurant.com). Replace
   lovenakedtaco.com's "Yes Hospitality Group" footer/`publisher` with Room 7,
   and **fix its broken canonical** (currently points at the Vercel preview URL).
-- Have counsel review the legal pages.
+- Legal pages (privacy, terms, cookies) are complete and CCPA/GDPR-aware —
+  have counsel confirm before launch.
+
+## Accessibility
+
+Audited with axe-core (WCAG 2.0/2.1 A & AA) across every page and interactive
+state (nav dropdowns, mobile menu) — **0 violations**. Colour contrast passes
+for body-size gold and sage on forest; gold buttons use dark text; in-text
+links are underlined so they don't rely on colour alone; every image has alt
+text or is decorative; focus states are visible; motion respects
+`prefers-reduced-motion`; there's a skip link and one `<h1>` per page. Re-run
+with `npm i --no-save axe-core` + the audit script if you change styles.
+
+## Info routes to the venues
+
+Reservations (OpenTable), menus, delivery (Uber Eats / DoorDash / Grubhub on
+Naked Taco), gift cards and socials all link out to each venue's own site —
+verified against the live venue sites. The group site sells the house; the
+venues handle the transactions. Update these in `content/venues.ts`.

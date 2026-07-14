@@ -34,11 +34,13 @@ export const organizationSchema = {
     addressCountry: "US",
   },
   email: group.email,
-  sameAs: [
-    group.founder.site,
-    ...venues.map((v) => v.instagram.url),
-    ...venues.map((v) => v.website.url),
-  ],
+  sameAs: Array.from(
+    new Set([
+      group.founder.site,
+      ...venues.flatMap((v) => (v.socials ?? [{ url: v.instagram.url }]).map((s) => s.url)),
+      ...venues.map((v) => v.website.url),
+    ]),
+  ),
   subOrganization: venues
     .filter((v) => v.slug !== "highbar")
     .map((v) => ({
@@ -58,7 +60,7 @@ export function restaurantSchema(v: Venue) {
     servesCuisine: v.cuisine.split(", "),
     priceRange: v.priceRange,
     acceptsReservations: v.reservation ? "True" : "False",
-    ...(v.reservation ? { menu: v.website.url } : {}),
+    ...(v.menuUrl ? { menu: v.menuUrl } : {}),
     ...(v.phone ? { telephone: v.phone } : {}),
     image: `${SITE}/og/${v.slug}.svg`,
     address: {

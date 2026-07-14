@@ -41,7 +41,7 @@ export function VenueHero({ venue, paired }: { venue: Venue; paired?: Venue }) {
         {paired && (
           <p className="mt-4 text-sm text-sage">
             {venue.slug === "highbar" ? "Downstairs: " : "Upstairs: "}
-            <Link href={`/collection/${paired.slug}`} className="text-gold underline-offset-4 hover:underline">
+            <Link href={`/collection/${paired.slug}`} className="text-gold underline underline-offset-4">
               {paired.name}
             </Link>{" "}
             — same address, {venue.slug === "highbar" ? "street level" : "the rooftop"}.
@@ -54,7 +54,12 @@ export function VenueHero({ venue, paired }: { venue: Venue; paired?: Venue }) {
               Reserve
             </CTA>
           )}
-          <CTA href={venue.website.url} external variant="outline">
+          {venue.menuUrl && (
+            <CTA href={venue.menuUrl} external variant="outline">
+              Menu
+            </CTA>
+          )}
+          <CTA href={venue.website.url} external variant="text">
             Visit site
           </CTA>
         </div>

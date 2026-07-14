@@ -85,7 +85,7 @@ export default function FounderPage() {
         </div>
         <ul className="mt-14 flex flex-wrap items-center justify-center gap-x-8 gap-y-4">
           {pressOutlets.map((o) => (
-            <li key={o} className="font-display text-lg text-champagne/55">{o}</li>
+            <li key={o} className="font-display text-lg text-champagne/70">{o}</li>
           ))}
         </ul>
       </section>

@@ -72,9 +72,9 @@ export default function ContactPage() {
             <address className="mt-6 flex flex-col gap-2 not-italic text-sage">
               <span className="text-champagne">{group.hq.street}</span>
               <span>{group.hq.locality}</span>
-              <a href={`mailto:${group.email}`} className="text-champagne hover:text-gold">{group.email}</a>
+              <a href={`mailto:${group.email}`} className="text-champagne underline underline-offset-4 decoration-champagne/40 hover:text-gold">{group.email}</a>
             </address>
-            <div className="mt-8 aspect-[4/3] overflow-hidden rounded-sm border border-champagne/10">
+            <div className="mt-8 aspect-[4/3] overflow-hidden rounded-sm border border-champagne/10 bg-forest">
               <iframe
                 title="Room 7 HQ map"
                 src={`https://www.google.com/maps?q=${q}&output=embed`}

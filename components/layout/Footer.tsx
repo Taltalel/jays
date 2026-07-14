@@ -30,7 +30,7 @@ export function Footer() {
             <Logo withTagline className="h-14 w-auto" />
             <p className="measure mt-6 text-sm leading-relaxed text-sage">
               Four rooms. One house. Elevated hospitality across South Florida — built by{" "}
-              <a href={group.founder.site} target="_blank" rel="noopener noreferrer" className="text-champagne underline-offset-4 hover:text-gold hover:underline">
+              <a href={group.founder.site} target="_blank" rel="noopener noreferrer" className="text-champagne underline underline-offset-4 decoration-champagne/40 hover:text-gold">
                 {group.founder.name}
               </a>
               .

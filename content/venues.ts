@@ -33,7 +33,13 @@ export type Venue = {
   phone?: string;
   email?: string;
   website: { label: string; url: string };
+  /** Online menu on the venue's own site — we route diners there. */
+  menuUrl?: string;
   instagram: { handle: string; url: string };
+  /** Full social set (verified from the live venue sites). */
+  socials?: { label: string; url: string }[];
+  /** Delivery partners, where offered. */
+  delivery?: { label: string; url: string }[];
   reservation?: Reservation;
   hours: { label: string; value: string }[];
   cuisine: string;
@@ -73,6 +79,12 @@ export const venues: Venue[] = [
     geo: { lat: 26.1289, lng: -80.1401 },
     website: { label: "jaysfortlauderdale.com", url: "https://jaysfortlauderdale.com" },
     instagram: { handle: "@jaysfortlauderdale", url: "https://instagram.com/jaysfortlauderdale" },
+    menuUrl: "https://jaysfortlauderdale.com/menus",
+    socials: [
+      { label: "Instagram", url: "https://instagram.com/jaysfortlauderdale" },
+      { label: "TikTok", url: "https://www.tiktok.com/@jaysfortlauderdale" },
+      { label: "Facebook", url: "https://www.facebook.com/profile.php?id=61574896371876" },
+    ],
     reservation: {
       provider: "OpenTable",
       url: "https://www.opentable.com/restref/client/?restref=1426036",
@@ -118,6 +130,17 @@ export const venues: Venue[] = [
     phone: "(305) 534-8455",
     website: { label: "lovenakedtaco.com", url: "https://lovenakedtaco.com" },
     instagram: { handle: "@lovenakedtaco", url: "https://instagram.com/lovenakedtaco" },
+    menuUrl: "https://lovenakedtaco.com/menu",
+    socials: [
+      { label: "Instagram", url: "https://instagram.com/lovenakedtaco" },
+      { label: "Facebook", url: "https://www.facebook.com/lovenakedtaco" },
+      { label: "TikTok", url: "https://www.tiktok.com/@lovenakedtaco" },
+    ],
+    delivery: [
+      { label: "Uber Eats", url: "https://www.ubereats.com/store/naked-taco-miami-beach/278O83hhV-qswyyizGWUyQ" },
+      { label: "DoorDash", url: "https://www.doordash.com/store/naked-taco-miami-beach-74400/" },
+      { label: "Grubhub", url: "https://www.grubhub.com/restaurant/naked-taco-1111-collins-ave-miami-beach/10046552" },
+    ],
     reservation: {
       provider: "OpenTable",
       url: "https://www.opentable.com/restref/client/?restref=1524856",
@@ -162,6 +185,8 @@ export const venues: Venue[] = [
     phone: "(305) 534-8455",
     website: { label: "lovenakedtaco.com/highbar", url: "https://lovenakedtaco.com/highbar" },
     instagram: { handle: "@highbar305", url: "https://instagram.com/highbar305" },
+    menuUrl: "https://lovenakedtaco.com/highbar",
+    socials: [{ label: "Instagram", url: "https://instagram.com/highbar305" }],
     reservation: {
       provider: "OpenTable",
       url: "https://www.opentable.com/restref/client/?restref=1524856",
@@ -207,6 +232,11 @@ export const venues: Venue[] = [
     email: "info@marenriviera.com",
     website: { label: "therivierarestaurant.com", url: "https://therivierarestaurant.com" },
     instagram: { handle: "@rivierafortlauderdale", url: "https://instagram.com/rivierafortlauderdale" },
+    menuUrl: "https://therivierarestaurant.com/menus",
+    socials: [
+      { label: "Instagram", url: "https://instagram.com/rivierafortlauderdale" },
+      { label: "Facebook", url: "https://www.facebook.com/RivieraFortLauderdale" },
+    ],
     reservation: {
       provider: "OpenTable",
       url: "https://www.opentable.com/restref/client/?restref=1530400",
