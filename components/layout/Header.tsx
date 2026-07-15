@@ -1,13 +1,24 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { Logo, Monogram } from "@/components/brand/Logo";
+import { Monogram } from "@/components/brand/Logo";
 import { primaryNav, reserveLinks } from "@/content/nav";
+
+// Split the primary nav around the centered mark, per the brand layout:
+// left of the logo, then right of the logo.
+const leftNav = primaryNav.slice(0, 3); // The Collection · About · Private Events
+const rightNav = primaryNav.slice(3); //  Press · Careers · Contact
 
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const pathname = usePathname();
+  const isHome = pathname === "/";
+  // On the home hero the large mark lives in the hero itself, so the header
+  // mark stays hidden until the hero is scrolled past; everywhere else it shows.
+  const showMark = !isHome || scrolled;
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 80);
@@ -32,42 +43,53 @@ export function Header() {
           : "bg-transparent"
       }`}
     >
-      {/* top scrim — keeps the logo + nav legible over bright heroes */}
+      {/* top scrim — keeps the nav legible over the hero */}
       <div
         aria-hidden="true"
-        className={`pointer-events-none absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-forest-deep/75 to-transparent transition-opacity duration-500 ${
+        className={`pointer-events-none absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-forest-deep/70 to-transparent transition-opacity duration-500 ${
           scrolled ? "opacity-0" : "opacity-100"
         }`}
       />
-      <div className="relative z-[1] mx-auto flex h-[var(--header-h)] max-w-7xl items-center justify-between px-5 md:px-8">
-        {/* Logo — full lockup, collapses to monogram when scrolled */}
-        <Link href="/" className="logo-link relative flex items-center" aria-label="Room 7 — home">
-          <Logo
-            className={`h-14 w-auto transition-all duration-500 ${
-              scrolled ? "pointer-events-none absolute opacity-0" : "opacity-100"
-            }`}
-          />
-          <Monogram
-            className={`h-9 w-auto transition-all duration-500 ${
-              scrolled ? "opacity-100" : "pointer-events-none absolute opacity-0"
-            }`}
-          />
-        </Link>
 
-        {/* Desktop nav */}
+      <div className="relative z-[1] mx-auto grid h-[var(--header-h)] max-w-7xl grid-cols-[1fr_auto_1fr] items-center px-5 md:px-8">
+        {/* Left nav cluster */}
         <nav className="hidden items-center gap-7 lg:flex" aria-label="Primary">
-          {primaryNav.map((item) =>
+          {leftNav.map((item) =>
             item.children ? (
-              <Dropdown key={item.label} item={item} />
+              <Dropdown key={item.label} item={item} align="left" />
             ) : (
-              <Link
-                key={item.label}
-                href={item.href}
-                className="nav-link text-[13px] uppercase tracking-[0.15em] text-champagne/85 transition-colors hover:text-gold"
-                style={{ fontFamily: "var(--font-label)" }}
-              >
-                {item.label}
-              </Link>
+              <NavLink key={item.label} href={item.href} label={item.label} />
+            ),
+          )}
+        </nav>
+
+        {/* Mobile: mark pinned left of the hamburger row */}
+        <div className="lg:hidden">
+          <Link href="/" aria-label="Room 7 — home" className="logo-link inline-flex items-center">
+            <Monogram className="h-8 w-auto" />
+          </Link>
+        </div>
+
+        {/* Center mark */}
+        <div className="hidden justify-center lg:flex">
+          <Link
+            href="/"
+            aria-label="Room 7 — home"
+            className={`logo-link inline-flex items-center transition-opacity duration-500 ${
+              showMark ? "opacity-100" : "pointer-events-none opacity-0"
+            }`}
+          >
+            <Monogram className="h-9 w-auto" />
+          </Link>
+        </div>
+
+        {/* Right nav cluster */}
+        <nav className="hidden items-center justify-end gap-7 lg:flex" aria-label="Primary secondary">
+          {rightNav.map((item) =>
+            item.children ? (
+              <Dropdown key={item.label} item={item} align="right" />
+            ) : (
+              <NavLink key={item.label} href={item.href} label={item.label} />
             ),
           )}
           <ReserveButton />
@@ -76,7 +98,7 @@ export function Header() {
         {/* Mobile trigger */}
         <button
           type="button"
-          className="flex items-center gap-2 lg:hidden"
+          className="col-start-3 flex items-center justify-self-end lg:hidden"
           aria-expanded={menuOpen}
           aria-controls="mobile-menu"
           onClick={() => setMenuOpen((v) => !v)}
@@ -107,20 +129,38 @@ export function Header() {
   );
 }
 
+/* ---------------------------------------------------------------- NavLink */
+
+function NavLink({ href, label }: { href: string; label: string }) {
+  return (
+    <Link
+      href={href}
+      className="nav-link whitespace-nowrap text-[13px] uppercase tracking-[0.15em] text-champagne/85 transition-colors hover:text-gold"
+      style={{ fontFamily: "var(--font-label)" }}
+    >
+      {label}
+    </Link>
+  );
+}
+
 /* ---------------------------------------------------------------- Dropdown */
 
-function Dropdown({ item }: { item: (typeof primaryNav)[number] }) {
+function Dropdown({ item, align = "left" }: { item: (typeof primaryNav)[number]; align?: "left" | "right" }) {
   return (
     <div className="group relative">
       <Link
         href={item.href}
-        className="nav-link flex items-center gap-1.5 text-[13px] uppercase tracking-[0.15em] text-champagne/85 transition-colors group-hover:text-gold"
+        className="nav-link flex items-center gap-1.5 whitespace-nowrap text-[13px] uppercase tracking-[0.15em] text-champagne/85 transition-colors group-hover:text-gold"
         style={{ fontFamily: "var(--font-label)" }}
       >
         {item.label}
         <Caret />
       </Link>
-      <div className="invisible absolute left-1/2 top-full min-w-[220px] -translate-x-1/2 pt-4 opacity-0 transition-all duration-300 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
+      <div
+        className={`invisible absolute top-full min-w-[220px] pt-4 opacity-0 transition-all duration-300 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100 ${
+          align === "right" ? "right-0" : "left-0"
+        }`}
+      >
         <ul className="overflow-hidden rounded-sm border border-gold/15 bg-forest/95 py-2 shadow-2xl backdrop-blur-md">
           {item.children!.map((child) => (
             <li key={child.label}>

@@ -1,127 +1,213 @@
+/* eslint-disable @next/next/no-img-element */
+"use client";
+
+import Link from "next/link";
+import { useEffect, useRef } from "react";
+
 /**
- * HOME HERO — full-viewport. One line. A scroll cue. Nothing else.
+ * HOME HERO — a cinematic, layered composition over the gold engraving.
  *
- * The backdrop is an original etched gold line-illustration: one continuous
- * horizon that runs through all four rooms — the church (Jay's), palms &
- * string lights (Naked Taco), the rooftop pool (HighBar), and the coast
- * (Riviera) — sharing one ground line. Four rooms, one house, drawn as one.
+ * Top to bottom: the Room 7 wordmark, ELEVATED HOSPITALITY, a gold diamond
+ * rule, the "Four rooms. One house." statement, then the vintage-engraving
+ * venue panorama fading up into the forest, and a scroll cue. Everything is
+ * real, responsive HTML over the artwork — nothing is flattened into an image.
+ *
+ * The four venues in the engraving are keyboard-focusable links (Jay's, Naked
+ * Taco, HighBar — Naked Taco's rooftop — and Riviera). Panorama parallax and
+ * the atmospheric drift are motion-gated by prefers-reduced-motion.
  */
+
+// Hotspots over the panorama. Positioned bottom-anchored (in %) so they stay
+// aligned with the buildings as the artwork is object-cover cropped from the
+// top on wide viewports. Tuned against the 1922×818 engraving.
+const VENUES = [
+  { slug: "jays", name: "Jay's", label: "Jay's — The Cathedral, Fort Lauderdale", left: "6%", width: "23%", bottom: "6%", height: "58%" },
+  { slug: "naked-taco", name: "Naked Taco", label: "Naked Taco — The Riot, 1111 Collins Avenue, Miami Beach", left: "33%", width: "19%", bottom: "6%", height: "34%" },
+  { slug: "highbar", name: "HighBar", label: "HighBar — The View, the rooftop above Naked Taco", left: "52%", width: "15%", bottom: "40%", height: "26%" },
+  { slug: "riviera", name: "Riviera", label: "Riviera — The Coast, Fort Lauderdale Beach", left: "64%", width: "28%", bottom: "6%", height: "44%" },
+] as const;
+
 export function Hero() {
+  const panoRef = useRef<HTMLDivElement>(null);
+
+  // Gentle parallax: the panorama drifts up a touch slower than the page.
+  useEffect(() => {
+    const el = panoRef.current;
+    if (!el) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    let raf = 0;
+    const update = () => {
+      raf = 0;
+      const y = window.scrollY;
+      // Positive shift lags the panorama behind the scroll (parallax). The image
+      // is scaled from its bottom edge, so the headroom sits on top — shifting
+      // down stays within it and never exposes the bottom edge.
+      const shift = Math.min(y * 0.08, 34);
+      el.style.setProperty("--pano-shift", `${shift}px`);
+    };
+    const onScroll = () => {
+      if (!raf) raf = requestAnimationFrame(update);
+    };
+    update();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      if (raf) cancelAnimationFrame(raf);
+    };
+  }, []);
+
   return (
-    <section className="hero-scene relative flex h-[100svh] min-h-[640px] w-full items-center justify-center overflow-hidden">
-      {/* Etched four-venue horizon */}
-      <div className="pointer-events-none absolute inset-0">
+    <section className="hero relative h-[100svh] min-h-[620px] w-full overflow-hidden bg-forest-deep">
+      {/* ambient gold wash behind the mark */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 z-0"
+        style={{ background: "radial-gradient(60% 42% at 50% 30%, rgba(198,162,76,0.12), transparent 70%)" }}
+      />
+
+      {/* --------------------------- panorama (bottom layer) --------------------------- */}
+      <div className="absolute inset-x-0 bottom-0 z-10">
         <div
-          className="absolute inset-0"
-          style={{ background: "radial-gradient(120% 100% at 50% 12%, #163a24 0%, #0f2417 52%, #0b1a10 100%)" }}
-        />
-        <div
-          className="absolute inset-0"
-          style={{ background: "radial-gradient(55% 42% at 50% 34%, rgba(216,190,120,0.16), transparent)" }}
-        />
-        <HeroHorizon />
+          ref={panoRef}
+          className="hero-pano relative w-full overflow-hidden"
+          style={{ height: "clamp(260px, 48vh, 540px)" }}
+        >
+          <picture>
+            <source media="(max-width: 640px)" srcSet="/brand/engraving-panorama-mobile.webp" />
+            <img
+              src="/brand/engraving-panorama-1600.webp"
+              alt=""
+              aria-hidden="true"
+              width={1600}
+              height={681}
+              decoding="async"
+              className="hero-pano__img absolute inset-0 h-full w-full object-cover object-bottom"
+            />
+          </picture>
+
+          {/* fade the top of the engraving up into the forest green */}
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-0"
+            style={{
+              background:
+                "linear-gradient(to top, rgba(15,36,23,0) 0%, rgba(15,36,23,0) 42%, rgba(15,36,23,0.72) 78%, #0f2417 100%)",
+            }}
+          />
+          {/* soften left/right edges */}
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-0"
+            style={{ background: "linear-gradient(to right, #0f2417 0%, rgba(15,36,23,0) 12%, rgba(15,36,23,0) 88%, #0f2417 100%)" }}
+          />
+
+          {/* atmospheric drift — moon glow, window embers, drifting sparks */}
+          <Atmosphere />
+
+          {/* clickable venue hotspots */}
+          <nav aria-label="Our four rooms" className="absolute inset-0">
+            {VENUES.map((v) => (
+              <Link
+                key={v.slug}
+                href={`/collection/${v.slug}`}
+                aria-label={v.label}
+                className="hero-venue group absolute"
+                style={{ left: v.left, width: v.width, bottom: v.bottom, height: v.height }}
+              >
+                <span className="hero-venue__name" aria-hidden="true">
+                  {v.name}
+                </span>
+              </Link>
+            ))}
+          </nav>
+        </div>
       </div>
 
-      {/* Content */}
-      <div className="relative z-10 flex flex-col items-center px-6 text-center">
-        <p className="eyebrow mb-6">South Florida</p>
-        <h1 className="h1-hero text-champagne">
-          Four rooms.
-          <br />
-          One house.
-        </h1>
-        <p className="mt-6 max-w-md text-balance text-base text-sage md:text-lg">
-          Elevated hospitality in South Florida.
+      {/* -------- content overlay: mark → tagline → rule → statement --------
+          pointer-events-none so the venue hotspots on the panorama beneath
+          stay clickable; nothing in this layer is interactive. */}
+      <div className="pointer-events-none absolute inset-0 z-20 flex flex-col items-center justify-center px-6 pb-[34vh] pt-[var(--header-h)] text-center">
+        <img
+          src="/brand/wordmark.webp"
+          alt="Room 7"
+          width={705}
+          height={292}
+          fetchPriority="high"
+          decoding="async"
+          className="hero-rise hero-logo w-[min(74vw,480px)] max-w-full"
+          style={{ animationDelay: "80ms" }}
+        />
+
+        <p
+          className="hero-rise mt-6 text-[0.7rem] uppercase tracking-[0.4em] text-gold sm:text-[0.8rem] sm:tracking-[0.5em]"
+          style={{ fontFamily: "var(--font-label)", animationDelay: "260ms" }}
+        >
+          Elevated Hospitality
         </p>
+
+        <DiamondRule className="hero-rise mt-5" style={{ animationDelay: "420ms" }} />
+
+        <h1
+          className="hero-rise mt-5 font-display text-champagne"
+          style={{ fontSize: "clamp(1.5rem, 4.2vw, 2.75rem)", lineHeight: 1.12, letterSpacing: "0.01em", animationDelay: "560ms" }}
+        >
+          Four rooms. One house.
+        </h1>
       </div>
 
-      {/* Scroll cue */}
+      {/* --------------------------- scroll cue --------------------------- */}
       <a
         href="#statement"
-        aria-label="Scroll to explore"
-        className="group absolute bottom-8 left-1/2 z-10 flex -translate-x-1/2 flex-col items-center gap-2"
+        aria-label="Scroll to discover"
+        className="hero-scroll group absolute bottom-6 left-1/2 z-30 flex -translate-x-1/2 flex-col items-center gap-2"
       >
-        <span className="text-[10px] uppercase tracking-[0.25em] text-champagne/60 transition-colors group-hover:text-gold" style={{ fontFamily: "var(--font-label)" }}>
-          Enter
+        <span
+          className="text-[10px] uppercase tracking-[0.3em] text-champagne/60 transition-colors group-hover:text-gold"
+          style={{ fontFamily: "var(--font-label)" }}
+        >
+          Scroll to discover
         </span>
-        <span className="block h-10 w-px overflow-hidden bg-champagne/20">
-          <span className="block h-4 w-px animate-[room-scrolldown_1.8s_ease-in-out_infinite] bg-gold" />
-        </span>
+        <svg width="16" height="22" viewBox="0 0 16 22" fill="none" aria-hidden="true" className="hero-chev text-gold">
+          <path d="M2 6l6 6 6-6" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" />
+          <path d="M2 12l6 6 6-6" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" opacity="0.45" />
+        </svg>
       </a>
     </section>
   );
 }
 
-/** The four-venue etched horizon. Gold line-art, drawn as one continuous scene. */
-function HeroHorizon() {
-  const label = { fontFamily: "var(--font-label)", fontSize: "11px", letterSpacing: "3px", fill: "var(--color-gold)", opacity: 0.85 } as const;
+/** Thin gold rule with a centered open diamond. */
+function DiamondRule({ className = "", style }: { className?: string; style?: React.CSSProperties }) {
   return (
-    <svg
-      viewBox="0 0 1440 540"
-      preserveAspectRatio="xMidYMax meet"
-      className="hero-horizon absolute inset-x-0 bottom-0 h-[62%] w-full"
-      style={{ overflow: "visible" }}
-      aria-hidden="true"
-    >
-      <g fill="none" stroke="var(--color-gold)" strokeWidth={1.6} strokeLinecap="round" strokeLinejoin="round" opacity={0.92}>
-        {/* ground line — the one house */}
-        <line x1="60" y1="430" x2="1380" y2="430" strokeOpacity={0.55} />
-        <line x1="60" y1="436" x2="1380" y2="436" strokeOpacity={0.22} />
+    <div className={`flex items-center justify-center gap-3 ${className}`} style={style} aria-hidden="true">
+      <span className="block h-px w-16 bg-gradient-to-r from-transparent to-gold/70 sm:w-24" />
+      <svg width="9" height="9" viewBox="0 0 10 10" className="text-gold" fill="none">
+        <path d="M5 0.6L9.4 5 5 9.4 0.6 5 5 0.6Z" stroke="currentColor" strokeWidth="1" />
+      </svg>
+      <span className="block h-px w-16 bg-gradient-to-l from-transparent to-gold/70 sm:w-24" />
+    </div>
+  );
+}
 
-        {/* JAY'S — the cathedral */}
-        <g className="hz hz1" transform="translate(232,0)">
-          <path d="M-70,430 L-70,250 L0,150 L70,250 L70,430" />
-          <path d="M-70,250 L70,250" />
-          <circle cx="0" cy="300" r="34" />
-          <circle cx="0" cy="300" r="20" />
-          <path d="M0,266 L0,334 M-34,300 L34,300 M-24,276 L24,324 M24,276 L-24,324" />
-          <path d="M-18,430 L-18,370 Q0,348 18,370 L18,430" />
-          <path d="M0,150 L0,120 M-10,132 L10,132" />
-          <path d="M-70,430 L-70,300 L-96,300 L-96,430 M70,430 L70,300 L96,300 L96,430" />
-        </g>
-
-        {/* NAKED TACO — palms + string lights + awning */}
-        <g className="hz hz2" transform="translate(560,0)">
-          <path d="M-70,430 C-66,360 -70,318 -74,300" />
-          <path d="M-74,300 C-96,286 -116,286 -128,296 M-74,300 C-100,296 -118,306 -128,320 M-74,300 C-52,286 -32,286 -20,296 M-74,300 C-48,296 -30,306 -20,320 M-74,300 C-78,282 -78,268 -74,256" />
-          <path d="M70,430 C74,362 70,320 66,302" />
-          <path d="M66,302 C44,288 24,288 12,298 M66,302 C40,298 22,308 12,322 M66,302 C88,288 108,288 120,298 M66,302 C92,298 110,308 120,322 M66,302 C62,284 62,270 66,258" />
-          <path d="M-74,300 Q-4,352 66,302" strokeDasharray="0.5 26" />
-          <circle cx="-52" cy="322" r="3" /><circle cx="-24" cy="336" r="3" /><circle cx="4" cy="340" r="3" /><circle cx="32" cy="334" r="3" /><circle cx="52" cy="322" r="3" />
-          <path d="M-40,430 L-40,392 L40,392 L40,430 M-40,392 L-30,378 L30,378 L40,392" />
-        </g>
-
-        {/* HIGHBAR — sun + parasol + pool */}
-        <g className="hz hz3" transform="translate(880,0)">
-          <circle cx="8" cy="205" r="24" />
-          <path d="M8,169 L8,158 M8,252 L8,241 M-28,205 L-39,205 M44,205 L55,205 M-14,179 L-22,171 M30,231 L38,239 M-14,231 L-22,239 M30,179 L38,171" strokeOpacity={0.8} />
-          {/* parasol */}
-          <path d="M-58,300 L-58,378" />
-          <path d="M-98,306 Q-58,276 -18,306" />
-          <path d="M-98,306 Q-88,320 -78,306 Q-68,320 -58,306 Q-48,320 -38,306 Q-28,320 -18,306" />
-          <path d="M-58,276 L-58,268" />
-          {/* pool + deck */}
-          <path d="M-92,398 Q-72,388 -52,398 T-12,398 T28,398 T68,398 M-92,412 Q-72,402 -52,412 T-12,412 T28,412 T68,412" />
-          <path d="M-98,430 L-98,398 L96,398 L96,430" />
-        </g>
-
-        {/* RIVIERA — waves + setting sun + sailboat */}
-        <g className="hz hz4" transform="translate(1180,0)">
-          <circle cx="0" cy="392" r="30" />
-          <path d="M-54,392 L-40,392 M40,392 L54,392 M-48,372 L-38,378 M38,378 L48,372" strokeOpacity={0.7} />
-          <path d="M-120,410 Q-100,400 -80,410 T-40,410 T0,410 T40,410 T80,410 T120,410" />
-          <path d="M-120,424 Q-100,414 -80,424 T-40,424 T0,424 T40,424 T80,424 T120,424" strokeOpacity={0.5} />
-          <path d="M70,392 L70,338 L106,392 Z M64,392 L64,352 L36,392 Z M58,392 L82,392 L75,404 L65,404 Z" />
-        </g>
-      </g>
-
-      {/* room labels */}
-      <g textAnchor="middle" style={label}>
-        <text x="232" y="470">JAY&apos;S</text>
-        <text x="560" y="470">NAKED TACO</text>
-        <text x="822" y="470">HIGHBAR</text>
-        <text x="1180" y="470">RIVIERA</text>
-      </g>
-    </svg>
+/** Faint, slow atmosphere over the engraving. All motion is CSS + reduced-motion gated. */
+function Atmosphere() {
+  return (
+    <div className="hero-atmos pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
+      {/* moon glow, bottom-right where the moon sits in the art */}
+      <span
+        className="hero-glow absolute"
+        style={{ left: "93%", bottom: "26%", width: "120px", height: "120px", background: "radial-gradient(circle, rgba(216,190,120,0.5), transparent 68%)", animationDelay: "0ms" }}
+      />
+      {/* warm window embers */}
+      <span className="hero-glow absolute" style={{ left: "19%", bottom: "16%", width: "70px", height: "60px", background: "radial-gradient(circle, rgba(216,168,90,0.32), transparent 70%)", animationDelay: "900ms" }} />
+      <span className="hero-glow absolute" style={{ left: "42%", bottom: "12%", width: "90px", height: "50px", background: "radial-gradient(circle, rgba(216,168,90,0.28), transparent 72%)", animationDelay: "1700ms" }} />
+      <span className="hero-glow absolute" style={{ left: "75%", bottom: "12%", width: "90px", height: "50px", background: "radial-gradient(circle, rgba(216,168,90,0.26), transparent 72%)", animationDelay: "2500ms" }} />
+      {/* drifting sparks */}
+      <span className="hero-spark absolute" style={{ left: "22%", bottom: "20%", animationDelay: "0ms" }} />
+      <span className="hero-spark absolute" style={{ left: "48%", bottom: "16%", animationDelay: "2200ms" }} />
+      <span className="hero-spark absolute" style={{ left: "68%", bottom: "24%", animationDelay: "3600ms" }} />
+      <span className="hero-spark absolute" style={{ left: "88%", bottom: "30%", animationDelay: "5200ms" }} />
+    </div>
   );
 }

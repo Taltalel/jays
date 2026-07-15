@@ -239,27 +239,134 @@ body {
   }
 }
 
-/* Hero horizon — each room's etching fades in, left to right (opacity only,
-   so it never overrides the SVG group transforms). */
-.hero-horizon .hz {
+/* =========================================================================
+   HOME HERO — the engraving composition
+   ========================================================================= */
+
+/* load: each element fades and rises, staggered via inline animation-delay */
+.hero-rise {
   opacity: 0;
-  animation: hz-fade 1000ms var(--ease-room) forwards;
+  animation: hero-rise 900ms var(--ease-room) both;
 }
-.hero-horizon .hz1 {
-  animation-delay: 250ms;
-}
-.hero-horizon .hz2 {
-  animation-delay: 500ms;
-}
-.hero-horizon .hz3 {
-  animation-delay: 750ms;
-}
-.hero-horizon .hz4 {
-  animation-delay: 1000ms;
-}
-@keyframes hz-fade {
+@keyframes hero-rise {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
   to {
     opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* panorama — parallax offset (set by JS) plus a slow fade-in on load */
+.hero-pano__img {
+  /* slightly oversized so the parallax offset never exposes an edge */
+  transform: translateY(var(--pano-shift, 0)) scale(1.12);
+  transform-origin: center bottom;
+  will-change: transform;
+  animation: hero-pano-in 1400ms var(--ease-room) 200ms both;
+}
+@keyframes hero-pano-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* venue hotspots — invisible tap targets with a focus/hover name cue */
+.hero-venue {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  border-radius: 3px;
+  transition:
+    background-color 400ms var(--ease-room),
+    box-shadow 400ms var(--ease-room);
+}
+.hero-venue:hover,
+.hero-venue:focus-visible {
+  background: radial-gradient(60% 60% at 50% 82%, rgba(198, 162, 76, 0.16), transparent 72%);
+  box-shadow: inset 0 -2px 0 rgba(198, 162, 76, 0.5);
+  outline: none;
+}
+.hero-venue__name {
+  margin-bottom: 8px;
+  padding: 3px 10px;
+  border: 1px solid rgba(198, 162, 76, 0.5);
+  border-radius: 2px;
+  background: rgba(15, 36, 23, 0.86);
+  color: var(--color-champagne);
+  font-family: var(--font-label);
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  opacity: 0;
+  transform: translateY(6px);
+  transition:
+    opacity 300ms var(--ease-room),
+    transform 300ms var(--ease-room);
+}
+.hero-venue:hover .hero-venue__name,
+.hero-venue:focus-visible .hero-venue__name {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* atmosphere — moon glow, window embers, drifting sparks, scroll chevron */
+.hero-glow {
+  border-radius: 999px;
+  transform: translate(-50%, 50%);
+  animation: hero-glow 6s ease-in-out infinite;
+}
+@keyframes hero-glow {
+  0%,
+  100% {
+    opacity: 0.35;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+.hero-spark {
+  width: 3px;
+  height: 3px;
+  border-radius: 999px;
+  background: rgba(216, 190, 120, 0.9);
+  box-shadow: 0 0 6px rgba(216, 190, 120, 0.8);
+  opacity: 0;
+  animation: hero-spark 7s ease-in-out infinite;
+}
+@keyframes hero-spark {
+  0% {
+    opacity: 0;
+    transform: translateY(0) scale(0.8);
+  }
+  15% {
+    opacity: 0.9;
+  }
+  70% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-70px) scale(1);
+  }
+}
+.hero-chev {
+  animation: hero-chev 1.8s ease-in-out infinite;
+}
+@keyframes hero-chev {
+  0%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.9;
+  }
+  50% {
+    transform: translateY(4px);
+    opacity: 0.5;
   }
 }
 
