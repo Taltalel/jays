@@ -71,7 +71,7 @@ export function Hero() {
         <div
           ref={panoRef}
           className="hero-pano relative w-full overflow-hidden"
-          style={{ height: "clamp(260px, 48vh, 540px)" }}
+          style={{ height: "clamp(340px, 62vh, 660px)" }}
         >
           <picture>
             <source media="(max-width: 640px)" srcSet="/brand/engraving-panorama-mobile.webp" />
@@ -86,13 +86,14 @@ export function Hero() {
             />
           </picture>
 
-          {/* fade the top of the engraving up into the forest green */}
+          {/* whisper-soft blend at the very top edge only — the engraving's
+              own dark sky carries the rest, so the graphic stays fully visible */}
           <div
             aria-hidden="true"
             className="pointer-events-none absolute inset-0"
             style={{
               background:
-                "linear-gradient(to top, rgba(15,36,23,0) 0%, rgba(15,36,23,0) 42%, rgba(15,36,23,0.72) 78%, #0f2417 100%)",
+                "linear-gradient(to top, rgba(15,36,23,0) 0%, rgba(15,36,23,0) 88%, rgba(15,36,23,0.5) 96%, #0f2417 100%)",
             }}
           />
           {/* soften left/right edges */}
@@ -127,7 +128,7 @@ export function Hero() {
       {/* -------- content overlay: mark → tagline → rule → statement --------
           pointer-events-none so the venue hotspots on the panorama beneath
           stay clickable; nothing in this layer is interactive. */}
-      <div className="pointer-events-none absolute inset-0 z-20 flex flex-col items-center justify-center px-6 pb-[34vh] pt-[var(--header-h)] text-center">
+      <div className="pointer-events-none absolute inset-0 z-20 flex flex-col items-center justify-center px-6 pb-[44vh] pt-[var(--header-h)] text-center">
         <img
           src="/brand/wordmark.webp"
           alt="Room 7"
@@ -135,8 +136,8 @@ export function Hero() {
           height={292}
           fetchPriority="high"
           decoding="async"
-          className="hero-rise hero-logo w-[min(74vw,480px)] max-w-full"
-          style={{ animationDelay: "80ms" }}
+          className="hero-rise hero-logo w-[min(60vw,380px)] max-w-full"
+          style={{ animationDelay: "80ms", filter: "drop-shadow(0 2px 24px rgba(15,36,23,0.75))" }}
         />
 
         <p
@@ -150,7 +151,7 @@ export function Hero() {
 
         <h1
           className="hero-rise mt-5 font-display text-champagne"
-          style={{ fontSize: "clamp(1.5rem, 4.2vw, 2.75rem)", lineHeight: 1.12, letterSpacing: "0.01em", animationDelay: "560ms" }}
+          style={{ fontSize: "clamp(1.5rem, 4.2vw, 2.75rem)", lineHeight: 1.12, letterSpacing: "0.01em", animationDelay: "560ms", textShadow: "0 2px 22px rgba(15,36,23,0.85)" }}
         >
           Four rooms. One house.
         </h1>
