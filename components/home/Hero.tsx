@@ -59,13 +59,6 @@ export function Hero() {
 
   return (
     <section className="hero relative h-[100svh] min-h-[620px] w-full overflow-hidden bg-forest-deep">
-      {/* ambient gold wash behind the mark */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 z-0"
-        style={{ background: "radial-gradient(60% 42% at 50% 30%, rgba(198,162,76,0.12), transparent 70%)" }}
-      />
-
       {/* --------------------------- panorama (bottom layer) --------------------------- */}
       <div className="absolute inset-x-0 bottom-0 z-10">
         <div
@@ -86,21 +79,14 @@ export function Hero() {
             />
           </picture>
 
-          {/* whisper-soft blend at the very top edge only — the engraving's
-              own dark sky carries the rest, so the graphic stays fully visible */}
+          {/* The engraving background is recoloured to the exact page green
+              (#0F2417), so it lines up seamlessly — no top fade needed. Only a
+              whisper at the outer left/right edges to soften where the buildings
+              meet the viewport edge. */}
           <div
             aria-hidden="true"
             className="pointer-events-none absolute inset-0"
-            style={{
-              background:
-                "linear-gradient(to top, rgba(15,36,23,0) 0%, rgba(15,36,23,0) 88%, rgba(15,36,23,0.5) 96%, #0f2417 100%)",
-            }}
-          />
-          {/* soften left/right edges */}
-          <div
-            aria-hidden="true"
-            className="pointer-events-none absolute inset-0"
-            style={{ background: "linear-gradient(to right, #0f2417 0%, rgba(15,36,23,0) 12%, rgba(15,36,23,0) 88%, #0f2417 100%)" }}
+            style={{ background: "linear-gradient(to right, #0f2417 0%, rgba(15,36,23,0) 6%, rgba(15,36,23,0) 94%, #0f2417 100%)" }}
           />
 
           {/* atmospheric drift — moon glow, window embers, drifting sparks */}
