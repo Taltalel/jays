@@ -114,7 +114,7 @@ export function Hero() {
       {/* -------- content overlay: mark → tagline → rule → statement --------
           pointer-events-none so the venue hotspots on the panorama beneath
           stay clickable; nothing in this layer is interactive. */}
-      <div className="pointer-events-none absolute inset-0 z-20 flex flex-col items-center justify-center px-6 pb-[44vh] pt-[var(--header-h)] text-center">
+      <div className="pointer-events-none absolute inset-0 z-20 flex flex-col items-center justify-center px-6 pb-[44vh] pt-[var(--header-h)] text-center sm:pb-[52vh]">
         <img
           src="/brand/wordmark.webp"
           alt="Room 7"
@@ -135,12 +135,9 @@ export function Hero() {
 
         <DiamondRule className="hero-rise mt-5" style={{ animationDelay: "420ms" }} />
 
-        <h1
-          className="hero-rise mt-5 font-display text-champagne"
-          style={{ fontSize: "clamp(1.5rem, 4.2vw, 2.75rem)", lineHeight: 1.12, letterSpacing: "0.01em", animationDelay: "560ms", textShadow: "0 2px 22px rgba(15,36,23,0.85)" }}
-        >
-          Four rooms. One house.
-        </h1>
+        {/* Visually-hidden page heading — keeps a single h1 for SEO / screen
+            readers now that the on-screen statement is gone. */}
+        <h1 className="sr-only">Room 7 — Elevated Hospitality</h1>
       </div>
 
       {/* --------------------------- scroll cue --------------------------- */}
