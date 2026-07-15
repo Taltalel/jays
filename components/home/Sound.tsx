@@ -43,10 +43,10 @@ export function Sound() {
               </span>
             </div>
 
-            <div className="mt-5 flex items-center gap-2 rounded-sm border border-dashed border-gold/30 bg-forest-deep/50 px-4 py-3">
+            <div className="mt-5 flex items-center gap-2 border-t border-gold/15 px-1 pt-4">
               <span className="inline-block h-1.5 w-1.5 rounded-full bg-gold" />
               <span className="text-[10px] uppercase tracking-[0.15em] text-champagne/70" style={{ fontFamily: "var(--font-label)" }}>
-                TODO · embed the live Room 7 Spotify playlist here
+                On Spotify &amp; Apple Music
               </span>
             </div>
           </div>

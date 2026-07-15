@@ -35,8 +35,10 @@ export default function ContactPage() {
         eyebrow="Contact"
         title="Say hello."
         sub="Four ways to reach the house. Pick the one that fits — we'll get it to the right room."
-        tone="night"
+        tone="church"
         placeholder="The house — front of the room"
+        image="/venues/jays-cocktail.webp"
+        imagePosition="50% 40%"
         short
       />
 

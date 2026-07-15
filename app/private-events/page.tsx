@@ -24,7 +24,12 @@ const fields: Field[] = [
   { name: "message", label: "Tell us about the night", type: "textarea", full: true },
 ];
 
-const gallery = ["A full room mid-party", "Private dining, candlelit", "A toast going up", "The bar during a buyout"];
+const gallery = [
+  { src: "/venues/highbar-hero.webp", alt: "A rooftop set for a buyout at HighBar" },
+  { src: "/venues/jays-interior.webp", alt: "Candlelit private dining at Jay's" },
+  { src: "/venues/jays-cocktail.webp", alt: "A toast — a signature cocktail at Jay's" },
+  { src: "/venues/naked-taco-hero.webp", alt: "Naked Taco, mid-service" },
+];
 
 export default function PrivateEventsPage() {
   return (
@@ -33,8 +38,10 @@ export default function PrivateEventsPage() {
         eyebrow="Private Events"
         title="Take the whole room."
         sub="Buyouts, private dining, and the kind of party people cancel other plans for. Four rooms across two cities — pick your stage."
-        tone="night"
+        tone="view"
         placeholder="A full room mid-party — buyout energy"
+        image="/venues/highbar-hero.webp"
+        imagePosition="50% 50%"
       />
 
       {/* What we host */}
@@ -134,10 +141,10 @@ export default function PrivateEventsPage() {
       {/* Gallery */}
       <section className="mx-auto max-w-7xl px-5 py-16 md:px-8 md:py-20">
         <div className="grid grid-cols-2 gap-2 md:grid-cols-4 md:gap-3">
-          {gallery.map((label, i) => (
+          {gallery.map((g, i) => (
             <Reveal key={i} delay={(i % 4) * 40}>
               <div className="relative aspect-square overflow-hidden rounded-sm">
-                <Placeholder tone={i % 2 ? "night" : "riot"} seed={`ev-${i}`} label={label} className="absolute inset-0" />
+                <Placeholder tone={i % 2 ? "night" : "riot"} seed={`ev-${i}`} src={g.src} alt={g.alt} showLabel={false} className="absolute inset-0" />
               </div>
             </Reveal>
           ))}

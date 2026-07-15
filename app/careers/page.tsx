@@ -24,6 +24,8 @@ export default function CareersPage() {
         sub="We hire for warmth first and teach the rest. Pick a room, apply for any position, and we'll take it from there."
         tone="riot"
         placeholder="The team, working — real people, mid-service"
+        image="/venues/naked-taco-hero.webp"
+        imagePosition="50% 45%"
       />
 
       {/* Why Room 7 */}

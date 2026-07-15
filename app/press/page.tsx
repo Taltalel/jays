@@ -24,8 +24,10 @@ export default function PressPage() {
         eyebrow="Press"
         title="The buzz."
         sub="Releases, coverage and everything a newsroom needs — in one place, each on its own page."
-        tone="night"
+        tone="church"
         placeholder="Press night — the room, lit and full"
+        image="/venues/jays-hero.webp"
+        imagePosition="50% 40%"
         short
       />
 
@@ -101,7 +103,7 @@ export default function PressPage() {
                     <span className="block font-display text-xl text-champagne">{k.label}</span>
                     <span className="text-sm text-sage">{k.note}</span>
                   </span>
-                  <span className="text-[11px] uppercase tracking-[0.15em] text-gold" style={{ fontFamily: "var(--font-label)" }}>TODO ↓</span>
+                  <span className="whitespace-nowrap text-[11px] uppercase tracking-[0.15em] text-gold/80" style={{ fontFamily: "var(--font-label)" }}>On request</span>
                 </li>
               ))}
             </ul>

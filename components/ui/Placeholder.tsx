@@ -40,7 +40,8 @@ export function Placeholder({
   label,
   seed,
   className,
-  showLabel = true,
+  // showLabel is retained in the prop type for call-site compatibility; the
+  // former dev "TODO" caption chip has been removed.
   style,
   src,
   alt,
@@ -87,9 +88,13 @@ export function Placeholder({
 
   const t = TONES[tone];
   const { x, y } = offsets(seed ?? label ?? tone);
+  // Same guard as the image branch: when the caller already positions us
+  // (e.g. `absolute inset-0`), don't also emit `relative` — the conflict
+  // otherwise leaves the gradient in flow and shoves hero text off-centre.
+  const positioned = /\b(absolute|fixed|relative)\b/.test(className ?? "");
   return (
     <div
-      className={`relative h-full w-full overflow-hidden ${className ?? ""}`}
+      className={`h-full w-full overflow-hidden ${positioned ? "" : "relative"} ${className ?? ""}`}
       style={{
         background: `radial-gradient(120% 90% at ${x}% ${y}%, ${t.glow} 0%, transparent 55%), radial-gradient(140% 120% at 80% 110%, ${t.accent} 0%, transparent 60%), linear-gradient(160deg, ${t.base} 0%, #0b1a10 100%)`,
         ...style,
@@ -108,17 +113,6 @@ export function Placeholder({
         className="pointer-events-none absolute inset-0"
         style={{ background: "radial-gradient(130% 100% at 50% 30%, transparent 40%, rgba(11,26,16,0.75) 100%)" }}
       />
-      {showLabel && label && (
-        <span className="pointer-events-none absolute bottom-3 left-3 z-10 flex items-center gap-2 rounded-full border border-gold/30 bg-forest-deep/40 px-3 py-1 backdrop-blur-sm">
-          <span className="inline-block h-1.5 w-1.5 rounded-full bg-gold" />
-          <span
-            className="text-[10px] uppercase tracking-[0.15em] text-champagne/75"
-            style={{ fontFamily: "var(--font-label)" }}
-          >
-            TODO · {label}
-          </span>
-        </span>
-      )}
     </div>
   );
 }

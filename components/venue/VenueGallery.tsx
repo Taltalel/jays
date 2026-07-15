@@ -14,12 +14,15 @@ export function VenueGallery({
   tone,
   shots,
   realPhotos = [],
+  engraving,
 }: {
   name: string;
   tone: Tone;
   shots: string[];
-  /** Approved photographs, placed into the first tiles; the rest stay TODO. */
+  /** Approved photographs, placed into the tiles. */
   realPhotos?: string[];
+  /** This venue's slice of the gold engraving — shown when photography isn't in yet. */
+  engraving?: string;
 }) {
   const [open, setOpen] = useState<number | null>(null);
   const tones: Tone[] = [tone, "night", tone, "night", tone, "night", tone, "night"];
@@ -38,6 +41,29 @@ export function VenueGallery({
       document.body.style.overflow = "";
     };
   }, [open, shots.length]);
+
+  // Until real photography lands, feature the venue's engraving rather than a
+  // grid of empty stand-ins — it ties the room back to the house on the home page.
+  if (realPhotos.length === 0 && engraving) {
+    return (
+      <section className="mx-auto max-w-7xl px-5 py-16 md:px-8 md:py-24">
+        <p className="eyebrow mb-8">The Room</p>
+        <figure className="overflow-hidden rounded-sm border border-gold/15">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={engraving}
+            alt={`${name}, etched — the room as drawn for the house`}
+            className="w-full"
+            loading="lazy"
+            decoding="async"
+          />
+        </figure>
+        <p className="mt-4 text-[11px] uppercase tracking-[0.15em] text-sage" style={{ fontFamily: "var(--font-label)" }}>
+          {name}, etched for the house
+        </p>
+      </section>
+    );
+  }
 
   return (
     <section className="mx-auto max-w-7xl px-5 py-16 md:px-8 md:py-24">
@@ -64,13 +90,6 @@ export function VenueGallery({
           </button>
         ))}
       </div>
-      <p className="mt-4 flex items-center gap-2">
-        <span className="inline-block h-1.5 w-1.5 rounded-full bg-gold" />
-        <span className="text-[10px] uppercase tracking-[0.15em] text-sage" style={{ fontFamily: "var(--font-label)" }}>
-          TODO · real {name} photography — the night, people in the room
-        </span>
-      </p>
-
       {open !== null && (
         <div
           className="fixed inset-0 z-[70] flex items-center justify-center bg-forest-deep/95 p-4 backdrop-blur-sm"

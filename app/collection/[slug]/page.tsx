@@ -96,7 +96,7 @@ export default async function VenuePage({ params }: { params: Promise<{ slug: st
       />
       <VenueHero venue={venue} paired={paired} />
       <VenueStory venue={venue} />
-      <VenueGallery name={venue.name} tone={tone} shots={shots} realPhotos={venue.photos ?? []} />
+      <VenueGallery name={venue.name} tone={tone} shots={shots} realPhotos={venue.photos ?? []} engraving={`/venues/engraving-${venue.slug}.webp`} />
       <VenueScenes venue={venue} />
       <VenueVisit venue={venue} />
       <NextRooms current={venue.slug} />

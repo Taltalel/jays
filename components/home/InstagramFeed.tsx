@@ -85,12 +85,6 @@ export function InstagramFeed() {
         })}
       </div>
 
-      <p className="mt-4 flex items-center gap-2">
-        <span className="inline-block h-1.5 w-1.5 rounded-full bg-gold" />
-        <span className="text-[10px] uppercase tracking-[0.15em] text-sage" style={{ fontFamily: "var(--font-label)" }}>
-          TODO · connect a live Instagram feed (token needed) — tiles link to each account
-        </span>
-      </p>
     </section>
   );
 }

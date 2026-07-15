@@ -18,7 +18,7 @@ export default function FounderPage() {
     <>
       {/* Hero portrait */}
       <section className="relative flex min-h-[80vh] w-full items-end overflow-hidden">
-        <Placeholder tone="night" label="Jay Shirodkar — portrait" seed="founder-hero" className="absolute inset-0" />
+        <Placeholder tone="church" label="Jay Shirodkar — portrait" seed="founder-hero" src="/venues/jays-interior.webp" alt="Inside Jay's — the flagship room" objectPosition="50% 45%" priority className="absolute inset-0" />
         <div className="scrim absolute inset-0" />
         <div className="relative mx-auto w-full max-w-7xl px-5 pb-14 pt-32 md:px-8 md:pb-20">
           <p className="eyebrow mb-4">{founderPage.role}</p>
