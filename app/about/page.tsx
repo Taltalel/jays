@@ -5,7 +5,7 @@ import { Standard } from "@/components/home/Standard";
 import { Reveal } from "@/components/ui/Reveal";
 import { CTA } from "@/components/ui/CTA";
 import { Placeholder } from "@/components/ui/Placeholder";
-import { manifesto, whyRoom7, founderTeaser, group } from "@/content/group";
+import { manifesto, whyRoom7, founderTeaser } from "@/content/group";
 import { venues } from "@/content/venues";
 
 export const metadata: Metadata = {
@@ -109,7 +109,7 @@ export default function AboutPage() {
             <CTA href="/careers" variant="outline">Careers</CTA>
             <CTA href="/contact">Contact</CTA>
           </div>
-          <p className="text-sm text-sage">{group.hq.street} · {group.hq.locality}</p>
+          <p className="text-sm text-sage">Fort Lauderdale, Florida</p>
         </div>
       </section>
     </>

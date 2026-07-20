@@ -26,8 +26,6 @@ const fields: Field[] = [
   { name: "message", label: "Message", type: "textarea", required: true, full: true },
 ];
 
-const q = encodeURIComponent(`${group.hq.street}, ${group.hq.locality}`);
-
 export default function ContactPage() {
   return (
     <>
@@ -70,25 +68,22 @@ export default function ContactPage() {
 
           <Reveal delay={80}>
             <p className="eyebrow mb-3">The House</p>
-            <h2 className="h2-display text-champagne">Room 7 HQ</h2>
+            <h2 className="h2-display text-champagne">Reach the right room.</h2>
             <address className="mt-6 flex flex-col gap-2 not-italic text-sage">
-              <span className="text-champagne">{group.hq.street}</span>
-              <span>{group.hq.locality}</span>
+              <span>Fort Lauderdale, Florida</span>
               <a href={`mailto:${group.email}`} className="text-champagne underline underline-offset-4 decoration-champagne/40 hover:text-gold">{group.email}</a>
             </address>
-            <a
-              href={`https://www.google.com/maps/search/?api=1&query=${q}`}
-              target="_blank"
-              rel="noopener noreferrer"
+            <Link
+              href="/collection"
               className="group mt-8 flex aspect-[4/3] flex-col items-center justify-center gap-2 rounded-sm border border-champagne/10 bg-forest p-8 text-center transition-colors hover:border-gold/40"
             >
-              <span className="eyebrow mb-1">Find the house</span>
-              <span className="font-display text-2xl text-champagne md:text-3xl">{group.hq.street}</span>
-              <span className="text-sm text-sage">{group.hq.locality}</span>
+              <span className="eyebrow mb-1">Visit</span>
+              <span className="font-display text-2xl text-champagne md:text-3xl">Find every room</span>
+              <span className="text-sm text-sage">Fort Lauderdale &amp; Miami Beach</span>
               <span className="mt-3 inline-flex items-center gap-2 text-[12px] uppercase tracking-[0.15em] text-gold transition-colors group-hover:text-gold-light" style={{ fontFamily: "var(--font-label)" }}>
-                Get directions <span aria-hidden="true">↗</span>
+                See the collection <span aria-hidden="true">→</span>
               </span>
-            </a>
+            </Link>
           </Reveal>
         </div>
       </section>

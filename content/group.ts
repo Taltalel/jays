@@ -10,10 +10,6 @@ export const group = {
   name: "Room 7",
   tagline: "Elevated Hospitality",
   domain: "room7hospitality.com",
-  hq: {
-    street: "2929 E Commercial Blvd, Suite 500",
-    locality: "Fort Lauderdale, FL 33308",
-  },
   // All contact + form mail routes to the live marketing inbox for now.
   // (Swap to a branded hello@room7hospitality.com address once it's stood up.)
   email: "marketing@yesfbm.com",

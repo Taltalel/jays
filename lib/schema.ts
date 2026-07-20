@@ -27,10 +27,8 @@ export const organizationSchema = {
   },
   address: {
     "@type": "PostalAddress",
-    streetAddress: group.hq.street,
     addressLocality: "Fort Lauderdale",
     addressRegion: "FL",
-    postalCode: "33308",
     addressCountry: "US",
   },
   email: group.email,

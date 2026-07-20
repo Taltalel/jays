@@ -75,11 +75,7 @@ export function Footer() {
           <div className="md:col-span-3">
             <p className="eyebrow mb-4">The House</p>
             <address className="flex flex-col gap-3 text-sm not-italic text-sage">
-              <span>
-                {group.hq.street}
-                <br />
-                {group.hq.locality}
-              </span>
+              <span>Fort Lauderdale, Florida</span>
               <a href={`mailto:${group.email}`} className="text-champagne transition-colors hover:text-gold">
                 {group.email}
               </a>
