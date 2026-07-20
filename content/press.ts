@@ -53,29 +53,10 @@ export type Coverage = {
   date: string;
 };
 
-export const coverage: Coverage[] = [
-  {
-    outlet: "South Florida Sun-Sentinel",
-    headline: "Inside the church that became Fort Lauderdale's most ambitious restaurant",
-    quote: "The most ambitious room to open in Fort Lauderdale in years.",
-    url: "#",
-    date: "2026",
-  },
-  {
-    outlet: "Miami New Times",
-    headline: "Dinner and a show, under stained glass",
-    quote: "He restored a church and filled it with a party. It works.",
-    url: "#",
-    date: "2026",
-  },
-  {
-    outlet: "New York Post",
-    headline: "South Florida's next great hospitality group is already here",
-    quote: "Proof that South Florida's next great hospitality group is already here.",
-    url: "#",
-    date: "2026",
-  },
-];
+// Real coverage only — populate as articles publish (outlet, headline, quote,
+// live url, date). Empty until then so nothing is attributed to a publication
+// that hasn't actually covered Room 7.
+export const coverage: Coverage[] = [];
 
 /** Press-kit contents — TODO: attach real files. */
 export const pressKit = [

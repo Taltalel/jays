@@ -121,36 +121,17 @@ export const founderPage = {
     { label: "jayshirodkar.com", url: "https://jayshirodkar.com", external: true },
     { label: "@shirodkarfamily", url: "https://instagram.com/shirodkarfamily", external: true },
   ],
-  pressQuotes: [
-    { quote: "The most ambitious operator to bet on downtown Fort Lauderdale in a decade.", source: "South Florida Sun-Sentinel" },
-    { quote: "He restored a church and filled it with a party. It works.", source: "Miami New Times" },
-  ],
+  // Real coverage only — empty until Room 7 is actually covered.
+  pressQuotes: [] as { quote: string; source: string }[],
 };
 
-/** Press outlets for the homepage strip + press hub. */
-export const pressOutlets = [
-  "New York Post",
-  "South Florida Sun-Sentinel",
-  "Miami New Times",
-  "World Red Eye",
-  "Visit Lauderdale",
-];
+/** Press outlets for the homepage strip + press hub — list outlets only once
+ * they've actually covered Room 7. Empty until then. */
+export const pressOutlets: string[] = [];
 
-/** Rotating pull-quotes for the homepage press strip. */
-export const pressQuotes: { quote: string; source: string }[] = [
-  {
-    quote: "The most ambitious room to open in Fort Lauderdale in years.",
-    source: "South Florida Sun-Sentinel",
-  },
-  {
-    quote: "Dinner and a show, under stained glass — the church has never been livelier.",
-    source: "Miami New Times",
-  },
-  {
-    quote: "Proof that South Florida's next great hospitality group is already here.",
-    source: "New York Post",
-  },
-];
+/** Rotating pull-quotes for the homepage press strip — real coverage only.
+ * Empty until Room 7 is actually covered; the strip hides itself when empty. */
+export const pressQuotes: { quote: string; source: string }[] = [];
 
 /** Group boilerplate — on every press release. */
 export const boilerplate =

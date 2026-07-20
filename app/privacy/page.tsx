@@ -33,7 +33,7 @@ export default function PrivacyPage() {
         {
           heading: "How we share it",
           body: [
-            "With service providers who act on our behalf — for example email/marketing platforms (such as Klaviyo or Mailchimp), analytics (such as Google Analytics), reservation systems (OpenTable), and form/hosting providers — under agreements that limit their use of the data.",
+            "With service providers who act on our behalf — for example our website host, the form-submission service that delivers your inquiries to us (currently FormSubmit), email/marketing platforms (such as Klaviyo or Mailchimp), analytics (such as Google Analytics), and reservation systems (OpenTable) — under terms that limit their use of the data.",
             "With the specific Room 7 venue relevant to your request, so it can respond to you.",
             "When required by law, to protect our rights or safety, or in connection with a business transfer.",
             "We do not sell your personal information for money.",

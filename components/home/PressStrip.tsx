@@ -13,10 +13,13 @@ export function PressStrip() {
     const reduce =
       typeof window !== "undefined" &&
       window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (reduce || paused) return;
+    if (reduce || paused || pressQuotes.length === 0) return;
     const t = setInterval(() => setI((n) => (n + 1) % pressQuotes.length), 5000);
     return () => clearInterval(t);
   }, [paused]);
+
+  // Nothing to show until there's real coverage — hide the whole strip.
+  if (pressQuotes.length === 0 && pressOutlets.length === 0) return null;
 
   return (
     <section

@@ -64,7 +64,8 @@ export default function FounderPage() {
         </div>
       </section>
 
-      {/* Press about Jay */}
+      {/* Press about Jay — shown only when there's real coverage */}
+      {(founderPage.pressQuotes.length > 0 || pressOutlets.length > 0) && (
       <section className="mx-auto max-w-5xl px-5 py-20 text-center md:px-8 md:py-28">
         <Reveal>
           <p className="eyebrow mb-10">In the Press</p>
@@ -89,6 +90,7 @@ export default function FounderPage() {
           ))}
         </ul>
       </section>
+      )}
 
       {/* Links out */}
       <section className="border-t border-champagne/10 bg-forest-deep">

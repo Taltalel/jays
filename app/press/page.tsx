@@ -58,7 +58,8 @@ export default function PressPage() {
         </ul>
       </section>
 
-      {/* Coverage / Buzz */}
+      {/* Coverage / Buzz — shown only when there's real coverage to show */}
+      {(coverage.length > 0 || pressOutlets.length > 0) && (
       <section className="border-y border-champagne/10 bg-forest/40">
         <div className="mx-auto max-w-6xl px-5 py-16 md:px-8 md:py-24">
           <Reveal className="mb-10">
@@ -99,6 +100,7 @@ export default function PressPage() {
           </ul>
         </div>
       </section>
+      )}
 
       {/* Press kit + contact */}
       <section className="mx-auto max-w-6xl px-5 py-16 md:px-8 md:py-24">
