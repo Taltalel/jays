@@ -36,7 +36,7 @@ export default function PrivacyPage() {
             "With service providers who act on our behalf — for example our website host, the form-submission service that delivers your inquiries to us (currently FormSubmit), email/marketing platforms (such as Klaviyo or Mailchimp), analytics (such as Google Analytics), and reservation systems (OpenTable) — under terms that limit their use of the data.",
             "With the specific Room 7 venue relevant to your request, so it can respond to you.",
             "When required by law, to protect our rights or safety, or in connection with a business transfer.",
-            "We do not sell your personal information for money.",
+            "We do not sell your personal information, and we do not share it for cross-context behavioral advertising, as those terms are defined under California law.",
           ],
         },
         {

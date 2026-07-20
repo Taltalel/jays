@@ -163,6 +163,11 @@ export function InquiryForm({
           </p>
         )}
       </div>
+
+      <p className="text-xs text-sage md:col-span-2">
+        By submitting, you agree to our{" "}
+        <a href="/privacy" className="underline underline-offset-2 hover:text-gold">Privacy Policy</a>.
+      </p>
     </form>
   );
 }

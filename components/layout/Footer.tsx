@@ -110,7 +110,7 @@ export function Footer() {
 
         <div className="mt-6 flex flex-col gap-4 text-xs text-sage md:flex-row md:items-center md:justify-between">
           <p style={{ fontFamily: "var(--font-label)" }} className="uppercase tracking-[0.14em]">
-            © {group.name} · {group.tagline}
+            © {new Date().getFullYear()} {group.name} · {group.tagline}
           </p>
           <ul className="flex gap-6">
             {legal.map((l) => (

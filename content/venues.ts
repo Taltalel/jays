@@ -134,7 +134,7 @@ export const venues: Venue[] = [
     name: "Naked Taco",
     nickname: "The Riot",
     destination: "Collins Avenue, Miami Beach",
-    descriptor: "Tacos, margaritas and mischief with a twelve-year cult following.",
+    descriptor: "Tacos, margaritas and mischief with a longtime cult following.",
     lede: "Street level at 1111 Collins — the loud, generous heart of the building.",
     address: {
       street: "1111 Collins Avenue",
@@ -170,14 +170,14 @@ export const venues: Venue[] = [
     pairedWith: "highbar",
     scenes: {
       room:
-        "A room that runs hot from breakfast to last call — colour, noise, and a crowd that has been coming here longer than most South Beach concepts have existed.",
+        "A room that runs hot from breakfast to last call — colour, noise, and a crowd that keeps coming back.",
       table:
-        "Tuna nachos with a reputation, birria and lobster tacos, margaritas by the round. Twelve years and 2,200 reviews say order the thing everyone tells you to.",
+        "Tuna nachos with a reputation, birria and lobster tacos, margaritas by the round. The regulars will tell you what to order.",
       night:
         "By happy hour it tips from lunch into party — the warm-up act for a rooftop two flights up. The night starts here; it doesn't end here.",
     },
     story: [
-      "Twelve years on Collins Avenue is a lifetime in a neighbourhood that reinvents itself every season. Naked Taco earned it — a cult following, the city's favourite send-off before a big night, breakfast worth the walk.",
+      "Over a decade on Collins Avenue is a lifetime in a neighbourhood that reinvents itself every season. Naked Taco earned it — a cult following, a favourite send-off before a big night, breakfast worth the walk.",
       "In the collection it plays the extrovert: fast, generous, unpretentious, packed. It is the room that proves elevated hospitality doesn't have to whisper.",
       "And it comes with an upstairs. Naked Taco holds the street; HighBar holds the sky. One address, two moods, one long night.",
     ],

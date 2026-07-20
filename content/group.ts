@@ -39,7 +39,7 @@ export const manifesto = {
 
 /** Homepage statement block — short, centred, generous whitespace. */
 export const homeStatement =
-  "Room 7 is the group behind South Florida's most talked-about rooms. We build places with a pulse — where the design has a past, the drinks have a point of view, and dinner turns into a night.";
+  "Room 7 is the group behind some of South Florida's most-loved rooms. We build places with a pulse — where the design has a past, the drinks have a point of view, and dinner turns into a night.";
 
 /** "The standard" — values in Room 7's voice, not HR's. Gold rules between. */
 export const theStandard: { title: string; line: string }[] = [

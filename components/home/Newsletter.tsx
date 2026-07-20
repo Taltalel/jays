@@ -84,7 +84,10 @@ export function Newsletter() {
               That didn&apos;t go through — check the email and try again?
             </p>
           )}
-          <p className="mt-4 text-xs text-sage">No spam. No small talk. Just the good nights.</p>
+          <p className="mt-4 text-xs text-sage">
+            No spam. No small talk. Just the good nights. By joining you agree to our{" "}
+            <a href="/privacy" className="underline underline-offset-2 hover:text-gold">Privacy Policy</a>.
+          </p>
         </Reveal>
       </div>
     </section>

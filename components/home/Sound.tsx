@@ -14,8 +14,7 @@ export function Sound() {
           <h2 className="h2-display text-champagne">The night has a soundtrack.</h2>
           <p className="measure mt-6 text-base text-sage md:text-lg">
             Old-world swing that shouldn&apos;t work over a modern bassline — and does. The
-            playlist we build the rooms around. Press play; you&apos;ll get the idea before you
-            get the reservation.
+            playlist we build the rooms around, coming soon to your favourite app.
           </p>
         </Reveal>
 
@@ -46,7 +45,7 @@ export function Sound() {
             <div className="mt-5 flex items-center gap-2 border-t border-gold/15 px-1 pt-4">
               <span className="inline-block h-1.5 w-1.5 rounded-full bg-gold" />
               <span className="text-[10px] uppercase tracking-[0.15em] text-champagne/70" style={{ fontFamily: "var(--font-label)" }}>
-                On Spotify &amp; Apple Music
+                Coming soon
               </span>
             </div>
           </div>

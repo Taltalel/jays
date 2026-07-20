@@ -76,15 +76,19 @@ export default function ContactPage() {
               <span>{group.hq.locality}</span>
               <a href={`mailto:${group.email}`} className="text-champagne underline underline-offset-4 decoration-champagne/40 hover:text-gold">{group.email}</a>
             </address>
-            <div className="mt-8 aspect-[4/3] overflow-hidden rounded-sm border border-champagne/10 bg-forest">
-              <iframe
-                title="Room 7 HQ map"
-                src={`https://www.google.com/maps?q=${q}&output=embed`}
-                className="h-full w-full grayscale-[0.2]"
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-              />
-            </div>
+            <a
+              href={`https://www.google.com/maps/search/?api=1&query=${q}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group mt-8 flex aspect-[4/3] flex-col items-center justify-center gap-2 rounded-sm border border-champagne/10 bg-forest p-8 text-center transition-colors hover:border-gold/40"
+            >
+              <span className="eyebrow mb-1">Find the house</span>
+              <span className="font-display text-2xl text-champagne md:text-3xl">{group.hq.street}</span>
+              <span className="text-sm text-sage">{group.hq.locality}</span>
+              <span className="mt-3 inline-flex items-center gap-2 text-[12px] uppercase tracking-[0.15em] text-gold transition-colors group-hover:text-gold-light" style={{ fontFamily: "var(--font-label)" }}>
+                Get directions <span aria-hidden="true">↗</span>
+              </span>
+            </a>
           </Reveal>
         </div>
       </section>
