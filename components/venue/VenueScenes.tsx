@@ -50,7 +50,7 @@ export function VenueScenes({ venue }: { venue: Venue }) {
                 </div>
                 <div className={flip ? "md:order-1" : ""}>
                   <div className="flex items-baseline gap-4">
-                    <span className="font-display text-2xl text-gold/70">{s.n}</span>
+                    <span className="font-display text-2xl text-gold">{s.n}</span>
                     <h3 className="font-display text-3xl text-champagne md:text-4xl">{s.label}</h3>
                   </div>
                   <p className="mt-2 text-[11px] uppercase tracking-[0.15em] text-sage" style={{ fontFamily: "var(--font-label)" }}>

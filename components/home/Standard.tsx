@@ -19,7 +19,7 @@ export function Standard() {
               {i > 0 && <span className="rule-gold mb-8 block md:mb-10" aria-hidden="true" />}
               <div className="grid gap-4 pb-8 md:grid-cols-12 md:gap-8 md:pb-10">
                 <div className="flex items-baseline gap-4 md:col-span-5">
-                  <span className="font-display text-xl text-gold/70">0{i + 1}</span>
+                  <span className="font-display text-xl text-gold">0{i + 1}</span>
                   <h3 className="font-display text-2xl text-champagne md:text-3xl">{v.title}</h3>
                 </div>
                 <p className="text-pretty text-base text-sage md:col-span-7 md:text-lg">{v.line}</p>

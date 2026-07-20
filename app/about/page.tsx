@@ -48,7 +48,7 @@ export default function AboutPage() {
         <div className="grid gap-8 md:grid-cols-3 md:gap-12">
           {whyRoom7.map((w, i) => (
             <Reveal key={w.title} delay={i * 70}>
-              <span className="font-display text-3xl text-gold/70">0{i + 1}</span>
+              <span className="font-display text-3xl text-gold">0{i + 1}</span>
               <h3 className="mt-3 font-display text-2xl text-champagne">{w.title}</h3>
               <span className="mt-3 block h-px w-16 bg-gold/50" aria-hidden="true" />
               <p className="mt-4 text-base text-sage">{w.line}</p>

@@ -59,7 +59,7 @@ export function Hero() {
   return (
     <section className="hero relative flex h-[100svh] min-h-[600px] w-full flex-col overflow-hidden bg-forest-deep">
       {/* -------- upper: mark → tagline → rule, centred above the engraving -------- */}
-      <div className="relative z-20 flex flex-1 flex-col items-center justify-center px-6 pb-8 pt-[var(--header-h)] text-center">
+      <div className="relative z-20 flex flex-1 flex-col items-center justify-center px-6 pb-6 pt-[var(--header-h)] text-center">
         <img
           src="/brand/wordmark.webp"
           alt="Room 7"
@@ -84,15 +84,35 @@ export function Hero() {
         <h1 className="sr-only">Room 7 — Elevated Hospitality</h1>
       </div>
 
+      {/* scroll cue — in-flow in the gap just above the engraving */}
+      <a
+        href="#statement"
+        aria-label="Scroll to discover"
+        className="hero-rise hero-scroll group relative z-30 mx-auto mb-3 flex flex-col items-center gap-2 sm:mb-4"
+        style={{ animationDelay: "560ms" }}
+      >
+        <span
+          className="text-[10px] uppercase tracking-[0.3em] text-champagne/60 transition-colors group-hover:text-gold"
+          style={{ fontFamily: "var(--font-label)" }}
+        >
+          Scroll to discover
+        </span>
+        <svg width="16" height="22" viewBox="0 0 16 22" fill="none" aria-hidden="true" className="hero-chev text-gold">
+          <path d="M2 6l6 6 6-6" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" />
+          <path d="M2 12l6 6 6-6" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" opacity="0.45" />
+        </svg>
+      </a>
+
       {/* -------- engraving: anchored at the bottom, fully visible (no crop) -------- */}
       <div className="relative z-10 w-full shrink-0">
-        {/* tablet/desktop — full panorama sized to fit inside its own aspect box
-            and centred, so nothing is cropped and the hotspots stay aligned */}
-        <div className="hidden justify-center sm:flex" style={{ height: "clamp(200px, 36vh, 400px)" }}>
+        {/* tablet/desktop — the full panorama, sized as large as fits (contained by
+            both viewport width and height) and centred, so nothing is cropped and
+            the hotspots stay aligned to the buildings. */}
+        <div className="hidden w-full justify-center sm:flex">
           <div
             ref={panoRef}
-            className="hero-pano relative h-full max-w-full overflow-hidden"
-            style={{ aspectRatio: "1922 / 818" }}
+            className="hero-pano relative overflow-hidden"
+            style={{ width: "min(100vw, calc(54svh * 1922 / 818))", aspectRatio: "1922 / 818", maxHeight: "54svh" }}
           >
             <img
               src="/brand/engraving-panorama-1600.webp"
@@ -123,7 +143,7 @@ export function Hero() {
         </div>
 
         {/* mobile — a taller crop of the centrepiece building */}
-        <div className="relative h-[38vh] min-h-[260px] w-full overflow-hidden sm:hidden">
+        <div className="relative h-[40svh] min-h-[260px] w-full overflow-hidden sm:hidden">
           <img
             src="/brand/engraving-panorama-mobile.webp"
             alt=""
@@ -135,24 +155,6 @@ export function Hero() {
           />
         </div>
       </div>
-
-      {/* --------------------------- scroll cue — sits in the gap above the engraving --------------------------- */}
-      <a
-        href="#statement"
-        aria-label="Scroll to discover"
-        className="hero-scroll group absolute bottom-[calc(38vh+0.75rem)] left-1/2 z-30 flex -translate-x-1/2 flex-col items-center gap-2 sm:bottom-[calc(36vh+1rem)]"
-      >
-        <span
-          className="text-[10px] uppercase tracking-[0.3em] text-champagne/60 transition-colors group-hover:text-gold"
-          style={{ fontFamily: "var(--font-label)" }}
-        >
-          Scroll to discover
-        </span>
-        <svg width="16" height="22" viewBox="0 0 16 22" fill="none" aria-hidden="true" className="hero-chev text-gold">
-          <path d="M2 6l6 6 6-6" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" />
-          <path d="M2 12l6 6 6-6" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" opacity="0.45" />
-        </svg>
-      </a>
     </section>
   );
 }
