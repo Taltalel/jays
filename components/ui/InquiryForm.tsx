@@ -5,10 +5,13 @@ import { useState } from "react";
 /**
  * Reusable inquiry form (Private Events, Careers, Contact).
  *
- * Static-export friendly: on submit it POSTs to NEXT_PUBLIC_FORM_ENDPOINT if
- * set (Formspree / Basin / a serverless route), otherwise it falls back to a
- * prefilled mailto to the routed inbox. Includes a honeypot for spam.
- * TODO: set NEXT_PUBLIC_FORM_ENDPOINT and per-inbox routing at launch.
+ * Static-export friendly: on submit it POSTs the submission to FormSubmit
+ * (https://formsubmit.co/ajax/<inbox>), which emails it to the routed inbox —
+ * no backend required. The first submission to a new inbox triggers a one-time
+ * activation email FormSubmit sends to that address; click Activate once and
+ * every form is live. Set NEXT_PUBLIC_FORM_ENDPOINT to override with your own
+ * provider (Formspree / Basin / a serverless route). Includes a honeypot.
+ * If the POST fails, it degrades to a prefilled mailto.
  */
 
 export type Field = {
@@ -69,24 +72,26 @@ export function InquiryForm({
     setStatus("sending");
     setError("");
 
-    const endpoint = process.env.NEXT_PUBLIC_FORM_ENDPOINT;
-    const payload: Record<string, string> = { _subject: subject, _inbox: inbox };
+    const endpoint = process.env.NEXT_PUBLIC_FORM_ENDPOINT || `https://formsubmit.co/ajax/${inbox}`;
+    const payload: Record<string, string> = {
+      _subject: subject,
+      _template: "table",
+      _captcha: "false",
+    };
     fields.forEach((f) => (payload[f.name] = String(data.get(f.name) ?? "")));
 
-    if (endpoint) {
-      try {
-        const res = await fetch(endpoint, {
-          method: "POST",
-          headers: { "Content-Type": "application/json", Accept: "application/json" },
-          body: JSON.stringify(payload),
-        });
-        if (!res.ok) throw new Error("bad status");
-        setStatus("done");
-        form.reset();
-        return;
-      } catch {
-        // fall through to mailto
-      }
+    try {
+      const res = await fetch(endpoint, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify(payload),
+      });
+      if (!res.ok) throw new Error("bad status");
+      setStatus("done");
+      form.reset();
+      return;
+    } catch {
+      // fall through to mailto
     }
 
     // Fallback: open a prefilled email to the routed inbox.

@@ -2,24 +2,37 @@
 
 import { useState } from "react";
 import { Reveal } from "@/components/ui/Reveal";
+import { group } from "@/content/group";
 
 /**
- * Newsletter capture. TODO: wire to Klaviyo or Mailchimp (POST the email to
- * the list API / form endpoint). For now it validates client-side and confirms.
+ * Newsletter capture — signups are delivered to the marketing inbox via
+ * FormSubmit (no backend). Swap the endpoint for Klaviyo/Mailchimp when a list
+ * is set up. NEXT_PUBLIC_FORM_ENDPOINT overrides the destination if set.
  */
 export function Newsletter() {
   const [email, setEmail] = useState("");
-  const [status, setStatus] = useState<"idle" | "done" | "error">("idle");
+  const [status, setStatus] = useState<"idle" | "sending" | "done" | "error">("idle");
 
-  const onSubmit = (e: React.FormEvent) => {
+  const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const ok = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
     if (!ok) {
       setStatus("error");
       return;
     }
-    // TODO: send `email` to Klaviyo/Mailchimp here.
-    setStatus("done");
+    setStatus("sending");
+    const endpoint = process.env.NEXT_PUBLIC_FORM_ENDPOINT || `https://formsubmit.co/ajax/${group.inboxes.general}`;
+    try {
+      const res = await fetch(endpoint, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({ _subject: "Newsletter signup — Room 7", _template: "table", _captcha: "false", email }),
+      });
+      if (!res.ok) throw new Error("bad status");
+      setStatus("done");
+    } catch {
+      setStatus("error");
+    }
   };
 
   return (
@@ -58,16 +71,17 @@ export function Newsletter() {
               />
               <button
                 type="submit"
-                className="rounded-sm bg-gold px-6 py-3 text-[12px] uppercase tracking-[0.15em] text-forest-deep transition-colors hover:bg-gold-light"
+                disabled={status === "sending"}
+                className="rounded-sm bg-gold px-6 py-3 text-[12px] uppercase tracking-[0.15em] text-forest-deep transition-colors hover:bg-gold-light disabled:opacity-60"
                 style={{ fontFamily: "var(--font-label)" }}
               >
-                Join
+                {status === "sending" ? "Joining…" : "Join"}
               </button>
             </form>
           )}
           {status === "error" && (
             <p className="mt-3 text-sm text-gold-light" role="alert">
-              That email doesn&apos;t look right. Try again?
+              That didn&apos;t go through — check the email and try again?
             </p>
           )}
           <p className="mt-4 text-xs text-sage">No spam. No small talk. Just the good nights.</p>

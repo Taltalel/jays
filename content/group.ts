@@ -14,15 +14,15 @@ export const group = {
     street: "2929 E Commercial Blvd, Suite 500",
     locality: "Fort Lauderdale, FL 33308",
   },
-  // Placeholder until the group inbox is live. Live inboxes today: events →
-  // jaclyn@yesfbm.com, careers → marketing@yesfbm.com.
-  email: "hello@room7hospitality.com",
-  // Where each form routes.
+  // All contact + form mail routes to the live marketing inbox for now.
+  // (Swap to a branded hello@room7hospitality.com address once it's stood up.)
+  email: "marketing@yesfbm.com",
+  // Where each form routes — all to the marketing inbox per request.
   inboxes: {
-    general: "hello@room7hospitality.com",
-    events: "jaclyn@yesfbm.com",
+    general: "marketing@yesfbm.com",
+    events: "marketing@yesfbm.com",
     careers: "marketing@yesfbm.com",
-    press: "hello@room7hospitality.com",
+    press: "marketing@yesfbm.com",
   },
   founder: {
     name: "Jay Shirodkar",
