@@ -1,9 +1,12 @@
 import { CTA } from "@/components/ui/CTA";
+import { TrackedLink } from "@/components/ui/TrackedLink";
+import { venueParam } from "@/lib/analytics";
 import type { Venue } from "@/content/venues";
 
 /** VISIT — address, hours, phone, map, reserve. */
 export function VenueVisit({ venue }: { venue: Venue }) {
   const q = encodeURIComponent(`${venue.name}, ${venue.address.street}, ${venue.address.locality}`);
+  const vp = venueParam(venue.slug);
   return (
     <section className="border-t border-champagne/10 bg-forest/40">
       <div className="mx-auto grid max-w-7xl gap-10 px-5 py-16 md:grid-cols-2 md:gap-16 md:px-8 md:py-24">
@@ -48,16 +51,16 @@ export function VenueVisit({ venue }: { venue: Venue }) {
 
             <div className="flex flex-wrap items-center gap-4 pt-2">
               {venue.reservation && (
-                <CTA href={venue.reservation.url} external variant="solid">
+                <CTA href={venue.reservation.url} external variant="solid" analytics={{ event: "reservation_click", params: { venue: vp } }}>
                   Reserve
                 </CTA>
               )}
               {venue.menuUrl && (
-                <CTA href={venue.menuUrl} external variant="outline">
+                <CTA href={venue.menuUrl} external variant="outline" analytics={{ event: "menu_click", params: { venue: vp } }}>
                   Menu
                 </CTA>
               )}
-              <CTA href={`https://www.google.com/maps/search/?api=1&query=${q}`} external variant="text">
+              <CTA href={`https://www.google.com/maps/search/?api=1&query=${q}`} external variant="text" analytics={{ event: "directions_click", params: { venue: vp } }}>
                 Directions
               </CTA>
             </div>
@@ -95,10 +98,10 @@ export function VenueVisit({ venue }: { venue: Venue }) {
         </div>
 
         {/* Directions — links out to Google Maps (no third-party embed / cookies) */}
-        <a
+        <TrackedLink
           href={`https://www.google.com/maps/search/?api=1&query=${q}`}
-          target="_blank"
-          rel="noopener noreferrer"
+          event="directions_click"
+          params={{ venue: vp }}
           className="group flex aspect-[4/3] flex-col items-center justify-center gap-2 rounded-sm border border-champagne/10 bg-forest p-8 text-center transition-colors hover:border-gold/40 md:aspect-auto md:min-h-[420px]"
         >
           <span className="eyebrow mb-1">Find the room</span>
@@ -107,7 +110,7 @@ export function VenueVisit({ venue }: { venue: Venue }) {
           <span className="mt-3 inline-flex items-center gap-2 text-[12px] uppercase tracking-[0.15em] text-gold transition-colors group-hover:text-gold-light" style={{ fontFamily: "var(--font-label)" }}>
             Get directions <span aria-hidden="true">↗</span>
           </span>
-        </a>
+        </TrackedLink>
       </div>
     </section>
   );

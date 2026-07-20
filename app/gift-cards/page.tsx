@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { PageHero } from "@/components/ui/PageHero";
 import { Reveal } from "@/components/ui/Reveal";
+import { TrackedLink } from "@/components/ui/TrackedLink";
+import { venueParam } from "@/lib/analytics";
 import { venues } from "@/content/venues";
 
 export const metadata: Metadata = {
@@ -27,10 +29,10 @@ export default function GiftCardsPage() {
         <div className="grid gap-4 sm:grid-cols-2">
           {venues.map((v, i) => (
             <Reveal key={v.slug} delay={(i % 2) * 60}>
-              <a
+              <TrackedLink
                 href={v.website.url}
-                target="_blank"
-                rel="noopener noreferrer"
+                event="gift_card_click"
+                params={{ venue: venueParam(v.slug) }}
                 className="group flex items-center justify-between rounded-sm border border-champagne/10 bg-forest/40 p-6 transition-colors hover:border-gold/40"
               >
                 <div>
@@ -41,7 +43,7 @@ export default function GiftCardsPage() {
                 <span className="shrink-0 text-[12px] uppercase tracking-[0.15em] text-champagne/80 group-hover:text-gold" style={{ fontFamily: "var(--font-label)" }}>
                   Buy ↗
                 </span>
-              </a>
+              </TrackedLink>
             </Reveal>
           ))}
         </div>

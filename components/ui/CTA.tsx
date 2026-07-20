@@ -1,5 +1,8 @@
+"use client";
+
 import Link from "next/link";
 import type { ReactNode } from "react";
+import { track, type EventParams } from "@/lib/analytics";
 
 type Props = {
   href: string;
@@ -7,10 +10,12 @@ type Props = {
   external?: boolean;
   variant?: "text" | "outline" | "solid";
   className?: string;
+  /** Optional GA event fired on click (beacon transport survives navigation). */
+  analytics?: { event: string; params?: EventParams };
 };
 
 /** A gold-forward call to action. Text (default), outline, or solid. */
-export function CTA({ href, children, external, variant = "text", className = "" }: Props) {
+export function CTA({ href, children, external, variant = "text", className = "", analytics }: Props) {
   const base =
     "group inline-flex items-center gap-2 text-[13px] uppercase tracking-[0.15em] transition-colors";
   const styles = {
@@ -31,16 +36,17 @@ export function CTA({ href, children, external, variant = "text", className = ""
 
   const cls = `${base} ${styles} ${className}`;
   const fontStyle = { fontFamily: "var(--font-label)" };
+  const onClick = analytics ? () => track(analytics.event, analytics.params) : undefined;
 
   if (external) {
     return (
-      <a href={href} target="_blank" rel="noopener noreferrer" className={cls} style={fontStyle}>
+      <a href={href} target="_blank" rel="noopener noreferrer" className={cls} style={fontStyle} onClick={onClick}>
         {inner}
       </a>
     );
   }
   return (
-    <Link href={href} className={cls} style={fontStyle}>
+    <Link href={href} className={cls} style={fontStyle} onClick={onClick}>
       {inner}
     </Link>
   );

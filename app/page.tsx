@@ -5,7 +5,6 @@ import { Standard } from "@/components/home/Standard";
 import { Founder } from "@/components/home/Founder";
 import { PressStrip } from "@/components/home/PressStrip";
 import { CTABand } from "@/components/home/CTABand";
-import { Sound } from "@/components/home/Sound";
 import { InstagramFeed } from "@/components/home/InstagramFeed";
 import { Newsletter } from "@/components/home/Newsletter";
 
@@ -38,7 +37,6 @@ export default function Home() {
         align="center"
       />
 
-      <Sound />
       <InstagramFeed />
       <Newsletter />
     </>

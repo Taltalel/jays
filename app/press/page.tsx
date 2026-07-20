@@ -120,7 +120,7 @@ export default function PressPage() {
               ))}
             </ul>
             <div className="mt-8">
-              <CTA href={`mailto:${group.email}?subject=Press%20kit%20request%20—%20Room%207`} external>Request the kit</CTA>
+              <CTA href={`mailto:${group.email}?subject=Press%20kit%20request%20—%20Room%207`} external analytics={{ event: "press_kit_request" }}>Request the kit</CTA>
             </div>
           </Reveal>
 

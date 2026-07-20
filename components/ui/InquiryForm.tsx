@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { track, venueParam } from "@/lib/analytics";
 
 /**
  * Reusable inquiry form (Private Events, Careers, Contact).
@@ -31,6 +32,7 @@ export function InquiryForm({
   submitLabel = "Send",
   confirm = "Thank you — we'll come back to you within 24 hours.",
   defaults,
+  analytics,
 }: {
   fields: Field[];
   inbox: string;
@@ -39,6 +41,12 @@ export function InquiryForm({
   confirm?: string;
   /** Preset field values (e.g. the venue on /careers/[venue]). */
   defaults?: Record<string, string>;
+  /**
+   * GA event fired on successful submission only (never on button click).
+   * `venueField`/`eventTypeField` name the form fields to read for the
+   * `venue` / `event_type` params.
+   */
+  analytics?: { event: string; venueField?: string; eventTypeField?: string };
 }) {
   const [status, setStatus] = useState<"idle" | "sending" | "done" | "error">("idle");
   const [error, setError] = useState<string>("");
@@ -87,6 +95,15 @@ export function InquiryForm({
         body: JSON.stringify(payload),
       });
       if (!res.ok) throw new Error("bad status");
+      if (analytics?.event) {
+        const params: Record<string, string | undefined> = {};
+        if (analytics.venueField) params.venue = venueParam(String(data.get(analytics.venueField) ?? ""));
+        if (analytics.eventTypeField) {
+          const et = String(data.get(analytics.eventTypeField) ?? "").trim();
+          if (et) params.event_type = et;
+        }
+        track(analytics.event, params);
+      }
       setStatus("done");
       form.reset();
       return;
@@ -172,5 +189,5 @@ export function InquiryForm({
   );
 }
 
-const inputCls =
+export const inputCls =
   "w-full rounded-sm border border-champagne/20 bg-forest-deep/60 px-4 py-3 text-base text-champagne placeholder:text-sage/50 focus:border-gold focus:outline-none";

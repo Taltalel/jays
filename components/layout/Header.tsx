@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Monogram } from "@/components/brand/Logo";
 import { primaryNav, reserveLinks } from "@/content/nav";
+import { track, venueParam } from "@/lib/analytics";
 
 // Split the primary nav around the centered mark, per the brand layout:
 // left of the logo, then right of the logo.
@@ -205,6 +206,7 @@ function ReserveButton() {
                 href={r.href}
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => track("reservation_click", { venue: venueParam(r.slug) })}
                 className="flex flex-col gap-0.5 px-5 py-2.5 transition-colors hover:bg-emerald/60"
               >
                 <span className="font-display text-lg text-champagne">{r.label}</span>
@@ -273,6 +275,7 @@ function MobileMenu({ open, onClose }: { open: boolean; onClose: () => void }) {
               href={r.href}
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() => track("reservation_click", { venue: venueParam(r.slug) })}
               className="flex items-center justify-between rounded-sm border border-gold/40 px-4 py-3"
             >
               <span className="font-display text-xl text-champagne">{r.label}</span>

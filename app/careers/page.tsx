@@ -88,6 +88,7 @@ export default function CareersPage() {
             subject="Careers application — Room 7"
             submitLabel="Send application"
             confirm="Thank you — we've got it. If there's a fit, you'll hear from us."
+            analytics={{ event: "career_application_submit", venueField: "venue" }}
           />
         </div>
       </section>

@@ -92,7 +92,7 @@ export default async function VenuePage({ params }: { params: Promise<{ slug: st
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(restaurantSchema(venue)) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(restaurantSchema(venue)).replace(/</g, "\\u003c") }}
       />
       <VenueHero venue={venue} paired={paired} />
       <VenueStory venue={venue} />

@@ -54,6 +54,7 @@ export default async function VenueCareersPage({ params }: { params: Promise<{ v
             submitLabel="Send application"
             confirm="Thank you — we've got it. If there's a fit, you'll hear from us."
             defaults={{ venue: label }}
+            analytics={{ event: "career_application_submit", venueField: "venue" }}
           />
         </Reveal>
       </section>

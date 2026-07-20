@@ -41,6 +41,7 @@ export const primaryNav: NavItem[] = [
 export const reserveLinks = venues
   .filter((v) => v.reservation)
   .map((v) => ({
+    slug: v.slug,
     label: v.name,
     sublabel: v.destination,
     href: v.reservation!.url,

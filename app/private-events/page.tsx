@@ -166,6 +166,7 @@ export default function PrivateEventsPage() {
             inbox={group.inboxes.events}
             subject="Private event inquiry — Room 7"
             submitLabel="Send inquiry"
+            analytics={{ event: "event_inquiry_submit", venueField: "venue", eventTypeField: "eventType" }}
           />
         </div>
       </section>

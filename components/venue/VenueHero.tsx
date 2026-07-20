@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Placeholder } from "@/components/ui/Placeholder";
 import { CTA } from "@/components/ui/CTA";
+import { venueParam } from "@/lib/analytics";
 import type { Venue } from "@/content/venues";
 
 const TONES: Record<Venue["slug"], "church" | "riot" | "view" | "coast"> = {
@@ -50,16 +51,16 @@ export function VenueHero({ venue, paired }: { venue: Venue; paired?: Venue }) {
 
         <div className="mt-8 flex flex-wrap items-center gap-4">
           {venue.reservation && (
-            <CTA href={venue.reservation.url} external variant="solid">
+            <CTA href={venue.reservation.url} external variant="solid" analytics={{ event: "reservation_click", params: { venue: venueParam(venue.slug) } }}>
               Reserve
             </CTA>
           )}
           {venue.menuUrl && (
-            <CTA href={venue.menuUrl} external variant="outline">
+            <CTA href={venue.menuUrl} external variant="outline" analytics={{ event: "menu_click", params: { venue: venueParam(venue.slug) } }}>
               Menu
             </CTA>
           )}
-          <CTA href={venue.website.url} external variant="text">
+          <CTA href={venue.website.url} external variant="text" analytics={{ event: "venue_site_click", params: { venue: venueParam(venue.slug) } }}>
             Visit site
           </CTA>
         </div>
