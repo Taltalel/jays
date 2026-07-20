@@ -57,9 +57,71 @@ export function Hero() {
   }, []);
 
   return (
-    <section className="hero relative flex h-[100svh] min-h-[600px] w-full flex-col overflow-hidden bg-forest-deep">
-      {/* -------- upper: mark → tagline → rule, centred above the engraving -------- */}
-      <div className="relative z-20 flex flex-1 flex-col items-center justify-center px-6 pb-6 pt-[var(--header-h)] text-center">
+    <section className="hero relative h-[100svh] min-h-[600px] w-full overflow-hidden bg-forest-deep">
+      {/* ---- engraving backdrop: as large as fits with nothing cropped, anchored
+             to the bottom. The wordmark is layered on top of it (below). ---- */}
+      {/* tablet/desktop — the whole panorama, centred; width is bounded by the
+          viewport so the full artwork always shows and the hotspots stay aligned. */}
+      <div className="absolute inset-x-0 bottom-0 z-0 hidden justify-center sm:flex">
+        <div
+          ref={panoRef}
+          className="hero-pano relative overflow-hidden"
+          style={{ width: "min(100vw, calc(88svh * 1922 / 818))", aspectRatio: "1922 / 818" }}
+        >
+          <img
+            src="/brand/engraving-panorama-1600.webp"
+            alt=""
+            aria-hidden="true"
+            width={1600}
+            height={681}
+            decoding="async"
+            className="hero-pano__img absolute inset-0 h-full w-full object-cover"
+          />
+          <Atmosphere />
+          <nav aria-label="Our four rooms" className="absolute inset-0">
+            {VENUES.map((v) => (
+              <Link
+                key={v.slug}
+                href={`/collection/${v.slug}`}
+                aria-label={v.label}
+                className="hero-venue group absolute"
+                style={{ left: v.left, width: v.width, bottom: v.bottom, height: v.height }}
+              >
+                <span className="hero-venue__name" aria-hidden="true">
+                  {v.name}
+                </span>
+              </Link>
+            ))}
+          </nav>
+        </div>
+      </div>
+
+      {/* mobile — the centrepiece building fills the frame */}
+      <div className="absolute inset-0 z-0 sm:hidden">
+        <img
+          src="/brand/engraving-panorama-mobile.webp"
+          alt=""
+          aria-hidden="true"
+          width={760}
+          height={818}
+          decoding="async"
+          className="h-full w-full object-cover object-bottom"
+        />
+      </div>
+
+      {/* ---- legibility veil: only across the top (the sky), fading to nothing well
+             above the buildings so the artwork itself is never dimmed ---- */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 z-10"
+        style={{
+          background:
+            "linear-gradient(to bottom, rgba(15,36,23,0.94) 0%, rgba(15,36,23,0.7) 18%, rgba(15,36,23,0.28) 34%, rgba(15,36,23,0) 50%)",
+        }}
+      />
+
+      {/* ---- overlay: wordmark → tagline → rule, laid over the sky of the engraving ---- */}
+      <div className="absolute inset-x-0 top-0 z-20 flex flex-col items-center px-6 pt-[calc(var(--header-h)+9vh)] text-center">
         <img
           src="/brand/wordmark.webp"
           alt="Room 7"
@@ -67,7 +129,7 @@ export function Hero() {
           height={292}
           fetchPriority="high"
           decoding="async"
-          className="hero-rise hero-logo w-[min(62vw,360px)] max-w-full"
+          className="hero-rise hero-logo w-[min(72vw,400px)] max-w-full"
           style={{ animationDelay: "80ms" }}
         />
 
@@ -84,15 +146,15 @@ export function Hero() {
         <h1 className="sr-only">Room 7 — Elevated Hospitality</h1>
       </div>
 
-      {/* scroll cue — in-flow in the gap just above the engraving */}
+      {/* ---- scroll cue — pinned near the bottom ---- */}
       <a
         href="#statement"
         aria-label="Scroll to discover"
-        className="hero-rise hero-scroll group relative z-30 mx-auto mb-3 flex flex-col items-center gap-2 sm:mb-4"
+        className="hero-rise hero-scroll group absolute bottom-6 left-1/2 z-20 flex -translate-x-1/2 flex-col items-center gap-2 sm:bottom-8"
         style={{ animationDelay: "560ms" }}
       >
         <span
-          className="text-[10px] uppercase tracking-[0.3em] text-champagne/60 transition-colors group-hover:text-gold"
+          className="text-[10px] uppercase tracking-[0.3em] text-champagne/70 transition-colors group-hover:text-gold"
           style={{ fontFamily: "var(--font-label)" }}
         >
           Scroll to discover
@@ -102,59 +164,6 @@ export function Hero() {
           <path d="M2 12l6 6 6-6" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" opacity="0.45" />
         </svg>
       </a>
-
-      {/* -------- engraving: anchored at the bottom, fully visible (no crop) -------- */}
-      <div className="relative z-10 w-full shrink-0">
-        {/* tablet/desktop — the full panorama, sized as large as fits (contained by
-            both viewport width and height) and centred, so nothing is cropped and
-            the hotspots stay aligned to the buildings. */}
-        <div className="hidden w-full justify-center sm:flex">
-          <div
-            ref={panoRef}
-            className="hero-pano relative overflow-hidden"
-            style={{ width: "min(100vw, calc(54svh * 1922 / 818))", aspectRatio: "1922 / 818", maxHeight: "54svh" }}
-          >
-            <img
-              src="/brand/engraving-panorama-1600.webp"
-              alt=""
-              aria-hidden="true"
-              width={1600}
-              height={681}
-              decoding="async"
-              className="hero-pano__img absolute inset-0 h-full w-full object-cover"
-            />
-            <Atmosphere />
-            <nav aria-label="Our four rooms" className="absolute inset-0">
-              {VENUES.map((v) => (
-                <Link
-                  key={v.slug}
-                  href={`/collection/${v.slug}`}
-                  aria-label={v.label}
-                  className="hero-venue group absolute"
-                  style={{ left: v.left, width: v.width, bottom: v.bottom, height: v.height }}
-                >
-                  <span className="hero-venue__name" aria-hidden="true">
-                    {v.name}
-                  </span>
-                </Link>
-              ))}
-            </nav>
-          </div>
-        </div>
-
-        {/* mobile — a taller crop of the centrepiece building */}
-        <div className="relative h-[40svh] min-h-[260px] w-full overflow-hidden sm:hidden">
-          <img
-            src="/brand/engraving-panorama-mobile.webp"
-            alt=""
-            aria-hidden="true"
-            width={760}
-            height={818}
-            decoding="async"
-            className="absolute inset-0 h-full w-full object-cover object-bottom"
-          />
-        </div>
-      </div>
     </section>
   );
 }
