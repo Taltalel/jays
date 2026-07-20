@@ -96,16 +96,18 @@ export function Hero() {
         </div>
       </div>
 
-      {/* mobile — the centrepiece building fills the frame */}
+      {/* mobile — framed on the iconic Art Deco corner so the full NAKED TACO /
+          TUDOR signage reads; the same panorama, cover-cropped to a portrait slice */}
       <div className="absolute inset-0 z-0 sm:hidden">
         <img
-          src="/brand/engraving-panorama-mobile.webp"
+          src="/brand/engraving-panorama-1600.webp"
           alt=""
           aria-hidden="true"
-          width={760}
-          height={818}
+          width={1600}
+          height={681}
           decoding="async"
-          className="h-full w-full object-cover object-bottom"
+          className="h-full w-full object-cover"
+          style={{ objectPosition: "42% 60%" }}
         />
       </div>
 
@@ -121,7 +123,7 @@ export function Hero() {
       />
 
       {/* ---- overlay: wordmark → tagline → rule, laid over the sky of the engraving ---- */}
-      <div className="absolute inset-x-0 top-0 z-20 flex flex-col items-center px-6 pt-[calc(var(--header-h)+9vh)] text-center">
+      <div className="absolute inset-x-0 top-0 z-20 flex flex-col items-center px-6 pt-[calc(var(--header-h)+3vh)] text-center sm:pt-[calc(var(--header-h)+9vh)]">
         <img
           src="/brand/wordmark.webp"
           alt="Room 7"
