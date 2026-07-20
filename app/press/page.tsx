@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   title: "Press — Buzz & releases",
   description:
     "Room 7 press releases, coverage and press kit. News from the Fort Lauderdale hospitality group behind Jay's, Naked Taco, HighBar and Riviera.",
-  alternates: { canonical: "https://room7hospitality.com/press" },
+  alternates: { canonical: "https://room7hospitality.com/press/" },
 };
 
 function fmt(d: string) {
@@ -66,21 +66,31 @@ export default function PressPage() {
             <h2 className="h2-display text-champagne">What they’re saying.</h2>
           </Reveal>
           <div className="grid gap-4 md:grid-cols-3">
-            {coverage.map((c, i) => (
-              <Reveal key={c.headline} delay={(i % 3) * 60}>
-                <a
-                  href={c.url}
-                  target={c.url.startsWith("http") ? "_blank" : undefined}
-                  rel="noopener noreferrer"
-                  className="flex h-full flex-col rounded-sm border border-champagne/10 bg-forest-deep/60 p-6 transition-colors hover:border-gold/40"
-                >
+            {coverage.map((c, i) => {
+              const live = c.url.startsWith("http");
+              const inner = (
+                <>
                   <p className="text-[11px] uppercase tracking-[0.15em] text-gold" style={{ fontFamily: "var(--font-label)" }}>{c.outlet}</p>
                   <blockquote className="mt-4 font-display text-xl leading-snug text-champagne">“{c.quote}”</blockquote>
                   <p className="mt-4 text-sm text-sage">{c.headline}</p>
-                  <span className="mt-auto pt-4 text-[11px] uppercase tracking-[0.15em] text-champagne/60" style={{ fontFamily: "var(--font-label)" }}>Read ↗</span>
-                </a>
-              </Reveal>
-            ))}
+                  {live && (
+                    <span className="mt-auto pt-4 text-[11px] uppercase tracking-[0.15em] text-champagne/60" style={{ fontFamily: "var(--font-label)" }}>Read ↗</span>
+                  )}
+                </>
+              );
+              const cls = "flex h-full flex-col rounded-sm border border-champagne/10 bg-forest-deep/60 p-6";
+              return (
+                <Reveal key={c.headline} delay={(i % 3) * 60}>
+                  {live ? (
+                    <a href={c.url} target="_blank" rel="noopener noreferrer" className={`${cls} transition-colors hover:border-gold/40`}>
+                      {inner}
+                    </a>
+                  ) : (
+                    <div className={cls}>{inner}</div>
+                  )}
+                </Reveal>
+              );
+            })}
           </div>
           <ul className="mt-12 flex flex-wrap items-center justify-center gap-x-8 gap-y-4 opacity-80">
             {pressOutlets.map((o) => (

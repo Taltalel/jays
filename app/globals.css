@@ -120,8 +120,10 @@ body {
 .scrim {
   background: linear-gradient(
     to top,
-    rgba(15, 36, 23, 0.92) 0%,
-    rgba(15, 36, 23, 0.55) 40%,
+    rgba(15, 36, 23, 0.96) 0%,
+    rgba(15, 36, 23, 0.84) 26%,
+    rgba(15, 36, 23, 0.48) 52%,
+    rgba(15, 36, 23, 0.12) 78%,
     rgba(15, 36, 23, 0) 100%
   );
 }
@@ -261,9 +263,7 @@ body {
 
 /* panorama — parallax offset (set by JS) plus a slow fade-in on load */
 .hero-pano__img {
-  /* slightly oversized so the parallax offset never exposes an edge */
-  transform: translateY(var(--pano-shift, 0)) scale(1.12);
-  transform-origin: center bottom;
+  transform: translateY(var(--pano-shift, 0));
   will-change: transform;
   animation: hero-pano-in 1400ms var(--ease-room) 200ms both;
 }

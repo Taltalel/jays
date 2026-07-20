@@ -4,7 +4,7 @@ import { LegalPage } from "@/components/legal/LegalPage";
 export const metadata: Metadata = {
   title: "Privacy Policy",
   description: "How Room 7 collects, uses, shares and protects the information you share with us.",
-  alternates: { canonical: "https://room7hospitality.com/privacy" },
+  alternates: { canonical: "https://room7hospitality.com/privacy/" },
 };
 
 export default function PrivacyPage() {

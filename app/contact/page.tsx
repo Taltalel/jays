@@ -9,14 +9,14 @@ export const metadata: Metadata = {
   title: "Contact",
   description:
     "Get in touch with Room 7 — general, private events, press or careers. Fort Lauderdale hospitality group behind Jay's, Naked Taco, HighBar and Riviera.",
-  alternates: { canonical: "https://room7hospitality.com/contact" },
+  alternates: { canonical: "https://room7hospitality.com/contact/" },
 };
 
 const routes = [
-  { label: "General", line: "Anything and everything else.", href: "/contact", email: group.email },
-  { label: "Private Events", line: "Buyouts, private dining, brand nights.", href: "/private-events", email: group.email },
-  { label: "Press", line: "Interviews, assets, the press kit.", href: "/press", email: group.email },
-  { label: "Careers", line: "Roles across the four rooms.", href: "/careers", email: group.email },
+  { label: "General", line: "Anything and everything else.", href: "#reach" },
+  { label: "Private Events", line: "Buyouts, private dining, brand nights.", href: "/private-events" },
+  { label: "Press", line: "Interviews, assets, the press kit.", href: "/press" },
+  { label: "Careers", line: "Roles across the four rooms.", href: "/careers" },
 ];
 
 const fields: Field[] = [
@@ -60,7 +60,7 @@ export default function ContactPage() {
       </section>
 
       {/* Form + house info */}
-      <section className="border-t border-champagne/10 bg-forest-deep">
+      <section id="reach" className="scroll-mt-24 border-t border-champagne/10 bg-forest-deep">
         <div className="mx-auto grid max-w-7xl gap-12 px-5 py-16 md:grid-cols-2 md:gap-16 md:px-8 md:py-24">
           <Reveal>
             <p className="eyebrow mb-3">Message</p>

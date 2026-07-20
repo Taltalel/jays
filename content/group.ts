@@ -14,7 +14,8 @@ export const group = {
     street: "2929 E Commercial Blvd, Suite 500",
     locality: "Fort Lauderdale, FL 33308",
   },
-  // Placeholder until the group inbox is live (currently events@yesfbm.com).
+  // Placeholder until the group inbox is live. Live inboxes today: events →
+  // jaclyn@yesfbm.com, careers → marketing@yesfbm.com.
   email: "hello@room7hospitality.com",
   // Where each form routes.
   inboxes: {
@@ -114,7 +115,7 @@ export const founderPage = {
   story: [
     "Jay Shirodkar builds rooms the way other people throw parties — with a guest list in mind and a feeling he's chasing. Room 7 is the house he built to hold all of them.",
     "It started with a church. A 1920s sanctuary in Flagler Village that most people would have flattened, he restored instead — stained glass, stone, soaring arches — and turned into Jay's: a steakhouse where dinner keeps the hours of a cabaret. Once he'd proven a room could have a past and a pulse at the same time, the rest of the collection followed.",
-    "The thread through all of it is the same conviction: hospitality is a standard, not a script. Warmth first. Design that means something. A night people describe to everyone who wasn't there. Room 7 is that conviction, given four addresses.",
+    "The thread through all of it is the same conviction: hospitality is a standard, not a script. Warmth first. Design that means something. A night people describe to everyone who wasn't there. Room 7 is that conviction, given four rooms.",
   ],
   links: [
     { label: "jayshirodkar.com", url: "https://jayshirodkar.com", external: true },

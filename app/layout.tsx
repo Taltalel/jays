@@ -45,10 +45,10 @@ export const metadata: Metadata = {
     "private events Fort Lauderdale",
     "Jay's Fort Lauderdale",
   ],
-  alternates: { canonical: SITE },
+  alternates: { canonical: `${SITE}/` },
   openGraph: {
     type: "website",
-    url: SITE,
+    url: `${SITE}/`,
     siteName: "Room 7",
     title: "Room 7 — Elevated Hospitality",
     description:

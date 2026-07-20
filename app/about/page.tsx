@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   title: "About — Four rooms, one house",
   description:
     "Room 7 is the Fort Lauderdale hospitality group behind Jay's, Naked Taco, HighBar and Riviera. The group, the standard, and the story behind the name.",
-  alternates: { canonical: "https://room7hospitality.com/about" },
+  alternates: { canonical: "https://room7hospitality.com/about/" },
 };
 
 export default function AboutPage() {
@@ -84,7 +84,7 @@ export default function AboutPage() {
       <section className="mx-auto max-w-7xl px-5 py-20 md:px-8 md:py-28">
         <Reveal className="mb-10 md:mb-14">
           <p className="eyebrow mb-3">The House</p>
-          <h2 className="h2-display text-champagne">Four rooms, cross-town.</h2>
+          <h2 className="h2-display text-champagne">Four rooms, across South Florida.</h2>
         </Reveal>
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {venues.map((v, i) => (

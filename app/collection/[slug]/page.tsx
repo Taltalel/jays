@@ -23,11 +23,11 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   return {
     title,
     description,
-    alternates: { canonical: `https://room7hospitality.com/collection/${v.slug}` },
+    alternates: { canonical: `https://room7hospitality.com/collection/${v.slug}/` },
     openGraph: {
       title: `${v.name} · Room 7`,
       description,
-      images: [{ url: `/og/${v.slug}.svg`, width: 1200, height: 630, alt: v.name }],
+      images: [{ url: `/og/${v.slug}.jpg`, width: 1200, height: 630, alt: v.name }],
     },
   };
 }

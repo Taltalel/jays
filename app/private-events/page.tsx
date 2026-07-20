@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   title: "Private Events — Take the whole room",
   description:
     "Buyouts, private dining and brand events across Room 7's four rooms in Fort Lauderdale and Miami Beach. Tell us the night; we'll build it.",
-  alternates: { canonical: "https://room7hospitality.com/private-events" },
+  alternates: { canonical: "https://room7hospitality.com/private-events/" },
 };
 
 const fields: Field[] = [
@@ -37,7 +37,7 @@ export default function PrivateEventsPage() {
       <PageHero
         eyebrow="Private Events"
         title="Take the whole room."
-        sub="Buyouts, private dining, and the kind of party people cancel other plans for. Four rooms across two cities — pick your stage."
+        sub="Buyouts, private dining, and the kind of party people cancel other plans for. Four rooms across South Florida — pick your stage."
         tone="view"
         placeholder="A full room mid-party — buyout energy"
         image="/venues/highbar-hero.webp"

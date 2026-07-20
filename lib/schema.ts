@@ -62,7 +62,7 @@ export function restaurantSchema(v: Venue) {
     acceptsReservations: v.reservation ? "True" : "False",
     ...(v.menuUrl ? { menu: v.menuUrl } : {}),
     ...(v.phone ? { telephone: v.phone } : {}),
-    image: `${SITE}/og/${v.slug}.svg`,
+    image: `${SITE}/og/${v.slug}.jpg`,
     address: {
       "@type": "PostalAddress",
       streetAddress: v.address.street,

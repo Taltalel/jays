@@ -19,7 +19,7 @@ export async function generateMetadata({ params }: { params: Promise<{ venue: st
   return {
     title: `Careers — ${label}`,
     description: `Apply to work at ${label} — any position. Join Room 7; we hire for warmth first and teach the rest.`,
-    alternates: { canonical: `https://room7hospitality.com/careers/${venue}` },
+    alternates: { canonical: `https://room7hospitality.com/careers/${venue}/` },
   };
 }
 

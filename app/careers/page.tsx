@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   title: "Careers — Join the house",
   description:
     "Apply to work at any Room 7 room — Jay's, Naked Taco, HighBar or Riviera — for any position. We hire for warmth first and teach the rest.",
-  alternates: { canonical: "https://room7hospitality.com/careers" },
+  alternates: { canonical: "https://room7hospitality.com/careers/" },
 };
 
 const order: VenueKey[] = ["jays", "naked-taco", "highbar", "riviera", "group"];

@@ -4,7 +4,7 @@ import { LegalPage } from "@/components/legal/LegalPage";
 export const metadata: Metadata = {
   title: "Cookie Policy",
   description: "How room7hospitality.com uses cookies and similar technologies, and how to control them.",
-  alternates: { canonical: "https://room7hospitality.com/cookies" },
+  alternates: { canonical: "https://room7hospitality.com/cookies/" },
 };
 
 export default function CookiesPage() {

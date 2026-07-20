@@ -4,7 +4,7 @@ import { LegalPage } from "@/components/legal/LegalPage";
 export const metadata: Metadata = {
   title: "Terms of Use",
   description: "The terms that govern your use of room7hospitality.com.",
-  alternates: { canonical: "https://room7hospitality.com/terms" },
+  alternates: { canonical: "https://room7hospitality.com/terms/" },
 };
 
 export default function TermsPage() {
