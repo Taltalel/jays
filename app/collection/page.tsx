@@ -8,7 +8,7 @@ import { venues, type Venue } from "@/content/venues";
 export const metadata: Metadata = {
   title: "The Collection",
   description:
-    "Three destinations, four rooms. Jay's, Naked Taco, HighBar and Riviera — the Room 7 collection across Fort Lauderdale and Miami Beach.",
+    "Three destinations, four rooms. Jay's, Naked Taco, HighBar and Riviera, the Room 7 collection across Fort Lauderdale and Miami Beach.",
   alternates: { canonical: "https://room7hospitality.com/collection/" },
 };
 
@@ -25,9 +25,9 @@ export default function CollectionPage() {
       <PageHero
         eyebrow="The Collection"
         title="Three destinations. Four rooms."
-        sub="One house, four souls — a church, a riot, a rooftop and the coast. Each keeps its own character; all keep the same standard."
+        sub="One house, four souls, a church, a riot, a rooftop and the coast. Each keeps its own character; all keep the same standard."
         tone="church"
-        placeholder="The collection — a room alive at night"
+        placeholder="The collection, a room alive at night"
         image="/venues/jays-hero.webp"
         imagePosition="50% 40%"
         short
@@ -42,7 +42,7 @@ export default function CollectionPage() {
                 className="venue-card group grid overflow-hidden rounded-sm border border-champagne/10 md:grid-cols-2"
               >
                 <div className={`relative aspect-[16/10] overflow-hidden md:aspect-auto md:min-h-[340px] ${i % 2 ? "md:order-2" : ""}`}>
-                  <Placeholder tone={TONES[v.slug]} seed={`idx-${v.slug}`} src={v.heroImage} alt={`${v.name} — ${v.nickname}`} showLabel={false} className="venue-card__img absolute inset-0" />
+                  <Placeholder tone={TONES[v.slug]} seed={`idx-${v.slug}`} src={v.heroImage} alt={`${v.name}, ${v.nickname}`} showLabel={false} className="venue-card__img absolute inset-0" />
                   <div className="scrim absolute inset-0 md:hidden" />
                 </div>
                 <div className="flex flex-col justify-center gap-3 bg-forest/40 p-8 md:p-12">

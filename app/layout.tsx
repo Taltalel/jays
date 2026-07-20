@@ -33,11 +33,11 @@ const SITE = "https://room7hospitality.com";
 export const metadata: Metadata = {
   metadataBase: new URL(SITE),
   title: {
-    default: "Room 7 — Elevated Hospitality | Fort Lauderdale",
+    default: "Room 7, Elevated Hospitality | Fort Lauderdale",
     template: "%s · Room 7",
   },
   description:
-    "Room 7 is the Fort Lauderdale hospitality group behind Jay's, Naked Taco, HighBar and Riviera — elevated hospitality across South Florida.",
+    "Room 7 is the Fort Lauderdale hospitality group behind Jay's, Naked Taco, HighBar and Riviera, elevated hospitality across South Florida.",
   keywords: [
     "Room 7",
     "Fort Lauderdale hospitality group",
@@ -51,15 +51,15 @@ export const metadata: Metadata = {
     type: "website",
     url: `${SITE}/`,
     siteName: "Room 7",
-    title: "Room 7 — Elevated Hospitality",
+    title: "Room 7, Elevated Hospitality",
     description:
       "The Fort Lauderdale hospitality group behind Jay's, Naked Taco, HighBar and Riviera.",
-    images: [{ url: "/og/room7.png", width: 1200, height: 630, alt: "Room 7 — Elevated Hospitality" }],
+    images: [{ url: "/og/room7.png", width: 1200, height: 630, alt: "Room 7, Elevated Hospitality" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Room 7 — Elevated Hospitality",
-    description: "Elevated hospitality across South Florida — Jay's, Naked Taco, HighBar and Riviera.",
+    title: "Room 7, Elevated Hospitality",
+    description: "Elevated hospitality across South Florida, Jay's, Naked Taco, HighBar and Riviera.",
     images: ["/og/room7.png"],
   },
   icons: {

@@ -7,8 +7,7 @@ import { track, venueParam } from "@/lib/analytics";
  * Reusable inquiry form (Private Events, Careers, Contact).
  *
  * Static-export friendly: on submit it POSTs the submission to FormSubmit
- * (https://formsubmit.co/ajax/<inbox>), which emails it to the routed inbox —
- * no backend required. The first submission to a new inbox triggers a one-time
+ * (https://formsubmit.co/ajax/<inbox>), which emails it to the routed inbox, * no backend required. The first submission to a new inbox triggers a one-time
  * activation email FormSubmit sends to that address; click Activate once and
  * every form is live. Set NEXT_PUBLIC_FORM_ENDPOINT to override with your own
  * provider (Formspree / Basin / a serverless route). Includes a honeypot.
@@ -30,7 +29,7 @@ export function InquiryForm({
   inbox,
   subject,
   submitLabel = "Send",
-  confirm = "Thank you — we'll come back to you within 24 hours.",
+  confirm = "Thank you, we'll come back to you within 24 hours.",
   defaults,
   analytics,
 }: {
@@ -56,7 +55,7 @@ export function InquiryForm({
     const form = e.currentTarget;
     const data = new FormData(form);
 
-    // Honeypot — bots fill hidden fields.
+    // Honeypot, bots fill hidden fields.
     if (data.get("company")) {
       setStatus("done");
       return;
@@ -113,7 +112,7 @@ export function InquiryForm({
 
     // Fallback: open a prefilled email to the routed inbox.
     const body = fields
-      .map((f) => `${f.label}: ${payload[f.name] || "—"}`)
+      .map((f) => `${f.label}: ${payload[f.name] || ", "}`)
       .join("\n");
     window.location.href = `mailto:${inbox}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     setStatus("done");

@@ -5,15 +5,15 @@ import Link from "next/link";
 import { useEffect, useRef } from "react";
 
 /**
- * HOME HERO — a cinematic, layered composition over the gold engraving.
+ * HOME HERO, a cinematic, layered composition over the gold engraving.
  *
  * Top to bottom: the Room 7 wordmark, ELEVATED HOSPITALITY, a gold diamond
  * rule, the "Four rooms. One house." statement, then the vintage-engraving
  * venue panorama fading up into the forest, and a scroll cue. Everything is
- * real, responsive HTML over the artwork — nothing is flattened into an image.
+ * real, responsive HTML over the artwork, nothing is flattened into an image.
  *
  * The four venues in the engraving are keyboard-focusable links (Jay's, Naked
- * Taco, HighBar — Naked Taco's rooftop — and Riviera). Panorama parallax and
+ * Taco, HighBar, Naked Taco's rooftop, and Riviera). Panorama parallax and
  * the atmospheric drift are motion-gated by prefers-reduced-motion.
  */
 
@@ -21,10 +21,10 @@ import { useEffect, useRef } from "react";
 // aligned with the buildings as the artwork is object-cover cropped from the
 // top on wide viewports. Tuned against the 1922×818 engraving.
 const VENUES = [
-  { slug: "jays", name: "Jay's", label: "Jay's — The Cathedral, Fort Lauderdale", left: "6%", width: "23%", bottom: "6%", height: "58%" },
-  { slug: "naked-taco", name: "Naked Taco", label: "Naked Taco — The Riot, 1111 Collins Avenue, Miami Beach", left: "33%", width: "19%", bottom: "6%", height: "34%" },
-  { slug: "highbar", name: "HighBar", label: "HighBar — The View, the rooftop above Naked Taco", left: "52%", width: "15%", bottom: "40%", height: "26%" },
-  { slug: "riviera", name: "Riviera", label: "Riviera — The Coast, Fort Lauderdale Beach", left: "64%", width: "28%", bottom: "6%", height: "44%" },
+  { slug: "jays", name: "Jay's", label: "Jay's, The Cathedral, Fort Lauderdale", left: "6%", width: "23%", bottom: "6%", height: "58%" },
+  { slug: "naked-taco", name: "Naked Taco", label: "Naked Taco, The Riot, 1111 Collins Avenue, Miami Beach", left: "33%", width: "19%", bottom: "6%", height: "34%" },
+  { slug: "highbar", name: "HighBar", label: "HighBar, The View, the rooftop above Naked Taco", left: "52%", width: "15%", bottom: "40%", height: "26%" },
+  { slug: "riviera", name: "Riviera", label: "Riviera, The Coast, Fort Lauderdale Beach", left: "64%", width: "28%", bottom: "6%", height: "44%" },
 ] as const;
 
 export function Hero() {
@@ -40,7 +40,7 @@ export function Hero() {
     const update = () => {
       raf = 0;
       const y = window.scrollY;
-      // Gentle parallax — the engraving lags the scroll a touch. Kept small; any
+      // Gentle parallax, the engraving lags the scroll a touch. Kept small; any
       // exposed sliver is forest green (== the page), so it stays invisible.
       const shift = Math.min(y * 0.05, 18);
       el.style.setProperty("--pano-shift", `${shift}px`);
@@ -60,7 +60,7 @@ export function Hero() {
     <section className="hero relative h-[100svh] min-h-[600px] w-full overflow-hidden bg-forest-deep">
       {/* ---- engraving backdrop: as large as fits with nothing cropped, anchored
              to the bottom. The wordmark is layered on top of it (below). ---- */}
-      {/* tablet/desktop — the whole panorama, centred; width is bounded by the
+      {/* tablet/desktop, the whole panorama, centred; width is bounded by the
           viewport so the full artwork always shows and the hotspots stay aligned. */}
       <div className="absolute inset-x-0 bottom-0 z-0 hidden justify-center sm:flex">
         <div
@@ -96,7 +96,7 @@ export function Hero() {
         </div>
       </div>
 
-      {/* mobile — framed on the iconic Art Deco corner so the full NAKED TACO /
+      {/* mobile, framed on the iconic Art Deco corner so the full NAKED TACO /
           TUDOR signage reads; the same panorama, cover-cropped to a portrait slice */}
       <div className="absolute inset-0 z-0 sm:hidden">
         <img
@@ -144,11 +144,11 @@ export function Hero() {
 
         <DiamondRule className="hero-rise mt-5" style={{ animationDelay: "420ms" }} />
 
-        {/* Visually-hidden page heading — keeps a single h1 for SEO / screen readers. */}
-        <h1 className="sr-only">Room 7 — Elevated Hospitality</h1>
+        {/* Visually-hidden page heading, keeps a single h1 for SEO / screen readers. */}
+        <h1 className="sr-only">Room 7, Elevated Hospitality</h1>
       </div>
 
-      {/* ---- scroll cue — pinned near the bottom ---- */}
+      {/* ---- scroll cue, pinned near the bottom ---- */}
       <a
         href="#statement"
         aria-label="Scroll to discover"

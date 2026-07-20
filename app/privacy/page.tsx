@@ -17,9 +17,9 @@ export default function PrivacyPage() {
         {
           heading: "Information we collect",
           body: [
-            "Information you give us directly — your name, email address, phone number, event or reservation details, and anything you include when you submit an inquiry, apply for a role, or sign up for our newsletter.",
-            "Information collected automatically — when you visit the site we and our analytics providers may collect your IP address, device and browser type, pages viewed, referring pages, and similar usage data through cookies and comparable technologies (see our Cookie Policy).",
-            "We do not intentionally collect sensitive information through this site, and we do not process payments here — reservations, gift cards and delivery are handled by the third-party services linked from each venue.",
+            "Information you give us directly, your name, email address, phone number, event or reservation details, and anything you include when you submit an inquiry, apply for a role, or sign up for our newsletter.",
+            "Information collected automatically, when you visit the site we and our analytics providers may collect your IP address, device and browser type, pages viewed, referring pages, and similar usage data through cookies and comparable technologies (see our Cookie Policy).",
+            "We do not intentionally collect sensitive information through this site, and we do not process payments here, reservations, gift cards and delivery are handled by the third-party services linked from each venue.",
           ],
         },
         {
@@ -33,7 +33,7 @@ export default function PrivacyPage() {
         {
           heading: "How we share it",
           body: [
-            "With service providers who act on our behalf — for example our website host, the form-submission service that delivers your inquiries to us (currently FormSubmit), email/marketing platforms (such as Klaviyo or Mailchimp), analytics (such as Google Analytics), and reservation systems (OpenTable) — under terms that limit their use of the data.",
+            "With service providers who act on our behalf, for example our website host, the form-submission service that delivers your inquiries to us (currently FormSubmit), email/marketing platforms (such as Klaviyo or Mailchimp), analytics (such as Google Analytics), and reservation systems (OpenTable), under terms that limit their use of the data.",
             "With the specific Room 7 venue relevant to your request, so it can respond to you.",
             "When required by law, to protect our rights or safety, or in connection with a business transfer.",
             "We do not sell your personal information, and we do not share it for cross-context behavioral advertising, as those terms are defined under California law.",
@@ -48,7 +48,7 @@ export default function PrivacyPage() {
         {
           heading: "Data retention",
           body: [
-            "We keep personal information only as long as needed for the purposes above — to answer your inquiry, maintain our records, and meet legal requirements — after which we delete or de-identify it.",
+            "We keep personal information only as long as needed for the purposes above, to answer your inquiry, maintain our records, and meet legal requirements, after which we delete or de-identify it.",
           ],
         },
         {

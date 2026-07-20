@@ -7,9 +7,9 @@ import { whyRoom7Careers, teams, venueLabels, venueLocations, careersFields, typ
 import { group } from "@/content/group";
 
 export const metadata: Metadata = {
-  title: "Careers — Join the house",
+  title: "Careers, Join the house",
   description:
-    "Apply to work at any Room 7 room — Jay's, Naked Taco, HighBar or Riviera — for any position. We hire for warmth first and teach the rest.",
+    "Apply to work at any Room 7 room, Jay's, Naked Taco, HighBar or Riviera, for any position. We hire for warmth first and teach the rest.",
   alternates: { canonical: "https://room7hospitality.com/careers/" },
 };
 
@@ -23,7 +23,7 @@ export default function CareersPage() {
         title="Join the house."
         sub="We hire for warmth first and teach the rest. Pick a room, apply for any position, and we'll take it from there."
         tone="riot"
-        placeholder="The team, working — real people, mid-service"
+        placeholder="The team, working, real people, mid-service"
         image="/venues/naked-taco-hero.webp"
         imagePosition="50% 45%"
       />
@@ -67,7 +67,7 @@ export default function CareersPage() {
             ))}
           </div>
           <p className="mt-8 text-sm text-sage">
-            We hire across {teams.slice(0, -1).join(", ")} and {teams[teams.length - 1].toLowerCase()}. No open role listed is no problem — apply for any position and tell us where you shine.
+            We hire across {teams.slice(0, -1).join(", ")} and {teams[teams.length - 1].toLowerCase()}. No open role listed is no problem, apply for any position and tell us where you shine.
           </p>
         </div>
       </section>
@@ -79,15 +79,15 @@ export default function CareersPage() {
             <p className="eyebrow mb-3">Apply</p>
             <h2 className="h2-display text-champagne">Apply for any position.</h2>
             <p className="measure mx-auto mt-4 text-base text-sage">
-              Tell us which room and what you do — we read every application.
+              Tell us which room and what you do, we read every application.
             </p>
           </Reveal>
           <InquiryForm
             fields={careersFields}
             inbox={group.inboxes.careers}
-            subject="Careers application — Room 7"
+            subject="Careers application, Room 7"
             submitLabel="Send application"
-            confirm="Thank you — we've got it. If there's a fit, you'll hear from us."
+            confirm="Thank you, we've got it. If there's a fit, you'll hear from us."
             analytics={{ event: "career_application_submit", venueField: "venue" }}
           />
         </div>

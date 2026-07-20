@@ -7,7 +7,7 @@ import { founderPage, pressOutlets } from "@/content/group";
 import { venues } from "@/content/venues";
 
 export const metadata: Metadata = {
-  title: "Jay Shirodkar — Founder",
+  title: "Jay Shirodkar, Founder",
   description:
     "Jay Shirodkar is the founder of Room 7, the Fort Lauderdale hospitality group behind Jay's, Naked Taco, HighBar and Riviera. The story behind the house.",
   alternates: { canonical: "https://room7hospitality.com/about/jay-shirodkar/" },
@@ -18,7 +18,7 @@ export default function FounderPage() {
     <>
       {/* Hero portrait */}
       <section className="relative flex min-h-[80vh] w-full items-end overflow-hidden">
-        <Placeholder tone="church" label="Jay Shirodkar — portrait" seed="founder-hero" src="/venues/jays-interior.webp" alt="Inside Jay's — the flagship room" objectPosition="50% 45%" priority className="absolute inset-0" />
+        <Placeholder tone="church" label="Jay Shirodkar, portrait" seed="founder-hero" src="/venues/jays-interior.webp" alt="Inside Jay's, the flagship room" objectPosition="50% 45%" priority className="absolute inset-0" />
         <div className="scrim absolute inset-0" />
         <div className="relative mx-auto w-full max-w-7xl px-5 pb-14 pt-32 md:px-8 md:pb-20">
           <p className="eyebrow mb-4">{founderPage.role}</p>
@@ -64,7 +64,7 @@ export default function FounderPage() {
         </div>
       </section>
 
-      {/* Press about Jay — shown only when there's real coverage */}
+      {/* Press about Jay, shown only when there's real coverage */}
       {(founderPage.pressQuotes.length > 0 || pressOutlets.length > 0) && (
       <section className="mx-auto max-w-5xl px-5 py-20 text-center md:px-8 md:py-28">
         <Reveal>
@@ -96,7 +96,7 @@ export default function FounderPage() {
       <section className="border-t border-champagne/10 bg-forest-deep">
         <div className="mx-auto flex max-w-4xl flex-col items-center gap-6 px-6 py-20 text-center md:py-24">
           <h2 className="h2-display text-champagne">More of Jay.</h2>
-          <p className="measure text-sm text-sage">This is the house’s view of its founder. For the rest — the family, the full story — head to his own corner of the internet.</p>
+          <p className="measure text-sm text-sage">This is the house’s view of its founder. For the rest, the family, the full story, head to his own corner of the internet.</p>
           <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-4">
             {founderPage.links.map((l) => (
               <CTA key={l.url} href={l.url} external>{l.label}</CTA>

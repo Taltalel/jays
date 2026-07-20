@@ -1,7 +1,7 @@
 import { Reveal } from "@/components/ui/Reveal";
 import { homeStatement, manifesto } from "@/content/group";
 
-/** The statement — short, centred, generous whitespace. */
+/** The statement, short, centred, generous whitespace. */
 export function Statement() {
   return (
     <section id="statement" className="mx-auto max-w-4xl px-6 py-28 text-center md:py-40">

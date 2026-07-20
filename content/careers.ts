@@ -1,5 +1,5 @@
 /**
- * ROOM 7 — CAREERS
+ * ROOM 7, CAREERS
  * We hire across all four rooms. Rather than list every open role, people
  * choose a room and apply for any position; applications route to the careers
  * inbox. Teams below are the areas we hire for.
@@ -25,7 +25,7 @@ export const venueLocations: Record<VenueKey, string> = {
   group: "Fort Lauderdale",
 };
 
-/** The areas we hire for — shown so applicants know the scope. */
+/** The areas we hire for, shown so applicants know the scope. */
 export const teams = ["Front of House", "Kitchen", "Bar", "Management", "Events & Group"];
 
 export const whyRoom7Careers = [
@@ -34,7 +34,7 @@ export const whyRoom7Careers = [
   { title: "Room to move", line: "Four rooms, one house. Grow across the collection, not out of it." },
 ];
 
-/** The application form — apply per venue for any position. */
+/** The application form, apply per venue for any position. */
 export const careersFields: Field[] = [
   { name: "name", label: "Name", required: true },
   { name: "email", label: "Email", type: "email", required: true },

@@ -10,7 +10,7 @@ const TONES: Record<Venue["slug"], "church" | "riot" | "view" | "coast"> = {
   riviera: "coast",
 };
 
-/** NEXT ROOM — cross-link the other rooms to keep users on-site. */
+/** NEXT ROOM, cross-link the other rooms to keep users on-site. */
 export function NextRooms({ current }: { current: Venue["slug"] }) {
   const others = venues.filter((v) => v.slug !== current);
   return (
@@ -24,7 +24,7 @@ export function NextRooms({ current }: { current: Venue["slug"] }) {
           <Reveal key={v.slug} delay={i * 60}>
             <Link href={`/collection/${v.slug}`} className="venue-card group relative block overflow-hidden rounded-sm">
               <div className="relative aspect-[3/4] overflow-hidden">
-                <Placeholder tone={TONES[v.slug]} seed={`next-${v.slug}`} src={v.heroImage} alt={`${v.name} — ${v.nickname}`} showLabel={false} className="venue-card__img absolute inset-0" />
+                <Placeholder tone={TONES[v.slug]} seed={`next-${v.slug}`} src={v.heroImage} alt={`${v.name}, ${v.nickname}`} showLabel={false} className="venue-card__img absolute inset-0" />
                 <div className="scrim absolute inset-0" />
               </div>
               <div className="absolute inset-x-0 bottom-0 p-5">

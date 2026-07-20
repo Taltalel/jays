@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Monogram } from "@/components/brand/Logo";
 
-/** "A Room 7 venue" mark — carried on every venue page. */
+/** "A Room 7 venue" mark, carried on every venue page. */
 export function RoomMark() {
   return (
     <div className="border-t border-champagne/10 bg-forest-deep">

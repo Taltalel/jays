@@ -7,7 +7,7 @@ import { releases, coverage, pressKit } from "@/content/press";
 import { pressOutlets, boilerplate, group } from "@/content/group";
 
 export const metadata: Metadata = {
-  title: "Press — Buzz & releases",
+  title: "Press, Buzz & releases",
   description:
     "Room 7 press releases, coverage and press kit. News from the Fort Lauderdale hospitality group behind Jay's, Naked Taco, HighBar and Riviera.",
   alternates: { canonical: "https://room7hospitality.com/press/" },
@@ -23,9 +23,9 @@ export default function PressPage() {
       <PageHero
         eyebrow="Press"
         title="The buzz."
-        sub="Releases, coverage and everything a newsroom needs — in one place, each on its own page."
+        sub="Releases, coverage and everything a newsroom needs, in one place, each on its own page."
         tone="church"
-        placeholder="Press night — the room, lit and full"
+        placeholder="Press night, the room, lit and full"
         image="/venues/jays-hero.webp"
         imagePosition="50% 40%"
         short
@@ -58,7 +58,7 @@ export default function PressPage() {
         </ul>
       </section>
 
-      {/* Coverage / Buzz — shown only when there's real coverage to show */}
+      {/* Coverage / Buzz, shown only when there's real coverage to show */}
       {(coverage.length > 0 || pressOutlets.length > 0) && (
       <section className="border-y border-champagne/10 bg-forest/40">
         <div className="mx-auto max-w-6xl px-5 py-16 md:px-8 md:py-24">
@@ -120,7 +120,7 @@ export default function PressPage() {
               ))}
             </ul>
             <div className="mt-8">
-              <CTA href={`mailto:${group.email}?subject=Press%20kit%20request%20—%20Room%207`} external analytics={{ event: "press_kit_request" }}>Request the kit</CTA>
+              <CTA href={`mailto:${group.email}?subject=Press%20kit%20request%20, %20Room%207`} external analytics={{ event: "press_kit_request" }}>Request the kit</CTA>
             </div>
           </Reveal>
 

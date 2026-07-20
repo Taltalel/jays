@@ -7,7 +7,7 @@ import { track, venueParam } from "@/lib/analytics";
 import { group } from "@/content/group";
 
 /**
- * Newsletter capture — signups are delivered to the marketing inbox via
+ * Newsletter capture, signups are delivered to the marketing inbox via
  * FormSubmit (no backend). Captures first name (optional) and a preferred venue
  * alongside the email, and passes venue_preference through to the POST and the
  * newsletter_signup event. NEXT_PUBLIC_FORM_ENDPOINT overrides the destination.
@@ -34,7 +34,7 @@ export function Newsletter() {
         method: "POST",
         headers: { "Content-Type": "application/json", Accept: "application/json" },
         body: JSON.stringify({
-          _subject: "Newsletter signup — Room 7",
+          _subject: "Newsletter signup, Room 7",
           _template: "table",
           _captcha: "false",
           first_name: firstName,
@@ -63,7 +63,7 @@ export function Newsletter() {
         <Reveal delay={80}>
           {status === "done" ? (
             <p className="mx-auto mt-8 max-w-md text-pretty text-base text-champagne">
-              You&apos;re on the list. Save us a seat in your calendar — we&apos;ll do the rest.
+              You&apos;re on the list. Save us a seat in your calendar, we&apos;ll do the rest.
             </p>
           ) : (
             <form onSubmit={onSubmit} className="mx-auto mt-8 flex max-w-md flex-col gap-3" noValidate>
@@ -134,7 +134,7 @@ export function Newsletter() {
           )}
           {status === "error" && (
             <p className="mt-3 text-sm text-gold-light" role="alert">
-              That didn&apos;t go through — check the email and try again?
+              That didn&apos;t go through, check the email and try again?
             </p>
           )}
           <p className="mt-4 text-xs text-sage">

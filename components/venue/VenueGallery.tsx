@@ -6,8 +6,8 @@ import { Placeholder } from "@/components/ui/Placeholder";
 type Tone = "church" | "riot" | "view" | "coast" | "night" | "beach";
 
 /**
- * THE ROOM — gallery with a lightbox. Placeholders describe the shots we need
- * (people in the rooms, the night — never empty interiors, never stock).
+ * THE ROOM, gallery with a lightbox. Placeholders describe the shots we need
+ * (people in the rooms, the night, never empty interiors, never stock).
  */
 export function VenueGallery({
   name,
@@ -21,7 +21,7 @@ export function VenueGallery({
   shots: string[];
   /** Approved photographs, placed into the tiles. */
   realPhotos?: string[];
-  /** This venue's slice of the gold engraving — shown when photography isn't in yet. */
+  /** This venue's slice of the gold engraving, shown when photography isn't in yet. */
   engraving?: string;
 }) {
   const [open, setOpen] = useState<number | null>(null);
@@ -43,7 +43,7 @@ export function VenueGallery({
   }, [open, shots.length]);
 
   // Until real photography lands, feature the venue's engraving rather than a
-  // grid of empty stand-ins — it ties the room back to the house on the home page.
+  // grid of empty stand-ins, it ties the room back to the house on the home page.
   if (realPhotos.length === 0 && engraving) {
     return (
       <section className="mx-auto max-w-7xl px-5 py-16 md:px-8 md:py-24">
@@ -52,7 +52,7 @@ export function VenueGallery({
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={engraving}
-            alt={`${name}, etched — the room as drawn for the house`}
+            alt={`${name}, etched, the room as drawn for the house`}
             className="w-full"
             loading="lazy"
             decoding="async"
@@ -82,7 +82,7 @@ export function VenueGallery({
               seed={`${name}-g${i}`}
               label={label}
               src={realPhotos[i]}
-              alt={realPhotos[i] ? `${name} — ${label}` : undefined}
+              alt={realPhotos[i] ? `${name}, ${label}` : undefined}
               showLabel={false}
               className="venue-card__img absolute inset-0 transition-transform duration-700 group-hover:scale-[1.05]"
             />

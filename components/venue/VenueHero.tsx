@@ -16,10 +16,10 @@ export function VenueHero({ venue, paired }: { venue: Venue; paired?: Venue }) {
     <section className="relative flex min-h-[86vh] w-full items-end overflow-hidden">
       <Placeholder
         tone={TONES[venue.slug]}
-        label={`${venue.name} — the hero shot, alive at night`}
+        label={`${venue.name}, the hero shot, alive at night`}
         seed={`${venue.slug}-hero`}
         src={venue.heroImage}
-        alt={`${venue.name} — ${venue.nickname}`}
+        alt={`${venue.name}, ${venue.nickname}`}
         objectPosition={venue.heroPosition}
         priority
         showLabel={!venue.heroImage}
@@ -44,8 +44,7 @@ export function VenueHero({ venue, paired }: { venue: Venue; paired?: Venue }) {
             {venue.slug === "highbar" ? "Downstairs: " : "Upstairs: "}
             <Link href={`/collection/${paired.slug}`} className="text-gold underline underline-offset-4">
               {paired.name}
-            </Link>{" "}
-            — same address, {venue.slug === "highbar" ? "street level" : "the rooftop"}.
+            </Link>, same address, {venue.slug === "highbar" ? "street level" : "the rooftop"}.
           </p>
         )}
 

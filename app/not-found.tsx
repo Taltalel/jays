@@ -4,7 +4,7 @@ import { CTA } from "@/components/ui/CTA";
 
 export const metadata: Metadata = {
   title: "Not found",
-  description: "This room doesn't exist — but the good ones do.",
+  description: "This room doesn't exist, but the good ones do.",
 };
 
 export default function NotFound() {
@@ -15,7 +15,7 @@ export default function NotFound() {
         <p className="eyebrow mt-8">Error 404</p>
         <h1 className="h1-hero mt-4 text-champagne">Wrong door.</h1>
         <p className="measure mt-5 text-base text-sage md:text-lg">
-          This room isn&apos;t on the list — but four very good ones are. Let&apos;s get you back to the house.
+          This room isn&apos;t on the list, but four very good ones are. Let&apos;s get you back to the house.
         </p>
         <div className="mt-9 flex flex-wrap items-center justify-center gap-x-8 gap-y-4">
           <CTA href="/" variant="outline">

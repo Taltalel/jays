@@ -1,7 +1,7 @@
 import { Reveal } from "@/components/ui/Reveal";
 import { theStandard } from "@/content/group";
 
-/** "The standard" — our values, in Room 7's voice. Gold hairlines between. */
+/** "The standard", our values, in Room 7's voice. Gold hairlines between. */
 export function Standard() {
   return (
     <section className="border-y border-champagne/10 bg-forest/40">

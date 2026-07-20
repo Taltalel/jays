@@ -9,15 +9,18 @@ type Props = {
   cta: { label: string; href: string };
   tone: "night" | "riot" | "coast" | "view" | "church" | "beach";
   placeholder: string;
+  /** Real background photo; falls back to the toned gradient when omitted. */
+  image?: string;
+  imagePosition?: string;
   align?: "left" | "center";
 };
 
 /** Wide image, one line, one CTA. Used for Private Events and Careers. */
-export function CTABand({ eyebrow, headline, sub, cta, tone, placeholder, align = "left" }: Props) {
+export function CTABand({ eyebrow, headline, sub, cta, tone, placeholder, image, imagePosition, align = "left" }: Props) {
   return (
     <section className="relative overflow-hidden">
       <div className="relative min-h-[420px] w-full md:min-h-[520px]">
-        <Placeholder tone={tone} label={placeholder} className="absolute inset-0" seed={eyebrow} />
+        <Placeholder tone={tone} label={placeholder} src={image} alt={image ? placeholder : undefined} objectPosition={imagePosition} showLabel={!image} className="absolute inset-0" seed={eyebrow} />
         <div className="scrim absolute inset-0" />
         <div
           className={`absolute inset-0 mx-auto flex max-w-7xl flex-col justify-end px-5 py-14 md:px-8 md:py-20 ${

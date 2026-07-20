@@ -1,7 +1,7 @@
 import { Reveal } from "@/components/ui/Reveal";
 import type { Venue } from "@/content/venues";
 
-/** THE STORY — the group's view of the concept (not the menu). */
+/** THE STORY, the group's view of the concept (not the menu). */
 export function VenueStory({ venue }: { venue: Venue }) {
   return (
     <section className="mx-auto max-w-4xl px-5 py-20 md:px-8 md:py-28">

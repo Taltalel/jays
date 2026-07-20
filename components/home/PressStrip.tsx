@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { CTA } from "@/components/ui/CTA";
 import { pressOutlets, pressQuotes } from "@/content/group";
 
-/** "In the press" — outlet wordmarks + one rotating pull-quote → /press. */
+/** "In the press", outlet wordmarks + one rotating pull-quote → /press. */
 export function PressStrip() {
   const [i, setI] = useState(0);
   const [paused, setPaused] = useState(false);
@@ -18,7 +18,7 @@ export function PressStrip() {
     return () => clearInterval(t);
   }, [paused]);
 
-  // Nothing to show until there's real coverage — hide the whole strip.
+  // Nothing to show until there's real coverage, hide the whole strip.
   if (pressQuotes.length === 0 && pressOutlets.length === 0) return null;
 
   return (
@@ -50,7 +50,7 @@ export function PressStrip() {
           ))}
         </div>
 
-        {/* outlet wordmarks — TODO: replace with supplied outlet logo SVGs */}
+        {/* outlet wordmarks, TODO: replace with supplied outlet logo SVGs */}
         <ul className="mt-12 flex flex-wrap items-center justify-center gap-x-8 gap-y-4 md:gap-x-12">
           {pressOutlets.map((o) => (
             <li

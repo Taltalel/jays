@@ -8,7 +8,7 @@ import { group } from "@/content/group";
 export const metadata: Metadata = {
   title: "Contact",
   description:
-    "Get in touch with Room 7 — general, private events, press or careers. Fort Lauderdale hospitality group behind Jay's, Naked Taco, HighBar and Riviera.",
+    "Get in touch with Room 7, general, private events, press or careers. Fort Lauderdale hospitality group behind Jay's, Naked Taco, HighBar and Riviera.",
   alternates: { canonical: "https://room7hospitality.com/contact/" },
 };
 
@@ -32,9 +32,9 @@ export default function ContactPage() {
       <PageHero
         eyebrow="Contact"
         title="Say hello."
-        sub="Four ways to reach the house. Pick the one that fits — we'll get it to the right room."
+        sub="Four ways to reach the house. Pick the one that fits, we'll get it to the right room."
         tone="church"
-        placeholder="The house — front of the room"
+        placeholder="The house, front of the room"
         image="/venues/jays-cocktail.webp"
         imagePosition="50% 40%"
         short
@@ -63,7 +63,7 @@ export default function ContactPage() {
           <Reveal>
             <p className="eyebrow mb-3">Message</p>
             <h2 className="h2-display mb-8 text-champagne">Drop us a line.</h2>
-            <InquiryForm fields={fields} inbox={group.email} subject="Contact — Room 7" submitLabel="Send" />
+            <InquiryForm fields={fields} inbox={group.email} subject="Contact, Room 7" submitLabel="Send" />
           </Reveal>
 
           <Reveal delay={80}>

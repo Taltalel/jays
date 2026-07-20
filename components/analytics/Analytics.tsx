@@ -10,7 +10,7 @@ import { GA_ENABLED, GA_MEASUREMENT_ID } from "@/lib/analytics";
  * The initial page_view is sent by gtag config; subsequent App-Router client
  * navigations fire a manual page_view here (config alone doesn't see them).
  *
- * Renders nothing unless NEXT_PUBLIC_GA_ID is a real measurement id — set it in
+ * Renders nothing unless NEXT_PUBLIC_GA_ID is a real measurement id, set it in
  * the Vercel project env and redeploy to switch analytics on.
  */
 export function Analytics() {

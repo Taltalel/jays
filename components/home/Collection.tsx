@@ -4,7 +4,7 @@ import { Reveal } from "@/components/ui/Reveal";
 import { collectionCards } from "@/content/venues";
 
 /**
- * THE COLLECTION — the heart of the homepage, not a nav item.
+ * THE COLLECTION, the heart of the homepage, not a nav item.
  * Three destinations, four rooms. Jay's leads (flagship, full width); the
  * Collins Avenue card carries both Naked Taco (street) and HighBar (rooftop).
  */
@@ -21,13 +21,13 @@ export function Collection() {
           <h2 className="h2-display text-champagne">Three destinations. Four rooms.</h2>
         </div>
         <p className="measure text-sm text-sage md:max-w-xs md:text-right">
-          Each room keeps its own soul — held together by one standard of hospitality.
+          Each room keeps its own soul, held together by one standard of hospitality.
         </p>
       </Reveal>
 
-      {/* Flagship — full width */}
+      {/* Flagship, full width */}
       <Reveal>
-        <FeatureCard card={jays} tone="church" tall label="Jay's — the church, the night it comes alive" />
+        <FeatureCard card={jays} tone="church" tall label="Jay's, the church, the night it comes alive" />
       </Reveal>
 
       {/* Two-up */}
@@ -41,7 +41,7 @@ export function Collection() {
           />
         </Reveal>
         <Reveal delay={80}>
-          <FeatureCard card={riviera} tone="coast" label="Riviera — golden hour, oceanfront table" />
+          <FeatureCard card={riviera} tone="coast" label="Riviera, golden hour, oceanfront table" />
         </Reveal>
       </div>
     </section>
@@ -65,13 +65,13 @@ function FeatureCard({
     <Link
       href={card.href}
       className="venue-card group relative block overflow-hidden rounded-sm"
-      aria-label={`${card.title} — ${card.destination}`}
+      aria-label={`${card.title}, ${card.destination}`}
     >
       <div className={`relative w-full overflow-hidden ${tall ? "aspect-[16/10] md:aspect-[21/9]" : "aspect-[4/5] md:aspect-[4/3]"}`}>
-        <Placeholder tone={tone} seed={card.key} label={label} src={card.image} alt={`${card.title} — ${card.destination}`} showLabel={!card.image} className="venue-card__img absolute inset-0" />
+        <Placeholder tone={tone} seed={card.key} label={label} src={card.image} alt={`${card.title}, ${card.destination}`} showLabel={!card.image} className="venue-card__img absolute inset-0" />
       </div>
 
-      {/* scrim behind text over photography — non-negotiable */}
+      {/* scrim behind text over photography, non-negotiable */}
       <div className="scrim pointer-events-none absolute inset-0" />
 
       <div className="absolute inset-x-0 bottom-0 flex flex-col gap-2 p-6 md:p-8">

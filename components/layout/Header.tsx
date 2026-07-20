@@ -44,7 +44,7 @@ export function Header() {
           : "bg-transparent"
       }`}
     >
-      {/* top scrim — keeps the nav legible over the hero */}
+      {/* top scrim, keeps the nav legible over the hero */}
       <div
         aria-hidden="true"
         className={`pointer-events-none absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-forest-deep/70 to-transparent transition-opacity duration-500 ${
@@ -66,7 +66,7 @@ export function Header() {
 
         {/* Mobile: mark pinned left of the hamburger row */}
         <div className="lg:hidden">
-          <Link href="/" aria-label="Room 7 — home" className="logo-link inline-flex items-center">
+          <Link href="/" aria-label="Room 7, home" className="logo-link inline-flex items-center">
             <Monogram className="h-8 w-auto" />
           </Link>
         </div>
@@ -75,7 +75,7 @@ export function Header() {
         <div className="hidden justify-center lg:flex">
           <Link
             href="/"
-            aria-label="Room 7 — home"
+            aria-label="Room 7, home"
             className={`logo-link inline-flex items-center transition-opacity duration-500 ${
               showMark ? "opacity-100" : "pointer-events-none opacity-0"
             }`}
@@ -256,7 +256,7 @@ function MobileMenu({ open, onClose }: { open: boolean; onClose: () => void }) {
                       style={{ fontFamily: "var(--font-label)" }}
                     >
                       {c.label}
-                      {c.sublabel ? ` — ${c.sublabel}` : ""}
+                      {c.sublabel ? `, ${c.sublabel}` : ""}
                     </Link>
                   </li>
                 ))}

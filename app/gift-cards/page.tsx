@@ -7,7 +7,7 @@ import { venues } from "@/content/venues";
 
 export const metadata: Metadata = {
   title: "Gift Cards",
-  description: "Give a night at Room 7 — gift cards for Jay's, Naked Taco, HighBar and Riviera.",
+  description: "Give a night at Room 7, gift cards for Jay's, Naked Taco, HighBar and Riviera.",
   alternates: { canonical: "https://room7hospitality.com/gift-cards/" },
 };
 

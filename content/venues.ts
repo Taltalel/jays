@@ -1,11 +1,11 @@
 /**
- * ROOM 7 — VENUE DATA
+ * ROOM 7, VENUE DATA
  * -------------------------------------------------------------------------
  * Single source of truth for the four rooms. Edit copy here; components read
- * from it. Addresses, hours, phones and reservation links are VERIFIED — do
+ * from it. Addresses, hours, phones and reservation links are VERIFIED, do
  * not change them without re-checking the live venue sites.
  *
- * NOTE ON HIGHBAR: HighBar is Naked Taco's rooftop — same building, same
+ * NOTE ON HIGHBAR: HighBar is Naked Taco's rooftop, same building, same
  * address on Collins Ave. It is not a separate venue in another location.
  */
 
@@ -20,7 +20,7 @@ export type Venue = {
   nickname: string; // "The Cathedral"
   destination: string; // human location label used on the group site
   flagship?: boolean;
-  /** Room 7's line for the venue — the GROUP's view, written fresh here. */
+  /** Room 7's line for the venue, the GROUP's view, written fresh here. */
   descriptor: string;
   /** Longer group-voice intro used on the collection + venue hero. */
   lede: string;
@@ -33,7 +33,7 @@ export type Venue = {
   phone?: string;
   email?: string;
   website: { label: string; url: string };
-  /** Online menu on the venue's own site — we route diners there. */
+  /** Online menu on the venue's own site, we route diners there. */
   menuUrl?: string;
   instagram: { handle: string; url: string };
   /** Full social set (verified from the live venue sites). */
@@ -44,7 +44,7 @@ export type Venue = {
   hours: { label: string; value: string }[];
   cuisine: string;
   priceRange: string; // schema-friendly
-  /** The Room / The Table / The Night — group-voice, unique to this site. */
+  /** The Room / The Table / The Night, group-voice, unique to this site. */
   scenes: {
     room: string;
     table: string;
@@ -72,7 +72,7 @@ export const venues: Venue[] = [
     destination: "Fort Lauderdale",
     flagship: true,
     descriptor: "A steakhouse with a congregation, inside a 1920s church.",
-    lede: "Stone, stained glass and candlelight — where dinner keeps the hours of a cabaret.",
+    lede: "Stone, stained glass and candlelight, where dinner keeps the hours of a cabaret.",
     address: {
       street: "441 NE 3rd Ave",
       locality: "Fort Lauderdale, FL 33301",
@@ -102,16 +102,16 @@ export const venues: Venue[] = [
     priceRange: "$$$$",
     scenes: {
       room:
-        "They kept the bones — the arches, the stone, the light through coloured glass — and moved in velvet, brass and a bar you'd confess anything to.",
+        "They kept the bones, the arches, the stone, the light through coloured glass, and moved in velvet, brass and a bar you'd confess anything to.",
       table:
         "Prime cuts, a raw bar with something to prove, and a cocktail list that keeps its own counsel. Order like you're staying.",
       night:
         "Somewhere past the second course the lights lean down and the room stops being a restaurant. Dinner becomes the opening act.",
     },
     story: [
-      "Some rooms you build. This one was already standing — a 1920s church that spent a century learning how to hold a crowd. Room 7 gave it a second life with the ceremony left intact.",
+      "Some rooms you build. This one was already standing, a 1920s church that spent a century learning how to hold a crowd. Room 7 gave it a second life with the ceremony left intact.",
       "It is our flagship because it is our thesis: dinner is never just dinner. Under the arches, over a prime cut and a drink that flirts, an evening turns into the kind of night people describe for weeks.",
-      "The Cathedral is Room 7 at full volume — old-world glamour, modern swagger, and a standard of hospitality we hold every other room to.",
+      "The Cathedral is Room 7 at full volume, old-world glamour, modern swagger, and a standard of hospitality we hold every other room to.",
     ],
     heroImage: "/venues/jays-hero.webp",
     heroPosition: "50% 35%",
@@ -136,7 +136,7 @@ export const venues: Venue[] = [
     nickname: "The Riot",
     destination: "Collins Avenue, Miami Beach",
     descriptor: "Tacos, margaritas and mischief with a twelve-year cult following.",
-    lede: "Street level at 1111 Collins — the loud, generous heart of the building.",
+    lede: "Street level at 1111 Collins, the loud, generous heart of the building.",
     address: {
       street: "1111 Collins Avenue",
       locality: "Miami Beach, FL 33139",
@@ -171,14 +171,14 @@ export const venues: Venue[] = [
     pairedWith: "highbar",
     scenes: {
       room:
-        "A room that runs hot from breakfast to last call — colour, noise, and a crowd that keeps coming back.",
+        "A room that runs hot from breakfast to last call, colour, noise, and a crowd that keeps coming back.",
       table:
         "Tuna nachos with a reputation, birria and lobster tacos, margaritas by the round. Twelve years of regulars will tell you what to order.",
       night:
-        "By happy hour it tips from lunch into party — the warm-up act for a rooftop two flights up. The night starts here; it doesn't end here.",
+        "By happy hour it tips from lunch into party, the warm-up act for a rooftop two flights up. The night starts here; it doesn't end here.",
     },
     story: [
-      "Twelve years on Collins Avenue is a lifetime in a neighbourhood that reinvents itself every season. Naked Taco earned it — a cult following, a favourite send-off before a big night, breakfast worth the walk.",
+      "Twelve years on Collins Avenue is a lifetime in a neighbourhood that reinvents itself every season. Naked Taco earned it, a cult following, a favourite send-off before a big night, breakfast worth the walk.",
       "In the collection it plays the extrovert: fast, generous, unpretentious, packed. It is the room that proves elevated hospitality doesn't have to whisper.",
       "And it comes with an upstairs. Naked Taco holds the street; HighBar holds the sky. One address, two moods, one long night.",
     ],
@@ -190,7 +190,7 @@ export const venues: Venue[] = [
     name: "HighBar",
     nickname: "The View",
     destination: "Rooftop at 1111 Collins Avenue",
-    descriptor: "The rooftop above Naked Taco — pool, skyline, golden hour.",
+    descriptor: "The rooftop above Naked Taco, pool, skyline, golden hour.",
     lede: "Two flights up from the tacos: an infinity edge, the Atlantic, and the best light in the city.",
     address: {
       street: "1111 Collins Avenue",
@@ -217,15 +217,15 @@ export const venues: Venue[] = [
     pairedWith: "naked-taco",
     scenes: {
       room:
-        "An infinity edge, a pool deck and the open Atlantic — the top floor of the same building that serves you tacos at street level.",
+        "An infinity edge, a pool deck and the open Atlantic, the top floor of the same building that serves you tacos at street level.",
       table:
         "Cocktails built for the hour, cold and unhurried, poured while the sky does the work. Come for the light; stay for the DJ.",
       night:
-        "Golden hour is the whole point, and then it isn't — weekend sets carry the deck long after the sun has clocked out.",
+        "Golden hour is the whole point, and then it isn't, weekend sets carry the deck long after the sun has clocked out.",
     },
     story: [
       "HighBar is not a second address. It is the roof of the first one. Ride two floors up from Naked Taco and the noise drops away to a pool deck, an infinity edge and the entire Atlantic.",
-      "In the collection it is the exhale — the part of the night that slows down and looks out. Same building, same team, same standard, a completely different altitude.",
+      "In the collection it is the exhale, the part of the night that slows down and looks out. Same building, same team, same standard, a completely different altitude.",
       "Downstairs is the riot. Up here is the view. Room 7 built the staircase between them on purpose.",
     ],
     heroImage: "/venues/highbar-hero.webp",
@@ -237,7 +237,7 @@ export const venues: Venue[] = [
     nickname: "The Coast",
     destination: "Fort Lauderdale Beach",
     descriptor: "An all-day oceanfront table where the light does the seasoning.",
-    lede: "Sand-side at Hotel Maren — breakfast on the veranda through golden hour and dinner.",
+    lede: "Sand-side at Hotel Maren, breakfast on the veranda through golden hour and dinner.",
     address: {
       street: "525 S Fort Lauderdale Beach Blvd",
       locality: "Fort Lauderdale, FL 33316",
@@ -265,16 +265,16 @@ export const venues: Venue[] = [
     priceRange: "$$$",
     scenes: {
       room:
-        "Open to the ocean and easy about it — a veranda, a raw bar, and a room that reads the weather. Come in sandy; leave in no hurry.",
+        "Open to the ocean and easy about it, a veranda, a raw bar, and a room that reads the weather. Come in sandy; leave in no hurry.",
       table:
         "Prime seafood, a raw bar, cocktails with salt on the rim. A table that runs from a slow breakfast to a long dinner without changing its mind.",
       night:
-        "Golden hour arrives on schedule and stays late. When the light turns, the room turns with it — the coast's version of the lights going down.",
+        "Golden hour arrives on schedule and stays late. When the light turns, the room turns with it, the coast's version of the lights going down.",
     },
     story: [
-      "Every collection needs a room that knows how to do nothing beautifully. Riviera is ours — oceanfront, all day, in no particular rush.",
+      "Every collection needs a room that knows how to do nothing beautifully. Riviera is ours, oceanfront, all day, in no particular rush.",
       "It is the daylight counterpart to the church and the rooftop: the same standard of hospitality, poured over sand and salt air instead of stone and candlelight.",
-      "Breakfast on the veranda, a raw bar at lunch, cocktails as the light turns gold. The Coast is Room 7 with its shoes off — and still the best table on the beach.",
+      "Breakfast on the veranda, a raw bar at lunch, cocktails as the light turns gold. The Coast is Room 7 with its shoes off, and still the best table on the beach.",
     ],
     heroImage: "/venues/riviera-hero.webp",
     heroPosition: "50% 48%",
@@ -302,7 +302,7 @@ export const collectionCards = [
     title: "Naked Taco + HighBar",
     kicker: "The Riot & The View",
     destination: "1111 Collins Avenue",
-    descriptor: "Tacos at street level, a pool deck at golden hour — one address, two floors.",
+    descriptor: "Tacos at street level, a pool deck at golden hour, one address, two floors.",
     href: "/collection/naked-taco",
     secondaryHref: "/collection/highbar",
     image: "/venues/highbar-hero.webp",

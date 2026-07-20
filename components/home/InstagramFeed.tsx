@@ -3,10 +3,10 @@ import { Reveal } from "@/components/ui/Reveal";
 import { venues, venueBySlug } from "@/content/venues";
 
 /**
- * The Feed — surfaces every venue's Instagram. Tiles use real venue imagery
+ * The Feed, surfaces every venue's Instagram. Tiles use real venue imagery
  * and link to the matching account; the follow row lists all four rooms.
  * TODO: connect a live embed (Behold / official Instagram) to pull live posts
- * — needs an access token. Until then these route to each real profile.
+ *, needs an access token. Until then these route to each real profile.
  */
 
 // Real imagery mapped to the account it belongs to.
@@ -29,7 +29,7 @@ export function InstagramFeed() {
         <h2 className="h2-display text-champagne">The night, as it happens.</h2>
       </Reveal>
 
-      {/* Follow the rooms — every account */}
+      {/* Follow the rooms, every account */}
       <Reveal>
         <div className="mb-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
           {venues.map((v) => (
@@ -65,7 +65,7 @@ export function InstagramFeed() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group relative block aspect-square overflow-hidden rounded-sm"
-                aria-label={`Instagram — ${v.instagram.handle}`}
+                aria-label={`Instagram, ${v.instagram.handle}`}
               >
                 <Placeholder
                   tone={t.tone}

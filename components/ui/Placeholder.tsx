@@ -1,7 +1,7 @@
 import type { CSSProperties } from "react";
 
 /**
- * On-brand photography placeholder. NEVER stock imagery — one stock photo
+ * On-brand photography placeholder. NEVER stock imagery, one stock photo
  * undoes the whole thing. These are candlelit, cinematic gradient stand-ins
  * that describe the shot we still need. Marked TODO. Swap for real WebP/AVIF
  * (people in the rooms, not empty rooms) when photography lands.
@@ -49,7 +49,7 @@ export function Placeholder({
   priority = false,
 }: {
   tone?: Tone;
-  /** What the shot should be — describe the intended photograph. */
+  /** What the shot should be, describe the intended photograph. */
   label?: string;
   seed?: string;
   className?: string;
@@ -65,7 +65,7 @@ export function Placeholder({
 }) {
   // Real photography path. Note: callers pass their own positioning (usually
   // `absolute inset-0`) via className, so we must NOT hardcode `relative` here
-  // — a conflicting position class collapses the image in flex containers with
+  //, a conflicting position class collapses the image in flex containers with
   // no definite height (e.g. the venue hero). Fall back to `relative` only when
   // the caller doesn't position it.
   if (src) {
@@ -89,7 +89,7 @@ export function Placeholder({
   const t = TONES[tone];
   const { x, y } = offsets(seed ?? label ?? tone);
   // Same guard as the image branch: when the caller already positions us
-  // (e.g. `absolute inset-0`), don't also emit `relative` — the conflict
+  // (e.g. `absolute inset-0`), don't also emit `relative`, the conflict
   // otherwise leaves the gradient in flow and shoves hero text off-centre.
   const positioned = /\b(absolute|fixed|relative)\b/.test(className ?? "");
   return (

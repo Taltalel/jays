@@ -3,14 +3,14 @@ import { Reveal } from "@/components/ui/Reveal";
 import { CTA } from "@/components/ui/CTA";
 import { founderTeaser, group } from "@/content/group";
 
-/** The founder — split layout, portrait left, two sentences, two links. */
+/** The founder, split layout, portrait left, two sentences, two links. */
 export function Founder() {
   return (
     <section className="mx-auto max-w-7xl px-5 py-20 md:px-8 md:py-28">
       <div className="grid items-center gap-10 md:grid-cols-2 md:gap-16">
         <Reveal className="relative">
           <div className="relative aspect-[4/5] overflow-hidden rounded-sm md:aspect-[3/4]">
-            <Placeholder tone="night" seed="jay-portrait" label="Jay Shirodkar — portrait, in one of the rooms" className="absolute inset-0" />
+            <Placeholder tone="night" seed="jay-portrait" src="/venues/jays-bar.webp" alt="Inside Jay's, the flagship room" objectPosition="50% 40%" showLabel={false} className="absolute inset-0" />
           </div>
         </Reveal>
 

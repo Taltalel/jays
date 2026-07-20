@@ -9,7 +9,7 @@ import { manifesto, whyRoom7, founderTeaser } from "@/content/group";
 import { venues } from "@/content/venues";
 
 export const metadata: Metadata = {
-  title: "About — Four rooms, one house",
+  title: "About, Four rooms, one house",
   description:
     "Room 7 is the Fort Lauderdale hospitality group behind Jay's, Naked Taco, HighBar and Riviera. The group, the standard, and the story behind the name.",
   alternates: { canonical: "https://room7hospitality.com/about/" },
@@ -23,7 +23,7 @@ export default function AboutPage() {
         title="Four rooms. One house."
         sub={manifesto.hook}
         tone="night"
-        placeholder="A room, half-lit — the house at rest"
+        placeholder="A room, half-lit, the house at rest"
         image="/venues/jays-interior.webp"
         imagePosition="50% 45%"
       />
@@ -62,7 +62,7 @@ export default function AboutPage() {
         <div className="mx-auto grid max-w-7xl items-center gap-10 px-5 py-20 md:grid-cols-2 md:gap-16 md:px-8 md:py-28">
           <Reveal>
             <div className="relative aspect-[4/5] overflow-hidden rounded-sm">
-              <Placeholder tone="night" seed="about-jay" label="Jay Shirodkar — in one of the rooms" className="absolute inset-0" />
+              <Placeholder tone="night" seed="about-jay" src="/venues/jays-interior.webp" alt="Inside Jay's, the flagship room" objectPosition="50% 45%" showLabel={false} className="absolute inset-0" />
             </div>
           </Reveal>
           <Reveal delay={80}>
@@ -80,7 +80,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* The house — four venues */}
+      {/* The house, four venues */}
       <section className="mx-auto max-w-7xl px-5 py-20 md:px-8 md:py-28">
         <Reveal className="mb-10 md:mb-14">
           <p className="eyebrow mb-3">The House</p>

@@ -23,10 +23,10 @@ export default function CookiesPage() {
         {
           heading: "The cookies we use",
           body: [
-            "Strictly necessary — required for the site to function, such as page navigation and security. These cannot be switched off in our systems.",
-            "Analytics & performance — help us understand how visitors use the site so we can improve it (for example, Google Analytics). These collect information in aggregate.",
-            "Functional — remember choices you make to give you a better experience.",
-            "Third-party — some pages embed third-party content (such as maps or reservation widgets) that may set their own cookies under the provider's policy.",
+            "Strictly necessary, required for the site to function, such as page navigation and security. These cannot be switched off in our systems.",
+            "Analytics & performance, help us understand how visitors use the site so we can improve it (for example, Google Analytics). These collect information in aggregate.",
+            "Functional, remember choices you make to give you a better experience.",
+            "Third-party, some pages embed third-party content (such as maps or reservation widgets) that may set their own cookies under the provider's policy.",
           ],
         },
         {

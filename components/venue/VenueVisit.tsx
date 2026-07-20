@@ -3,7 +3,7 @@ import { TrackedLink } from "@/components/ui/TrackedLink";
 import { venueParam } from "@/lib/analytics";
 import type { Venue } from "@/content/venues";
 
-/** VISIT — address, hours, phone, map, reserve. */
+/** VISIT, address, hours, phone, map, reserve. */
 export function VenueVisit({ venue }: { venue: Venue }) {
   const q = encodeURIComponent(`${venue.name}, ${venue.address.street}, ${venue.address.locality}`);
   const vp = venueParam(venue.slug);
@@ -97,7 +97,7 @@ export function VenueVisit({ venue }: { venue: Venue }) {
           </div>
         </div>
 
-        {/* Directions — links out to Google Maps (no third-party embed / cookies) */}
+        {/* Directions, links out to Google Maps (no third-party embed / cookies) */}
         <TrackedLink
           href={`https://www.google.com/maps/search/?api=1&query=${q}`}
           event="directions_click"

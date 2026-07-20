@@ -18,7 +18,7 @@ const SCENES = [
 ] as const;
 
 /**
- * THE DETAIL — Room 7's ownable interaction. The evening unfolds as you
+ * THE DETAIL, Room 7's ownable interaction. The evening unfolds as you
  * descend: The Room → The Table → The Night, each scene alternating and
  * revealing on scroll. (Reveals disable under prefers-reduced-motion.)
  */
@@ -43,7 +43,7 @@ export function VenueScenes({ venue }: { venue: Venue }) {
                     seed={`${venue.slug}-${s.key}`}
                     label={`${venue.name} · ${s.label}`}
                     src={venue.sceneImages?.[s.key]}
-                    alt={`${venue.name} — ${s.label}`}
+                    alt={`${venue.name}, ${s.label}`}
                     showLabel={!venue.sceneImages?.[s.key]}
                     className="absolute inset-0"
                   />

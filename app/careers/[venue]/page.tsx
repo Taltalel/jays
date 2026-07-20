@@ -8,6 +8,14 @@ import { group } from "@/content/group";
 
 const KEYS: VenueKey[] = ["jays", "naked-taco", "highbar", "riviera", "group"];
 
+const CAREERS_IMAGE: Record<VenueKey, string> = {
+  jays: "/venues/jays-hero.webp",
+  "naked-taco": "/venues/naked-taco-hero.webp",
+  highbar: "/venues/highbar-hero.webp",
+  riviera: "/venues/riviera-hero.webp",
+  group: "/venues/jays-hero.webp",
+};
+
 export function generateStaticParams() {
   return KEYS.map((venue) => ({ venue }));
 }
@@ -17,8 +25,8 @@ export async function generateMetadata({ params }: { params: Promise<{ venue: st
   if (!KEYS.includes(venue as VenueKey)) return {};
   const label = venueLabels[venue as VenueKey];
   return {
-    title: `Careers — ${label}`,
-    description: `Apply to work at ${label} — any position. Join Room 7; we hire for warmth first and teach the rest.`,
+    title: `Careers, ${label}`,
+    description: `Apply to work at ${label}, any position. Join Room 7; we hire for warmth first and teach the rest.`,
     alternates: { canonical: `https://room7hospitality.com/careers/${venue}/` },
   };
 }
@@ -37,22 +45,24 @@ export default async function VenueCareersPage({ params }: { params: Promise<{ v
         sub={`${venueLocations[key]} · apply for any position. We hire for warmth first and teach the rest.`}
         tone="riot"
         placeholder="The team at work, mid-service"
+        image={CAREERS_IMAGE[key]}
+        imagePosition="50% 45%"
         short
       />
 
       <section className="mx-auto max-w-3xl px-5 py-16 md:px-8 md:py-24">
         <Reveal className="mb-8">
           <p className="text-base text-sage">
-            We hire at {label} across {teams.slice(0, -1).join(", ")} and {teams[teams.length - 1].toLowerCase()}. Whatever you do, introduce yourself — we read every application.
+            We hire at {label} across {teams.slice(0, -1).join(", ")} and {teams[teams.length - 1].toLowerCase()}. Whatever you do, introduce yourself, we read every application.
           </p>
         </Reveal>
         <Reveal>
           <InquiryForm
             fields={careersFields}
             inbox={group.inboxes.careers}
-            subject={`Careers application — ${label} — Room 7`}
+            subject={`Careers application, ${label}, Room 7`}
             submitLabel="Send application"
-            confirm="Thank you — we've got it. If there's a fit, you'll hear from us."
+            confirm="Thank you, we've got it. If there's a fit, you'll hear from us."
             defaults={{ venue: label }}
             analytics={{ event: "career_application_submit", venueField: "venue" }}
           />

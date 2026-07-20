@@ -1,8 +1,8 @@
 /**
- * ROOM 7 — GROUP CONTENT
+ * ROOM 7, GROUP CONTENT
  * -------------------------------------------------------------------------
  * Group identity, navigation, the values ("the standard"), founder teaser,
- * press outlets and the boilerplate. Written in the Room 7 voice — confident,
+ * press outlets and the boilerplate. Written in the Room 7 voice, confident,
  * flirtatious, effortless, generous, cheeky. Edit here, not in components.
  */
 
@@ -13,7 +13,7 @@ export const group = {
   // All contact + form mail routes to the live marketing inbox for now.
   // (Swap to a branded hello@room7hospitality.com address once it's stood up.)
   email: "marketing@yesfbm.com",
-  // Where each form routes — all to the marketing inbox per request.
+  // Where each form routes, all to the marketing inbox per request.
   inboxes: {
     general: "marketing@yesfbm.com",
     events: "marketing@yesfbm.com",
@@ -27,17 +27,17 @@ export const group = {
   },
 };
 
-/** The manifesto — used on Home and About. */
+/** The manifesto, used on Home and About. */
 export const manifesto = {
   hook: "Dinner was never just dinner. It's the whole night.",
-  body: "Room 7 builds rooms with a pulse — glamorous, design-led, alive. Stone and candlelight, a drink that flirts, a dinner that turns into a show. Old-world glamour with modern swagger, across a collection of concepts that each throw the kind of night people can't stop talking about.",
+  body: "Room 7 builds rooms with a pulse, glamorous, design-led, alive. Stone and candlelight, a drink that flirts, a dinner that turns into a show. Old-world glamour with modern swagger, across a collection of concepts that each throw the kind of night people can't stop talking about.",
 };
 
-/** Homepage statement block — short, centred, generous whitespace. */
+/** Homepage statement block, short, centred, generous whitespace. */
 export const homeStatement =
-  "Room 7 is the group behind some of South Florida's most-loved rooms. We build places with a pulse — where the design has a past, the drinks have a point of view, and dinner turns into a night.";
+  "Room 7 is the group behind some of South Florida's most-loved rooms. We build places with a pulse, where the design has a past, the drinks have a point of view, and dinner turns into a night.";
 
-/** "The standard" — values in Room 7's voice, not HR's. Gold rules between. */
+/** "The standard", values in Room 7's voice, not HR's. Gold rules between. */
 export const theStandard: { title: string; line: string }[] = [
   {
     title: "The room comes first",
@@ -45,7 +45,7 @@ export const theStandard: { title: string; line: string }[] = [
   },
   {
     title: "Know them by name",
-    line: "The best seat in the house is the one that remembers you. Regulars aren't a database — they're the point.",
+    line: "The best seat in the house is the one that remembers you. Regulars aren't a database, they're the point.",
   },
   {
     title: "The drink has an opinion",
@@ -61,7 +61,7 @@ export const theStandard: { title: string; line: string }[] = [
   },
 ];
 
-/** Why "Room 7" — appears on the About page. */
+/** Why "Room 7", appears on the About page. */
 export const whyRoom7: { title: string; line: string }[] = [
   {
     title: "Lucky Seven",
@@ -77,7 +77,7 @@ export const whyRoom7: { title: string; line: string }[] = [
   },
 ];
 
-/** The audience — used on About / internal reference. */
+/** The audience, used on About / internal reference. */
 export const audience = [
   {
     title: "The Tastemakers",
@@ -99,36 +99,36 @@ export const founderTeaser = {
   role: "Founder",
   lines: [
     "Jay Shirodkar doesn't build restaurants. He builds the reason you cancel your other plans.",
-    "From a restored church in Flagler Village to a rooftop over Collins Avenue, every Room 7 concept starts the same way — with a night worth showing up for.",
+    "From a restored church in Flagler Village to a rooftop over Collins Avenue, every Room 7 concept starts the same way, with a night worth showing up for.",
   ],
 };
 
-/** Founder page — Room 7's view of Jay. MUST NOT duplicate jayshirodkar.com. */
+/** Founder page, Room 7's view of Jay. MUST NOT duplicate jayshirodkar.com. */
 export const founderPage = {
   name: "Jay Shirodkar",
   role: "Founder, Room 7",
   lede: "The man who decided a night out should feel like getting let in somewhere.",
   story: [
-    "Jay Shirodkar builds rooms the way other people throw parties — with a guest list in mind and a feeling he's chasing. Room 7 is the house he built to hold all of them.",
-    "It started with a church. A 1920s sanctuary in Flagler Village that most people would have flattened, he restored instead — stained glass, stone, soaring arches — and turned into Jay's: a steakhouse where dinner keeps the hours of a cabaret. Once he'd proven a room could have a past and a pulse at the same time, the rest of the collection followed.",
+    "Jay Shirodkar builds rooms the way other people throw parties, with a guest list in mind and a feeling he's chasing. Room 7 is the house he built to hold all of them.",
+    "It started with a church. A 1920s sanctuary in Flagler Village that most people would have flattened, he restored instead, stained glass, stone, soaring arches, and turned into Jay's: a steakhouse where dinner keeps the hours of a cabaret. Once he'd proven a room could have a past and a pulse at the same time, the rest of the collection followed.",
     "The thread through all of it is the same conviction: hospitality is a standard, not a script. Warmth first. Design that means something. A night people describe to everyone who wasn't there. Room 7 is that conviction, given four rooms.",
   ],
   links: [
     { label: "jayshirodkar.com", url: "https://jayshirodkar.com", external: true },
     { label: "@shirodkarfamily", url: "https://instagram.com/shirodkarfamily", external: true },
   ],
-  // Real coverage only — empty until Room 7 is actually covered.
+  // Real coverage only, empty until Room 7 is actually covered.
   pressQuotes: [] as { quote: string; source: string }[],
 };
 
-/** Press outlets for the homepage strip + press hub — list outlets only once
+/** Press outlets for the homepage strip + press hub, list outlets only once
  * they've actually covered Room 7. Empty until then. */
 export const pressOutlets: string[] = [];
 
-/** Rotating pull-quotes for the homepage press strip — real coverage only.
+/** Rotating pull-quotes for the homepage press strip, real coverage only.
  * Empty until Room 7 is actually covered; the strip hides itself when empty. */
 export const pressQuotes: { quote: string; source: string }[] = [];
 
-/** Group boilerplate — on every press release. */
+/** Group boilerplate, on every press release. */
 export const boilerplate =
   "Room 7 is a Fort Lauderdale–based hospitality group founded by Jay Shirodkar, operating Jay's, Naked Taco, HighBar and Riviera across South Florida. Room 7 builds design-led restaurants and bars where dining, design and entertainment meet. More at room7hospitality.com.";

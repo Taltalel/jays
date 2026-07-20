@@ -7,7 +7,7 @@ import { whatWeHost, capacities, collinsSpaces, cateringCollections, eventTerms 
 import { group } from "@/content/group";
 
 export const metadata: Metadata = {
-  title: "Private Events — Take the whole room",
+  title: "Private Events, Take the whole room",
   description:
     "Buyouts, private dining and brand events across Room 7's four rooms in Fort Lauderdale and Miami Beach. Tell us the night; we'll build it.",
   alternates: { canonical: "https://room7hospitality.com/private-events/" },
@@ -27,7 +27,7 @@ const fields: Field[] = [
 const gallery = [
   { src: "/venues/highbar-hero.webp", alt: "A rooftop set for a buyout at HighBar" },
   { src: "/venues/jays-interior.webp", alt: "Candlelit private dining at Jay's" },
-  { src: "/venues/jays-cocktail.webp", alt: "A toast — a signature cocktail at Jay's" },
+  { src: "/venues/jays-cocktail.webp", alt: "A toast, a signature cocktail at Jay's" },
   { src: "/venues/naked-taco-hero.webp", alt: "Naked Taco, mid-service" },
 ];
 
@@ -37,9 +37,9 @@ export default function PrivateEventsPage() {
       <PageHero
         eyebrow="Private Events"
         title="Take the whole room."
-        sub="Buyouts, private dining, and the kind of party people cancel other plans for. Four rooms across South Florida — pick your stage."
+        sub="Buyouts, private dining, and the kind of party people cancel other plans for. Four rooms across South Florida, pick your stage."
         tone="view"
-        placeholder="A full room mid-party — buyout energy"
+        placeholder="A full room mid-party, buyout energy"
         image="/venues/highbar-hero.webp"
         imagePosition="50% 50%"
       />
@@ -88,7 +88,7 @@ export default function PrivateEventsPage() {
         </div>
       </section>
 
-      {/* Collins Avenue — three real spaces */}
+      {/* Collins Avenue, three real spaces */}
       <section className="mx-auto max-w-7xl px-5 py-16 md:px-8 md:py-24">
         <Reveal className="mb-10 md:mb-14">
           <p className="eyebrow mb-3">1111 Collins Avenue</p>
@@ -164,7 +164,7 @@ export default function PrivateEventsPage() {
           <InquiryForm
             fields={fields}
             inbox={group.inboxes.events}
-            subject="Private event inquiry — Room 7"
+            subject="Private event inquiry, Room 7"
             submitLabel="Send inquiry"
             analytics={{ event: "event_inquiry_submit", venueField: "venue", eventTypeField: "eventType" }}
           />

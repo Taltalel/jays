@@ -1,5 +1,5 @@
 /**
- * ROOM 7 — NAVIGATION
+ * ROOM 7, NAVIGATION
  * Desktop: THE COLLECTION ▾ · ABOUT ▾ · PRIVATE EVENTS · PRESS · CAREERS ·
  * CONTACT  + a gold-outlined RESERVE ▾ pinned right.
  */
@@ -37,7 +37,7 @@ export const primaryNav: NavItem[] = [
   { label: "Contact", href: "/contact" },
 ];
 
-/** RESERVE ▾ — a reservation link per venue. Never make anyone hunt. */
+/** RESERVE ▾, a reservation link per venue. Never make anyone hunt. */
 export const reserveLinks = venues
   .filter((v) => v.reservation)
   .map((v) => ({

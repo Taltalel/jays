@@ -18,7 +18,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const v = venueBySlug(slug);
   if (!v) return {};
-  const title = `${v.name} — ${v.nickname}`;
+  const title = `${v.name}, ${v.nickname}`;
   const description = `${v.descriptor} ${v.destination}. A Room 7 venue.`;
   return {
     title,
@@ -40,7 +40,7 @@ const GALLERY: Record<Venue["slug"], ["church" | "riot" | "view" | "coast", stri
       "A prime cut hitting the pass",
       "The room at full tilt, dressed up",
       "Velvet booth, close and warm",
-      "The cabaret — lights down, faces up",
+      "The cabaret, lights down, faces up",
       "Bartender mid-pour under the arches",
       "Raw bar on ice",
     ],
