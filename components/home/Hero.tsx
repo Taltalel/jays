@@ -127,11 +127,11 @@ export function Hero() {
         <img
           src="/brand/wordmark.webp"
           alt="Room 7"
-          width={705}
-          height={292}
+          width={809}
+          height={360}
           fetchPriority="high"
           decoding="async"
-          className="hero-rise hero-logo w-[min(72vw,400px)] max-w-full"
+          className="hero-rise hero-logo w-[min(83vw,460px)] max-w-full"
           style={{ animationDelay: "80ms" }}
         />
 
