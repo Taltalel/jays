@@ -125,10 +125,10 @@ export function Hero() {
       {/* ---- overlay: wordmark → tagline → rule, laid over the sky of the engraving ---- */}
       <div className="absolute inset-x-0 top-0 z-20 flex flex-col items-center px-6 pt-[calc(var(--header-h)+3vh)] text-center sm:pt-[calc(var(--header-h)+9vh)]">
         <img
-          src="/brand/wordmark-v2.webp"
+          src="/brand/wordmark-v3.webp"
           alt="Room 7"
           width={841}
-          height={404}
+          height={420}
           fetchPriority="high"
           decoding="async"
           className="hero-rise hero-logo w-[min(80vw,440px)] max-w-full"
