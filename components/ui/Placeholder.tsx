@@ -1,4 +1,5 @@
 import type { CSSProperties } from "react";
+import { srcSetFor } from "@/lib/imageVariants";
 
 /**
  * On-brand photography placeholder. NEVER stock imagery, one stock photo
@@ -47,6 +48,7 @@ export function Placeholder({
   alt,
   objectPosition = "center",
   priority = false,
+  sizes = "100vw",
 }: {
   tone?: Tone;
   /** What the shot should be, describe the intended photograph. */
@@ -62,6 +64,11 @@ export function Placeholder({
   objectPosition?: string;
   /** Eager-load (above-the-fold heroes). */
   priority?: boolean;
+  /**
+   * How wide the image renders, so the browser can pick the smallest variant.
+   * Defaults to full-bleed; pass a grid-accurate value for thumbnails.
+   */
+  sizes?: string;
 }) {
   // Real photography path. Note: callers pass their own positioning (usually
   // `absolute inset-0`) via className, so we must NOT hardcode `relative` here
@@ -75,6 +82,8 @@ export function Placeholder({
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={src}
+          srcSet={srcSetFor(src)}
+          sizes={srcSetFor(src) ? sizes : undefined}
           alt={alt ?? label ?? ""}
           className="absolute inset-0 h-full w-full object-cover"
           style={{ objectPosition }}

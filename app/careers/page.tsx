@@ -30,6 +30,9 @@ export default function CareersPage() {
 
       {/* Why Room 7 */}
       <section className="mx-auto max-w-7xl px-5 py-16 md:px-8 md:py-24">
+        {/* Keeps the heading order h1 → h2 → h3 for screen readers; the section
+            is intentionally untitled visually. */}
+        <h2 className="sr-only">Why Room 7</h2>
         <div className="grid gap-x-12 gap-y-8 sm:grid-cols-2 lg:grid-cols-3">
           {whyRoom7Careers.map((w, i) => (
             <Reveal key={w.title} delay={(i % 3) * 50}>

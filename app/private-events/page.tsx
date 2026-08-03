@@ -144,7 +144,7 @@ export default function PrivateEventsPage() {
           {gallery.map((g, i) => (
             <Reveal key={i} delay={(i % 4) * 40}>
               <div className="relative aspect-square overflow-hidden rounded-sm">
-                <Placeholder tone={i % 2 ? "night" : "riot"} seed={`ev-${i}`} src={g.src} alt={g.alt} showLabel={false} className="absolute inset-0" />
+                <Placeholder tone={i % 2 ? "night" : "riot"} seed={`ev-${i}`} src={g.src} alt={g.alt} showLabel={false} sizes="(min-width: 768px) 25vw, 50vw" className="absolute inset-0" />
               </div>
             </Reveal>
           ))}

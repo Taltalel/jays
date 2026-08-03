@@ -84,6 +84,7 @@ export function VenueGallery({
               src={realPhotos[i]}
               alt={realPhotos[i] ? `${name}, ${label}` : undefined}
               showLabel={false}
+              sizes={i % 5 === 0 ? "(min-width: 768px) 50vw, 100vw" : "(min-width: 768px) 25vw, 50vw"}
               className="venue-card__img absolute inset-0 transition-transform duration-700 group-hover:scale-[1.05]"
             />
             <span className="absolute inset-0 bg-forest-deep/0 transition-colors group-hover:bg-forest-deep/20" />

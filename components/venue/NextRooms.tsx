@@ -24,7 +24,7 @@ export function NextRooms({ current }: { current: Venue["slug"] }) {
           <Reveal key={v.slug} delay={i * 60}>
             <Link href={`/collection/${v.slug}`} className="venue-card group relative block overflow-hidden rounded-sm">
               <div className="relative aspect-[3/4] overflow-hidden">
-                <Placeholder tone={TONES[v.slug]} seed={`next-${v.slug}`} src={v.heroImage} alt={`${v.name}, ${v.nickname}`} showLabel={false} className="venue-card__img absolute inset-0" />
+                <Placeholder tone={TONES[v.slug]} seed={`next-${v.slug}`} src={v.heroImage} alt={`${v.name}, ${v.nickname}`} showLabel={false} sizes="(min-width: 640px) 33vw, 100vw" className="venue-card__img absolute inset-0" />
                 <div className="scrim absolute inset-0" />
               </div>
               <div className="absolute inset-x-0 bottom-0 p-5">

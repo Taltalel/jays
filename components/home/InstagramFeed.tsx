@@ -38,11 +38,11 @@ export function InstagramFeed() {
               href={v.instagram.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="group flex items-center justify-between rounded-sm border border-champagne/10 bg-forest/40 px-5 py-4 transition-colors hover:border-gold/40"
+              className="group flex min-w-0 items-center justify-between rounded-sm border border-champagne/10 bg-forest/40 px-5 py-4 transition-colors hover:border-gold/40"
             >
-              <span>
-                <span className="block font-display text-lg text-champagne">{v.name}</span>
-                <span className="text-[11px] uppercase tracking-[0.14em] text-sage" style={{ fontFamily: "var(--font-label)" }}>
+              <span className="min-w-0">
+                <span className="block truncate font-display text-lg text-champagne">{v.name}</span>
+                <span className="block truncate text-[11px] uppercase tracking-[0.14em] text-sage" style={{ fontFamily: "var(--font-label)" }}>
                   {v.instagram.handle}
                 </span>
               </span>
@@ -72,10 +72,11 @@ export function InstagramFeed() {
                   seed={`ig-${i}`}
                   src={t.img}
                   showLabel={false}
+                  sizes="(min-width: 640px) 25vw, 50vw"
                   className="venue-card__img absolute inset-0 transition-transform duration-700 group-hover:scale-[1.06]"
                 />
-                <span className="absolute inset-0 flex items-end bg-gradient-to-t from-forest-deep/80 to-transparent p-3 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                  <span className="text-[10px] uppercase tracking-[0.14em] text-champagne" style={{ fontFamily: "var(--font-label)" }}>
+                <span className="absolute inset-0 flex items-end overflow-hidden bg-gradient-to-t from-forest-deep/80 to-transparent p-3 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                  <span className="block min-w-0 truncate text-[10px] uppercase tracking-[0.14em] text-champagne" style={{ fontFamily: "var(--font-label)" }}>
                     {v.instagram.handle}
                   </span>
                 </span>

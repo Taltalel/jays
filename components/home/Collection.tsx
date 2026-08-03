@@ -68,7 +68,7 @@ function FeatureCard({
       aria-label={`${card.title}, ${card.destination}`}
     >
       <div className={`relative w-full overflow-hidden ${tall ? "aspect-[16/10] md:aspect-[21/9]" : "aspect-[4/5] md:aspect-[4/3]"}`}>
-        <Placeholder tone={tone} seed={card.key} label={label} src={card.image} alt={`${card.title}, ${card.destination}`} showLabel={!card.image} className="venue-card__img absolute inset-0" />
+        <Placeholder tone={tone} seed={card.key} label={label} src={card.image} alt={`${card.title}, ${card.destination}`} showLabel={!card.image} sizes="(min-width: 768px) 50vw, 100vw" className="venue-card__img absolute inset-0" />
       </div>
 
       {/* scrim behind text over photography, non-negotiable */}

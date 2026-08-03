@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Monogram } from "@/components/brand/Logo";
 import { primaryNav, reserveLinks } from "@/content/nav";
 import { track, venueParam } from "@/lib/analytics";
@@ -15,6 +15,7 @@ const rightNav = primaryNav.slice(3); //  Press · Careers · Contact
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
   const pathname = usePathname();
   const isHome = pathname === "/";
   // On the home hero the large mark lives in the hero itself, so the header
@@ -34,6 +35,20 @@ export function Header() {
     return () => {
       document.body.style.overflow = "";
     };
+  }, [menuOpen]);
+
+  // Escape closes the mobile menu and returns focus to its trigger, so keyboard
+  // and screen-reader users are never stranded inside the overlay.
+  useEffect(() => {
+    if (!menuOpen) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setMenuOpen(false);
+        menuButtonRef.current?.focus();
+      }
+    };
+    document.addEventListener("keydown", onKey);
+    return () => document.removeEventListener("keydown", onKey);
   }, [menuOpen]);
 
   return (
@@ -98,6 +113,7 @@ export function Header() {
 
         {/* Mobile trigger */}
         <button
+          ref={menuButtonRef}
           type="button"
           className="col-start-3 flex items-center justify-self-end lg:hidden"
           aria-expanded={menuOpen}
