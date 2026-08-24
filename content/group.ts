@@ -131,4 +131,4 @@ export const pressQuotes: { quote: string; source: string }[] = [];
 
 /** Group boilerplate, on every press release. */
 export const boilerplate =
-  "Room 7 is a Fort Lauderdale–based hospitality group founded by Jay Shirodkar, operating Jay's, Naked Taco, HighBar and Riviera across South Florida. Room 7 builds design-led restaurants and bars where dining, design and entertainment meet. More at room7hospitality.com.";
+  "Room 7 is a Fort Lauderdale–based hospitality group founded by Jay Shirodkar, operating Jay's, Naked Taco, HIGHBAR and Riviera across South Florida. Room 7 builds design-led restaurants and bars where dining, design and entertainment meet. More at room7hospitality.com.";

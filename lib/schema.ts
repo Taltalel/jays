@@ -10,6 +10,9 @@ import { venues } from "@/content/venues";
 
 const SITE = "https://room7hospitality.com";
 
+/** Room 7 is the hospitality arm of Shirodkar Industries. */
+const PARENT_ORG_URL = "https://www.shirodkarindustries.com";
+
 export const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
@@ -19,7 +22,7 @@ export const organizationSchema = {
   logo: `${SITE}/brand/logo.png`,
   slogan: group.tagline,
   description:
-    "Fort Lauderdale hospitality group operating Jay's, Naked Taco, HighBar and Riviera across South Florida.",
+    "Fort Lauderdale hospitality group operating Jay's, Naked Taco, HIGHBAR and Riviera across South Florida.",
   founder: {
     "@type": "Person",
     name: group.founder.name,
@@ -35,10 +38,16 @@ export const organizationSchema = {
   sameAs: Array.from(
     new Set([
       group.founder.site,
+      PARENT_ORG_URL,
       ...venues.flatMap((v) => (v.socials ?? [{ url: v.instagram.url }]).map((s) => s.url)),
       ...venues.map((v) => v.website.url),
     ]),
   ),
+  parentOrganization: {
+    "@type": "Organization",
+    name: "Shirodkar Industries",
+    url: PARENT_ORG_URL,
+  },
   subOrganization: venues
     .filter((v) => v.slug !== "highbar")
     .map((v) => ({

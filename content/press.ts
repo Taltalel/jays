@@ -18,14 +18,14 @@ export const releases: Release[] = [
   {
     slug: "yes-hospitality-becomes-room-7",
     title: "YES Hospitality Group Becomes Room 7",
-    dek: "The Fort Lauderdale group behind Jay's, Naked Taco, HighBar and Riviera rebrands under a single house with one standard: elevated hospitality.",
+    dek: "The Fort Lauderdale group behind Jay's, Naked Taco, HIGHBAR and Riviera rebrands under a single house with one standard: elevated hospitality.",
     date: "2026-07-13",
     dateline: "FORT LAUDERDALE, FL",
     body: [
       "The hospitality group founded by Jay Shirodkar has a new name. What operated as YES Hospitality Group is now Room 7, one house for four rooms across South Florida.",
-      "The change is a matter of clarity, not direction. Jay's, Naked Taco, HighBar and Riviera each keep their own name, team and character. Room 7 is the standard they share: design-led rooms, a point of view behind every menu, and a night that starts at dinner and doesn't stop there.",
+      "The change is a matter of clarity, not direction. Jay's, Naked Taco, HIGHBAR and Riviera each keep their own name, team and character. Room 7 is the standard they share: design-led rooms, a point of view behind every menu, and a night that starts at dinner and doesn't stop there.",
       "“We were never four separate restaurants that happened to share an owner,” said Shirodkar. “We were always one idea told four ways. Room 7 finally says that out loud.”",
-      "The group's flagship, Jay's, occupies a restored 1920s church in Flagler Village. Naked Taco and its rooftop, HighBar, sit together at 1111 Collins Avenue in Miami Beach. Riviera holds the beach at Hotel Maren on Fort Lauderdale Beach.",
+      "The group's flagship, Jay's, occupies a restored 1920s church in Flagler Village. Naked Taco and its rooftop, HIGHBAR, sit together at 1111 Collins Avenue in Miami Beach. Riviera holds the beach at Hotel Maren on Fort Lauderdale Beach.",
     ],
   },
   {

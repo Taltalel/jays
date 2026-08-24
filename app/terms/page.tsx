@@ -17,7 +17,7 @@ export default function TermsPage() {
         {
           heading: "Using the site",
           body: [
-            "This website is provided for general information about Room 7 and its venues, Jay's, Naked Taco, HighBar and Riviera. You may use it for lawful, personal, non-commercial purposes.",
+            "This website is provided for general information about Room 7 and its venues, Jay's, Naked Taco, HIGHBAR and Riviera. You may use it for lawful, personal, non-commercial purposes.",
             "You agree not to misuse the site, interfere with its operation, attempt to gain unauthorized access, scrape or harvest data, or use it in any way that violates applicable law or these terms.",
           ],
         },

@@ -7,7 +7,7 @@ import { venues } from "@/content/venues";
 
 export const metadata: Metadata = {
   title: "Gift Cards",
-  description: "Give a night at Room 7, gift cards for Jay's, Naked Taco, HighBar and Riviera.",
+  description: "Give a night at Room 7, gift cards for Jay's, Naked Taco, HIGHBAR and Riviera.",
   alternates: { canonical: "https://room7hospitality.com/gift-cards/" },
 };
 
@@ -48,7 +48,7 @@ export default function GiftCardsPage() {
           ))}
         </div>
         <p className="mt-8 text-sm text-sage">
-          Gift cards are purchased directly through each room. HighBar shares Naked Taco&apos;s, at 1111 Collins Avenue.
+          Gift cards are purchased directly through each room. HIGHBAR shares Naked Taco&apos;s, at 1111 Collins Avenue.
         </p>
       </section>
     </>

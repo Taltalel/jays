@@ -17,7 +17,7 @@ const fields: Field[] = [
   { name: "name", label: "Name", required: true },
   { name: "email", label: "Email", type: "email", required: true },
   { name: "phone", label: "Phone", type: "tel" },
-  { name: "venue", label: "Venue", type: "select", options: ["Jay's", "Naked Taco", "HighBar", "Riviera", "Not sure yet"] },
+  { name: "venue", label: "Venue", type: "select", options: ["Jay's", "Naked Taco", "HIGHBAR", "Riviera", "Not sure yet"] },
   { name: "date", label: "Preferred date", type: "date" },
   { name: "guests", label: "Guest count", type: "number" },
   { name: "eventType", label: "Event type", type: "select", options: ["Buyout", "Private dining", "Brand / press", "Corporate", "Celebration", "Other"] },
@@ -25,7 +25,7 @@ const fields: Field[] = [
 ];
 
 const gallery = [
-  { src: "/venues/highbar-hero.webp", alt: "A rooftop set for a buyout at HighBar" },
+  { src: "/venues/highbar-hero.webp", alt: "A rooftop set for a buyout at HIGHBAR" },
   { src: "/venues/jays-interior.webp", alt: "Candlelit private dining at Jay's" },
   { src: "/venues/jays-cocktail.webp", alt: "A toast, a signature cocktail at Jay's" },
   { src: "/venues/naked-taco-hero.webp", alt: "Naked Taco, mid-service" },
@@ -84,7 +84,7 @@ export default function PrivateEventsPage() {
               </Reveal>
             ))}
           </ul>
-          <p className="mt-4 text-xs text-sage">* Naked Taco + HighBar host 50–275 guests across three spaces at 1111 Collins Avenue.</p>
+          <p className="mt-4 text-xs text-sage">* Naked Taco + HIGHBAR host 50–275 guests across three spaces at 1111 Collins Avenue.</p>
         </div>
       </section>
 

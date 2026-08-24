@@ -35,6 +35,17 @@ export function Footer() {
               </a>
               .
             </p>
+            <p className="mt-4 text-sm text-sage">
+              Part of{" "}
+              <a
+                href="https://www.shirodkarindustries.com"
+                target="_blank"
+                rel="noopener"
+                className="text-champagne underline underline-offset-4 decoration-champagne/40 hover:text-gold"
+              >
+                Shirodkar Industries
+              </a>
+            </p>
           </div>
 
           {/* The rooms */}

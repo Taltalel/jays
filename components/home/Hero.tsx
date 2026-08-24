@@ -23,7 +23,7 @@ import { useEffect, useRef } from "react";
 const VENUES = [
   { slug: "jays", name: "Jay's", label: "Jay's, The Cathedral, Fort Lauderdale", left: "6%", width: "23%", bottom: "6%", height: "58%" },
   { slug: "naked-taco", name: "Naked Taco", label: "Naked Taco, The Riot, 1111 Collins Avenue, Miami Beach", left: "33%", width: "19%", bottom: "6%", height: "34%" },
-  { slug: "highbar", name: "HighBar", label: "HighBar, The View, the rooftop above Naked Taco", left: "52%", width: "15%", bottom: "40%", height: "26%" },
+  { slug: "highbar", name: "HIGHBAR", label: "HIGHBAR, The View, the rooftop above Naked Taco", left: "52%", width: "15%", bottom: "40%", height: "26%" },
   { slug: "riviera", name: "Riviera", label: "Riviera, The Coast, Fort Lauderdale Beach", left: "64%", width: "28%", bottom: "6%", height: "44%" },
 ] as const;
 

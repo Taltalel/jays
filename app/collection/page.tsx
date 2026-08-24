@@ -8,7 +8,7 @@ import { venues, type Venue } from "@/content/venues";
 export const metadata: Metadata = {
   title: "The Collection",
   description:
-    "Three destinations, four rooms. Jay's, Naked Taco, HighBar and Riviera, the Room 7 collection across Fort Lauderdale and Miami Beach.",
+    "Three destinations, four rooms. Jay's, Naked Taco, HIGHBAR and Riviera, the Room 7 collection across Fort Lauderdale and Miami Beach.",
   alternates: { canonical: "https://room7hospitality.com/collection/" },
 };
 

@@ -12,7 +12,7 @@ export type VenueKey = "jays" | "naked-taco" | "highbar" | "riviera" | "group";
 export const venueLabels: Record<VenueKey, string> = {
   jays: "Jay's",
   "naked-taco": "Naked Taco",
-  highbar: "HighBar",
+  highbar: "HIGHBAR",
   riviera: "Riviera",
   group: "The Group",
 };
@@ -44,7 +44,7 @@ export const careersFields: Field[] = [
     label: "Which room",
     type: "select",
     required: true,
-    options: ["Jay's", "Naked Taco", "HighBar", "Riviera", "The Group", "Open to any"],
+    options: ["Jay's", "Naked Taco", "HIGHBAR", "Riviera", "The Group", "Open to any"],
   },
   { name: "position", label: "Position of interest (or “any”)", type: "text" },
   { name: "portfolio", label: "Resume / LinkedIn (URL)", type: "text" },

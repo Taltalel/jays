@@ -9,7 +9,7 @@ import { venues } from "@/content/venues";
 export const metadata: Metadata = {
   title: "Jay Shirodkar, Founder",
   description:
-    "Jay Shirodkar is the founder of Room 7, the Fort Lauderdale hospitality group behind Jay's, Naked Taco, HighBar and Riviera. The story behind the house.",
+    "Jay Shirodkar is the founder of Room 7, the Fort Lauderdale hospitality group behind Jay's, Naked Taco, HIGHBAR and Riviera. The story behind the house.",
   alternates: { canonical: "https://room7hospitality.com/about/jay-shirodkar/" },
 };
 

@@ -12,7 +12,7 @@ export default function PrivacyPage() {
     <LegalPage
       title="Privacy Policy"
       updated="July 2026"
-      intro="Room 7 (“Room 7,” “we,” “us”) operates room7hospitality.com and the venues Jay's, Naked Taco, HighBar and Riviera. This policy explains what personal information we collect through this website, how we use and share it, and the choices you have. It applies to this website; our venues' own websites and the third-party services we link to have their own policies."
+      intro="Room 7 (“Room 7,” “we,” “us”) operates room7hospitality.com and the venues Jay's, Naked Taco, HIGHBAR and Riviera. This policy explains what personal information we collect through this website, how we use and share it, and the choices you have. It applies to this website; our venues' own websites and the third-party services we link to have their own policies."
       sections={[
         {
           heading: "Information we collect",

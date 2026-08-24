@@ -8,7 +8,7 @@ import { group } from "@/content/group";
 export const metadata: Metadata = {
   title: "Contact",
   description:
-    "Get in touch with Room 7, general, private events, press or careers. Fort Lauderdale hospitality group behind Jay's, Naked Taco, HighBar and Riviera.",
+    "Get in touch with Room 7, general, private events, press or careers. Fort Lauderdale hospitality group behind Jay's, Naked Taco, HIGHBAR and Riviera.",
   alternates: { canonical: "https://room7hospitality.com/contact/" },
 };
 

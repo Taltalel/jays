@@ -9,7 +9,7 @@ import { pressOutlets, boilerplate, group } from "@/content/group";
 export const metadata: Metadata = {
   title: "Press, Buzz & releases",
   description:
-    "Room 7 press releases, coverage and press kit. News from the Fort Lauderdale hospitality group behind Jay's, Naked Taco, HighBar and Riviera.",
+    "Room 7 press releases, coverage and press kit. News from the Fort Lauderdale hospitality group behind Jay's, Naked Taco, HIGHBAR and Riviera.",
   alternates: { canonical: "https://room7hospitality.com/press/" },
 };
 

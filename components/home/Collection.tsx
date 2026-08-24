@@ -36,7 +36,7 @@ export function Collection() {
           <FeatureCard
             card={collins}
             tone="riot"
-            label="Naked Taco street level into the HighBar pool deck"
+            label="Naked Taco street level into the HIGHBAR pool deck"
             twoStorey
           />
         </Reveal>
@@ -99,7 +99,7 @@ function FeatureCard({
               className="inline-flex items-center gap-1.5 text-[11px] uppercase tracking-[0.15em] text-sage"
               style={{ fontFamily: "var(--font-label)" }}
             >
-              <span aria-hidden="true">↑</span> Rooftop: HighBar
+              <span aria-hidden="true">↑</span> Rooftop: HIGHBAR
             </span>
           )}
         </div>

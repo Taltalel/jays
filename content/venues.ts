@@ -180,14 +180,14 @@ export const venues: Venue[] = [
     story: [
       "Twelve years on Collins Avenue is a lifetime in a neighbourhood that reinvents itself every season. Naked Taco earned it, a cult following, a favourite send-off before a big night, breakfast worth the walk.",
       "In the collection it plays the extrovert: fast, generous, unpretentious, packed. It is the room that proves elevated hospitality doesn't have to whisper.",
-      "And it comes with an upstairs. Naked Taco holds the street; HighBar holds the sky. One address, two moods, one long night.",
+      "And it comes with an upstairs. Naked Taco holds the street; HIGHBAR holds the sky. One address, two moods, one long night.",
     ],
     heroImage: "/venues/naked-taco-hero.webp",
     heroPosition: "50% 50%",
   },
   {
     slug: "highbar",
-    name: "HighBar",
+    name: "HIGHBAR",
     nickname: "The View",
     destination: "Rooftop at 1111 Collins Avenue",
     descriptor: "The rooftop above Naked Taco, pool, skyline, golden hour.",
@@ -224,7 +224,7 @@ export const venues: Venue[] = [
         "Golden hour is the whole point, and then it isn't, weekend sets carry the deck long after the sun has clocked out.",
     },
     story: [
-      "HighBar is not a second address. It is the roof of the first one. Ride two floors up from Naked Taco and the noise drops away to a pool deck, an infinity edge and the entire Atlantic.",
+      "HIGHBAR is not a second address. It is the roof of the first one. Ride two floors up from Naked Taco and the noise drops away to a pool deck, an infinity edge and the entire Atlantic.",
       "In the collection it is the exhale, the part of the night that slows down and looks out. Same building, same team, same standard, a completely different altitude.",
       "Downstairs is the riot. Up here is the view. Room 7 built the staircase between them on purpose.",
     ],
@@ -299,7 +299,7 @@ export const collectionCards = [
   },
   {
     key: "collins",
-    title: "Naked Taco + HighBar",
+    title: "Naked Taco + HIGHBAR",
     kicker: "The Riot & The View",
     destination: "1111 Collins Avenue",
     descriptor: "Tacos at street level, a pool deck at golden hour, one address, two floors.",

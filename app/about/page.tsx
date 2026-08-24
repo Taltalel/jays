@@ -11,7 +11,7 @@ import { venues } from "@/content/venues";
 export const metadata: Metadata = {
   title: "About, Four rooms, one house",
   description:
-    "Room 7 is the Fort Lauderdale hospitality group behind Jay's, Naked Taco, HighBar and Riviera. The group, the standard, and the story behind the name.",
+    "Room 7 is the Fort Lauderdale hospitality group behind Jay's, Naked Taco, HIGHBAR and Riviera. The group, the standard, and the story behind the name.",
   alternates: { canonical: "https://room7hospitality.com/about/" },
 };
 

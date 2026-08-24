@@ -33,7 +33,7 @@ export const capacities: { venue: string; nickname: string; capacity: string; no
     note: "Indoor dining and bars, part of the 1111 Collins property (three spaces, up to 275).",
   },
   {
-    venue: "HighBar",
+    venue: "HIGHBAR",
     nickname: "The View",
     capacity: "50–275*",
     note: "Rooftop pool, daybeds and cabanas, part of the 1111 Collins property.",
@@ -54,7 +54,7 @@ export const collinsSpaces = [
     line: "The electric Mexican dining room, The Patio out front, plus Bar Noche and Bar Mañana. Wrought iron, star lanterns and leather booths for seated dinners and cocktail receptions.",
   },
   {
-    name: "HighBar Poolside",
+    name: "HIGHBAR Poolside",
     kind: "Rooftop pool & bar",
     line: "A glowing rooftop pool with daybeds and cabanas, views from Collins Avenue to the Atlantic, the backdrop for pool parties, activations and sunset socials.",
   },
