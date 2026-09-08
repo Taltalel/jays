@@ -6,8 +6,8 @@
  * the catering collections and booking terms below. Copy is rewritten in Room
  * 7's voice (facts kept, the deck's prose not reused).
  *
- * Jay's and Riviera capacities are still on request, confirm and fill when
- * their event decks are available.
+ * Jay's capacity is still on request, confirm and fill when its event deck
+ * is available.
  */
 
 export const whatWeHost = [
@@ -37,12 +37,6 @@ export const capacities: { venue: string; nickname: string; capacity: string; no
     nickname: "The View",
     capacity: "50–275*",
     note: "Rooftop pool, daybeds and cabanas, part of the 1111 Collins property.",
-  },
-  {
-    venue: "Riviera",
-    nickname: "The Coast",
-    capacity: "On request",
-    note: "Oceanfront buyouts and beachside receptions, capacity confirmed on request.",
   },
 ];
 

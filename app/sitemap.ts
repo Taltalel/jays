@@ -7,7 +7,7 @@ export const dynamic = "force-static";
 const SITE = "https://room7hospitality.com";
 const now = new Date("2026-07-13");
 
-const CAREER_KEYS = ["jays", "naked-taco", "highbar", "riviera", "group"];
+const CAREER_KEYS = ["jays", "naked-taco", "highbar", "group"];
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticRoutes = [
@@ -26,7 +26,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
   ];
 
   const entries: MetadataRoute.Sitemap = staticRoutes.map((r) => ({
-    url: `${SITE}${r.path}/`,
+    // The root path is already "/", so appending another slash would emit
+    // "https://room7hospitality.com//" for the most important URL on the site.
+    url: `${SITE}${r.path === "/" ? "/" : `${r.path}/`}`,
     lastModified: now,
     changeFrequency: r.cf,
     priority: r.priority,

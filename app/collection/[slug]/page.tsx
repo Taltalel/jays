@@ -67,17 +67,6 @@ const GALLERY: Record<Venue["slug"], ["church" | "riot" | "view" | "coast", stri
       "Sunset over the water",
     ],
   ],
-  riviera: [
-    "coast",
-    [
-      "Raw bar with the ocean behind",
-      "Breakfast on the veranda",
-      "Golden hour, cocktails on the rim",
-      "The room open to the sea",
-      "Prime seafood, plated",
-      "Sand-side tables at dusk",
-    ],
-  ],
 };
 
 export default async function VenuePage({ params }: { params: Promise<{ slug: string }> }) {

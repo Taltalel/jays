@@ -8,7 +8,6 @@ const TONES: Record<Venue["slug"], "church" | "riot" | "view" | "coast"> = {
   jays: "church",
   "naked-taco": "riot",
   highbar: "view",
-  riviera: "coast",
 };
 
 export function VenueHero({ venue, paired }: { venue: Venue; paired?: Venue }) {

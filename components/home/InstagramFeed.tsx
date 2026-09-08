@@ -4,17 +4,16 @@ import { venues, venueBySlug } from "@/content/venues";
 
 /**
  * The Feed, surfaces every venue's Instagram. Tiles use real venue imagery
- * and link to the matching account; the follow row lists all four rooms.
+ * and link to the matching account; the follow row lists all three rooms.
  * TODO: connect a live embed (Behold / official Instagram) to pull live posts
  *, needs an access token. Until then these route to each real profile.
  */
 
 // Real imagery mapped to the account it belongs to.
-const feed: { img?: string; slug: "jays" | "naked-taco" | "highbar" | "riviera"; tone: "church" | "riot" | "view" | "coast" }[] = [
+const feed: { img?: string; slug: "jays" | "naked-taco" | "highbar"; tone: "church" | "riot" | "view" }[] = [
   { img: "/venues/jays-interior.webp", slug: "jays", tone: "church" },
   { img: "/venues/naked-taco-hero.webp", slug: "naked-taco", tone: "riot" },
   { img: "/venues/highbar-hero.webp", slug: "highbar", tone: "view" },
-  { img: "/venues/riviera-hero.webp", slug: "riviera", tone: "coast" },
   { img: "/venues/jays-cocktail.webp", slug: "jays", tone: "church" },
   { img: "/venues/jays-tomahawk.webp", slug: "jays", tone: "church" },
   { img: "/venues/jays-lobster.webp", slug: "jays", tone: "church" },

@@ -4,12 +4,6 @@
  * plus the intrinsic width of the original, so srcset descriptors are honest.
  */
 export const IMAGE_VARIANTS: Record<string, { widths: number[]; full: number }> = {
-  "/venues/engraving-riviera.webp": {
-    "widths": [
-      640
-    ],
-    "full": 700
-  },
   "/venues/highbar-hero.webp": {
     "widths": [
       640
@@ -72,12 +66,6 @@ export const IMAGE_VARIANTS: Record<string, { widths: number[]; full: number }> 
     "full": 1500
   },
   "/venues/naked-taco-hero.webp": {
-    "widths": [
-      640
-    ],
-    "full": 705
-  },
-  "/venues/riviera-hero.webp": {
     "widths": [
       640
     ],

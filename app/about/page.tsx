@@ -9,9 +9,9 @@ import { manifesto, whyRoom7, founderTeaser } from "@/content/group";
 import { venues } from "@/content/venues";
 
 export const metadata: Metadata = {
-  title: "About, Four rooms, one house",
+  title: "About, Three rooms, one house",
   description:
-    "Room 7 is the Fort Lauderdale hospitality group behind Jay's, Naked Taco, HIGHBAR and Riviera. The group, the standard, and the story behind the name.",
+    "Room 7 is the Fort Lauderdale hospitality group behind Jay's, Naked Taco and HIGHBAR. The group, the standard, and the story behind the name.",
   alternates: { canonical: "https://room7hospitality.com/about/" },
 };
 
@@ -20,7 +20,7 @@ export default function AboutPage() {
     <>
       <PageHero
         eyebrow="About"
-        title="Four rooms. One house."
+        title="Three rooms. One house."
         sub={manifesto.hook}
         tone="night"
         placeholder="A room, half-lit, the house at rest"
@@ -80,11 +80,11 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* The house, four venues */}
+      {/* The house, three venues */}
       <section className="mx-auto max-w-7xl px-5 py-20 md:px-8 md:py-28">
         <Reveal className="mb-10 md:mb-14">
           <p className="eyebrow mb-3">The House</p>
-          <h2 className="h2-display text-champagne">Four rooms, across South Florida.</h2>
+          <h2 className="h2-display text-champagne">Three rooms, across South Florida.</h2>
         </Reveal>
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {venues.map((v, i) => (

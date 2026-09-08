@@ -1,7 +1,7 @@
 /**
  * ROOM 7, VENUE DATA
  * -------------------------------------------------------------------------
- * Single source of truth for the four rooms. Edit copy here; components read
+ * Single source of truth for the three rooms. Edit copy here; components read
  * from it. Addresses, hours, phones and reservation links are VERIFIED, do
  * not change them without re-checking the live venue sites.
  *
@@ -15,7 +15,7 @@ export type Reservation = {
 };
 
 export type Venue = {
-  slug: "jays" | "naked-taco" | "highbar" | "riviera";
+  slug: "jays" | "naked-taco" | "highbar";
   name: string;
   nickname: string; // "The Cathedral"
   destination: string; // human location label used on the group site
@@ -231,60 +231,12 @@ export const venues: Venue[] = [
     heroImage: "/venues/highbar-hero.webp",
     heroPosition: "50% 42%",
   },
-  {
-    slug: "riviera",
-    name: "Riviera",
-    nickname: "The Coast",
-    destination: "Fort Lauderdale Beach",
-    descriptor: "An all-day oceanfront table where the light does the seasoning.",
-    lede: "Sand-side at Hotel Maren, breakfast on the veranda through golden hour and dinner.",
-    address: {
-      street: "525 S Fort Lauderdale Beach Blvd",
-      locality: "Fort Lauderdale, FL 33316",
-      context: "inside Hotel Maren, Curio Collection by Hilton",
-    },
-    geo: { lat: 26.1101, lng: -80.1052 },
-    phone: "(754) 241-2020",
-    email: "info@marenriviera.com",
-    website: { label: "therivierarestaurant.com", url: "https://therivierarestaurant.com" },
-    instagram: { handle: "@rivierafortlauderdale", url: "https://instagram.com/rivierafortlauderdale" },
-    menuUrl: "https://therivierarestaurant.com/menus",
-    socials: [
-      { label: "Instagram", url: "https://instagram.com/rivierafortlauderdale" },
-      { label: "Facebook", url: "https://www.facebook.com/RivieraFortLauderdale" },
-    ],
-    reservation: {
-      provider: "OpenTable",
-      url: "https://www.opentable.com/restref/client/?restref=1530400",
-    },
-    hours: [
-      { label: "Breakfast", value: "Daily 7–11AM" },
-      { label: "All-day & Dinner", value: "Daily 11AM–11PM" },
-    ],
-    cuisine: "Coastal, Seafood, Raw Bar",
-    priceRange: "$$$",
-    scenes: {
-      room:
-        "Open to the ocean and easy about it, a veranda, a raw bar, and a room that reads the weather. Come in sandy; leave in no hurry.",
-      table:
-        "Prime seafood, a raw bar, cocktails with salt on the rim. A table that runs from a slow breakfast to a long dinner without changing its mind.",
-      night:
-        "Golden hour arrives on schedule and stays late. When the light turns, the room turns with it, the coast's version of the lights going down.",
-    },
-    story: [
-      "Every collection needs a room that knows how to do nothing beautifully. Riviera is ours, oceanfront, all day, in no particular rush.",
-      "It is the daylight counterpart to the church and the rooftop: the same standard of hospitality, poured over sand and salt air instead of stone and candlelight.",
-      "Breakfast on the veranda, a raw bar at lunch, cocktails as the light turns gold. The Coast is Room 7 with its shoes off, and still the best table on the beach.",
-    ],
-    heroImage: "/venues/riviera-hero.webp",
-    heroPosition: "50% 48%",
-  },
 ];
 
 export const venueBySlug = (slug: string): Venue | undefined =>
   venues.find((v) => v.slug === slug);
 
-/** Homepage collection: THREE destinations, four rooms.
+/** Homepage collection: TWO destinations, three rooms.
  *  Naked Taco + HighBar share one card (one building, two experiences). */
 export const collectionCards = [
   {
@@ -307,15 +259,5 @@ export const collectionCards = [
     secondaryHref: "/collection/highbar",
     image: "/venues/highbar-hero.webp",
     slugs: ["naked-taco", "highbar"] as const,
-  },
-  {
-    key: "riviera",
-    title: "Riviera",
-    kicker: "The Coast",
-    destination: "Fort Lauderdale Beach",
-    descriptor: "An all-day oceanfront table where the light does the seasoning.",
-    href: "/collection/riviera",
-    image: "/venues/riviera-hero.webp",
-    slugs: ["riviera"] as const,
   },
 ];

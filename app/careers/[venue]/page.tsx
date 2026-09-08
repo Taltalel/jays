@@ -6,13 +6,12 @@ import { InquiryForm } from "@/components/ui/InquiryForm";
 import { careersFields, venueLabels, venueLocations, teams, type VenueKey } from "@/content/careers";
 import { group } from "@/content/group";
 
-const KEYS: VenueKey[] = ["jays", "naked-taco", "highbar", "riviera", "group"];
+const KEYS: VenueKey[] = ["jays", "naked-taco", "highbar", "group"];
 
 const CAREERS_IMAGE: Record<VenueKey, string> = {
   jays: "/venues/jays-hero.webp",
   "naked-taco": "/venues/naked-taco-hero.webp",
   highbar: "/venues/highbar-hero.webp",
-  riviera: "/venues/riviera-hero.webp",
   group: "/venues/jays-hero.webp",
 };
 

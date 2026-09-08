@@ -14,7 +14,7 @@ export const GA_MEASUREMENT_ID = (process.env.NEXT_PUBLIC_GA_ID ?? "").trim();
 export const GA_ENABLED = /^G-[A-Z0-9]{6,}$/i.test(GA_MEASUREMENT_ID) && !/X{6,}/i.test(GA_MEASUREMENT_ID);
 
 /** Canonical venue values for GA (note the underscore in naked_taco). */
-export type VenueParam = "jays" | "naked_taco" | "highbar" | "riviera" | "group";
+export type VenueParam = "jays" | "naked_taco" | "highbar" | "group";
 
 export type EventParams = Record<string, string | number | boolean | undefined>;
 
@@ -46,6 +46,5 @@ export function venueParam(input: string | undefined): VenueParam {
   if (s === "jays" || s.startsWith("jay")) return "jays";
   if (s.includes("naked")) return "naked_taco";
   if (s.replace(/\s+/g, "").includes("highbar")) return "highbar";
-  if (s.includes("riviera")) return "riviera";
   return "group";
 }

@@ -111,7 +111,7 @@ export const founderPage = {
   story: [
     "Jay Shirodkar builds rooms the way other people throw parties, with a guest list in mind and a feeling he's chasing. Room 7 is the house he built to hold all of them.",
     "It started with a church. A 1920s sanctuary in Flagler Village that most people would have flattened, he restored instead, stained glass, stone, soaring arches, and turned into Jay's: a steakhouse where dinner keeps the hours of a cabaret. Once he'd proven a room could have a past and a pulse at the same time, the rest of the collection followed.",
-    "The thread through all of it is the same conviction: hospitality is a standard, not a script. Warmth first. Design that means something. A night people describe to everyone who wasn't there. Room 7 is that conviction, given four rooms.",
+    "The thread through all of it is the same conviction: hospitality is a standard, not a script. Warmth first. Design that means something. A night people describe to everyone who wasn't there. Room 7 is that conviction, given three rooms.",
   ],
   links: [
     { label: "jayshirodkar.com", url: "https://jayshirodkar.com", external: true },
@@ -131,4 +131,4 @@ export const pressQuotes: { quote: string; source: string }[] = [];
 
 /** Group boilerplate, on every press release. */
 export const boilerplate =
-  "Room 7 is a Fort Lauderdale–based hospitality group founded by Jay Shirodkar, operating Jay's, Naked Taco, HIGHBAR and Riviera across South Florida. Room 7 builds design-led restaurants and bars where dining, design and entertainment meet. More at room7hospitality.com.";
+  "Room 7 is a Fort Lauderdale–based hospitality group founded by Jay Shirodkar, operating Jay's, Naked Taco and HIGHBAR across South Florida. Room 7 builds design-led restaurants and bars where dining, design and entertainment meet. More at room7hospitality.com.";

@@ -8,7 +8,7 @@ import { group } from "@/content/group";
 export const metadata: Metadata = {
   title: "Contact",
   description:
-    "Get in touch with Room 7, general, private events, press or careers. Fort Lauderdale hospitality group behind Jay's, Naked Taco, HIGHBAR and Riviera.",
+    "Get in touch with Room 7, general, private events, press or careers. Fort Lauderdale hospitality group behind Jay's, Naked Taco and HIGHBAR.",
   alternates: { canonical: "https://room7hospitality.com/contact/" },
 };
 
@@ -16,7 +16,7 @@ const routes = [
   { label: "General", line: "Anything and everything else.", href: "#reach" },
   { label: "Private Events", line: "Buyouts, private dining, brand nights.", href: "/private-events" },
   { label: "Press", line: "Interviews, assets, the press kit.", href: "/press" },
-  { label: "Careers", line: "Roles across the four rooms.", href: "/careers" },
+  { label: "Careers", line: "Roles across the three rooms.", href: "/careers" },
 ];
 
 const fields: Field[] = [

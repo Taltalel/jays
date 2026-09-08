@@ -5,20 +5,19 @@ import { collectionCards } from "@/content/venues";
 
 /**
  * THE COLLECTION, the heart of the homepage, not a nav item.
- * Three destinations, four rooms. Jay's leads (flagship, full width); the
- * Collins Avenue card carries both Naked Taco (street) and HighBar (rooftop).
+ * Two destinations, three rooms. Jay's leads (flagship, full width); the
+ * Collins Avenue card carries both Naked Taco (street) and HIGHBAR (rooftop).
  */
 export function Collection() {
   const jays = collectionCards.find((c) => c.key === "jays")!;
   const collins = collectionCards.find((c) => c.key === "collins")!;
-  const riviera = collectionCards.find((c) => c.key === "riviera")!;
 
   return (
     <section id="collection" className="mx-auto max-w-7xl px-5 py-16 md:px-8 md:py-24">
       <Reveal className="mb-10 flex flex-col gap-3 md:mb-14 md:flex-row md:items-end md:justify-between">
         <div>
           <p className="eyebrow mb-3">The Collection</p>
-          <h2 className="h2-display text-champagne">Three destinations. Four rooms.</h2>
+          <h2 className="h2-display text-champagne">Two destinations. Three rooms.</h2>
         </div>
         <p className="measure text-sm text-sage md:max-w-xs md:text-right">
           Each room keeps its own soul, held together by one standard of hospitality.
@@ -30,18 +29,16 @@ export function Collection() {
         <FeatureCard card={jays} tone="church" tall label="Jay's, the church, the night it comes alive" />
       </Reveal>
 
-      {/* Two-up */}
-      <div className="mt-5 grid gap-5 md:mt-6 md:grid-cols-2">
+      {/* Collins Avenue, full width */}
+      <div className="mt-5 md:mt-6">
         <Reveal>
           <FeatureCard
             card={collins}
             tone="riot"
+            tall
             label="Naked Taco street level into the HIGHBAR pool deck"
             twoStorey
           />
-        </Reveal>
-        <Reveal delay={80}>
-          <FeatureCard card={riviera} tone="coast" label="Riviera, golden hour, oceanfront table" />
         </Reveal>
       </div>
     </section>
@@ -68,7 +65,7 @@ function FeatureCard({
       aria-label={`${card.title}, ${card.destination}`}
     >
       <div className={`relative w-full overflow-hidden ${tall ? "aspect-[16/10] md:aspect-[21/9]" : "aspect-[4/5] md:aspect-[4/3]"}`}>
-        <Placeholder tone={tone} seed={card.key} label={label} src={card.image} alt={`${card.title}, ${card.destination}`} showLabel={!card.image} sizes="(min-width: 768px) 50vw, 100vw" className="venue-card__img absolute inset-0" />
+        <Placeholder tone={tone} seed={card.key} label={label} src={card.image} alt={`${card.title}, ${card.destination}`} showLabel={!card.image} sizes="100vw" className="venue-card__img absolute inset-0" />
       </div>
 
       {/* scrim behind text over photography, non-negotiable */}

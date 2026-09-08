@@ -22,7 +22,7 @@ export const organizationSchema = {
   logo: `${SITE}/brand/logo.png`,
   slogan: group.tagline,
   description:
-    "Fort Lauderdale hospitality group operating Jay's, Naked Taco, HIGHBAR and Riviera across South Florida.",
+    "Fort Lauderdale hospitality group operating Jay's, Naked Taco and HIGHBAR across South Florida.",
   founder: {
     "@type": "Person",
     name: group.founder.name,

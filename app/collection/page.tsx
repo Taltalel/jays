@@ -8,7 +8,7 @@ import { venues, type Venue } from "@/content/venues";
 export const metadata: Metadata = {
   title: "The Collection",
   description:
-    "Three destinations, four rooms. Jay's, Naked Taco, HIGHBAR and Riviera, the Room 7 collection across Fort Lauderdale and Miami Beach.",
+    "Two destinations, three rooms. Jay's, Naked Taco and HIGHBAR, the Room 7 collection across Fort Lauderdale and Miami Beach.",
   alternates: { canonical: "https://room7hospitality.com/collection/" },
 };
 
@@ -16,7 +16,6 @@ const TONES: Record<Venue["slug"], "church" | "riot" | "view" | "coast"> = {
   jays: "church",
   "naked-taco": "riot",
   highbar: "view",
-  riviera: "coast",
 };
 
 export default function CollectionPage() {
@@ -24,8 +23,8 @@ export default function CollectionPage() {
     <>
       <PageHero
         eyebrow="The Collection"
-        title="Three destinations. Four rooms."
-        sub="One house, four souls, a church, a riot, a rooftop and the coast. Each keeps its own character; all keep the same standard."
+        title="Two destinations. Three rooms."
+        sub="One house, three souls, a church, a riot and a rooftop. Each keeps its own character; all keep the same standard."
         tone="church"
         placeholder="The collection, a room alive at night"
         image="/venues/jays-hero.webp"

@@ -12,7 +12,7 @@ import { group } from "@/content/group";
  * alongside the email, and passes venue_preference through to the POST and the
  * newsletter_signup event. NEXT_PUBLIC_FORM_ENDPOINT overrides the destination.
  */
-const VENUE_OPTIONS = ["Jay's", "Naked Taco", "HIGHBAR", "Riviera", "All Room 7"] as const;
+const VENUE_OPTIONS = ["Jay's", "Naked Taco", "HIGHBAR", "All Room 7"] as const;
 
 export function Newsletter() {
   const [firstName, setFirstName] = useState("");

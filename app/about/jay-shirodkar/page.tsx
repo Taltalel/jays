@@ -9,7 +9,7 @@ import { venues } from "@/content/venues";
 export const metadata: Metadata = {
   title: "Jay Shirodkar, Founder",
   description:
-    "Jay Shirodkar is the founder of Room 7, the Fort Lauderdale hospitality group behind Jay's, Naked Taco, HIGHBAR and Riviera. The story behind the house.",
+    "Jay Shirodkar is the founder of Room 7, the Fort Lauderdale hospitality group behind Jay's, Naked Taco and HIGHBAR. The story behind the house.",
   alternates: { canonical: "https://room7hospitality.com/about/jay-shirodkar/" },
 };
 
@@ -48,7 +48,7 @@ export default function FounderPage() {
         <div className="mx-auto max-w-7xl px-5 py-20 md:px-8 md:py-28">
           <Reveal className="mb-10 md:mb-14">
             <p className="eyebrow mb-3">What He’s Built</p>
-            <h2 className="h2-display text-champagne">Four rooms and counting.</h2>
+            <h2 className="h2-display text-champagne">Three rooms and counting.</h2>
           </Reveal>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {venues.map((v, i) => (

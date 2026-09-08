@@ -8,7 +8,6 @@ const TONES: Record<Venue["slug"], [Tone, Tone, Tone]> = {
   jays: ["church", "night", "night"],
   "naked-taco": ["riot", "riot", "night"],
   highbar: ["view", "view", "night"],
-  riviera: ["coast", "beach", "coast"],
 };
 
 const SCENES = [

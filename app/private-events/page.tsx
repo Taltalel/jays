@@ -9,7 +9,7 @@ import { group } from "@/content/group";
 export const metadata: Metadata = {
   title: "Private Events, Take the whole room",
   description:
-    "Buyouts, private dining and brand events across Room 7's four rooms in Fort Lauderdale and Miami Beach. Tell us the night; we'll build it.",
+    "Buyouts, private dining and brand events across Room 7's three rooms in Fort Lauderdale and Miami Beach. Tell us the night; we'll build it.",
   alternates: { canonical: "https://room7hospitality.com/private-events/" },
 };
 
@@ -17,7 +17,7 @@ const fields: Field[] = [
   { name: "name", label: "Name", required: true },
   { name: "email", label: "Email", type: "email", required: true },
   { name: "phone", label: "Phone", type: "tel" },
-  { name: "venue", label: "Venue", type: "select", options: ["Jay's", "Naked Taco", "HIGHBAR", "Riviera", "Not sure yet"] },
+  { name: "venue", label: "Venue", type: "select", options: ["Jay's", "Naked Taco", "HIGHBAR", "Not sure yet"] },
   { name: "date", label: "Preferred date", type: "date" },
   { name: "guests", label: "Guest count", type: "number" },
   { name: "eventType", label: "Event type", type: "select", options: ["Buyout", "Private dining", "Brand / press", "Corporate", "Celebration", "Other"] },
@@ -37,7 +37,7 @@ export default function PrivateEventsPage() {
       <PageHero
         eyebrow="Private Events"
         title="Take the whole room."
-        sub="Buyouts, private dining, and the kind of party people cancel other plans for. Four rooms across South Florida, pick your stage."
+        sub="Buyouts, private dining, and the kind of party people cancel other plans for. Three rooms across South Florida, pick your stage."
         tone="view"
         placeholder="A full room mid-party, buyout energy"
         image="/venues/highbar-hero.webp"

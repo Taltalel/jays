@@ -7,7 +7,6 @@ const TONES: Record<Venue["slug"], "church" | "riot" | "view" | "coast"> = {
   jays: "church",
   "naked-taco": "riot",
   highbar: "view",
-  riviera: "coast",
 };
 
 /** NEXT ROOM, cross-link the other rooms to keep users on-site. */

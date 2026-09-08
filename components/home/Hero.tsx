@@ -8,23 +8,22 @@ import { useEffect, useRef } from "react";
  * HOME HERO, a cinematic, layered composition over the gold engraving.
  *
  * Top to bottom: the Room 7 wordmark, ELEVATED HOSPITALITY, a gold diamond
- * rule, the "Four rooms. One house." statement, then the vintage-engraving
+ * rule, the "Three rooms. One house." statement, then the vintage-engraving
  * venue panorama fading up into the forest, and a scroll cue. Everything is
  * real, responsive HTML over the artwork, nothing is flattened into an image.
  *
- * The four venues in the engraving are keyboard-focusable links (Jay's, Naked
- * Taco, HighBar, Naked Taco's rooftop, and Riviera). Panorama parallax and
+ * The three venues in the engraving are keyboard-focusable links (Jay's, Naked
+ * Taco, and HIGHBAR, Naked Taco's rooftop). Panorama parallax and
  * the atmospheric drift are motion-gated by prefers-reduced-motion.
  */
 
 // Hotspots over the panorama. Positioned bottom-anchored (in %) so they stay
 // aligned with the buildings as the artwork is object-cover cropped from the
-// top on wide viewports. Tuned against the 1922×818 engraving.
+// top on wide viewports. Tuned against the 1210×818 engraving.
 const VENUES = [
-  { slug: "jays", name: "Jay's", label: "Jay's, The Cathedral, Fort Lauderdale", left: "6%", width: "23%", bottom: "6%", height: "58%" },
-  { slug: "naked-taco", name: "Naked Taco", label: "Naked Taco, The Riot, 1111 Collins Avenue, Miami Beach", left: "33%", width: "19%", bottom: "6%", height: "34%" },
-  { slug: "highbar", name: "HIGHBAR", label: "HIGHBAR, The View, the rooftop above Naked Taco", left: "52%", width: "15%", bottom: "40%", height: "26%" },
-  { slug: "riviera", name: "Riviera", label: "Riviera, The Coast, Fort Lauderdale Beach", left: "64%", width: "28%", bottom: "6%", height: "44%" },
+  { slug: "jays", name: "Jay's", label: "Jay's, The Cathedral, Fort Lauderdale", left: "9.5%", width: "36.5%", bottom: "6%", height: "58%" },
+  { slug: "naked-taco", name: "Naked Taco", label: "Naked Taco, The Riot, 1111 Collins Avenue, Miami Beach", left: "52.4%", width: "30.2%", bottom: "6%", height: "34%" },
+  { slug: "highbar", name: "HIGHBAR", label: "HIGHBAR, The View, the rooftop above Naked Taco", left: "82.6%", width: "17.4%", bottom: "40%", height: "26%" },
 ] as const;
 
 export function Hero() {
@@ -66,19 +65,19 @@ export function Hero() {
         <div
           ref={panoRef}
           className="hero-pano relative overflow-hidden"
-          style={{ width: "min(100vw, calc(88svh * 1922 / 818))", aspectRatio: "1922 / 818" }}
+          style={{ width: "min(100vw, calc(64svh * 1210 / 818))", aspectRatio: "1210 / 818" }}
         >
           <img
-            src="/brand/engraving-panorama-1600.webp"
+            src="/brand/engraving-panorama-v2.webp"
             alt=""
             aria-hidden="true"
-            width={1600}
-            height={681}
+            width={1210}
+            height={818}
             decoding="async"
             className="hero-pano__img absolute inset-0 h-full w-full object-cover"
           />
           <Atmosphere />
-          <nav aria-label="Our four rooms" className="absolute inset-0">
+          <nav aria-label="Our three rooms" className="absolute inset-0">
             {VENUES.map((v) => (
               <Link
                 key={v.slug}
@@ -100,14 +99,14 @@ export function Hero() {
           TUDOR signage reads; the same panorama, cover-cropped to a portrait slice */}
       <div className="absolute inset-0 z-0 sm:hidden">
         <img
-          src="/brand/engraving-panorama-1600.webp"
+          src="/brand/engraving-panorama-v2.webp"
           alt=""
           aria-hidden="true"
-          width={1600}
-          height={681}
+          width={1210}
+          height={818}
           decoding="async"
           className="h-full w-full object-cover"
-          style={{ objectPosition: "42% 60%" }}
+          style={{ objectPosition: "62% 60%" }}
         />
       </div>
 

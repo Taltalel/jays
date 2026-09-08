@@ -20,7 +20,6 @@ export const primaryNav: NavItem[] = [
       { label: "Jay's", sublabel: "Fort Lauderdale", href: "/collection/jays" },
       { label: "Naked Taco", sublabel: "Collins Avenue", href: "/collection/naked-taco" },
       { label: "HIGHBAR", sublabel: "The rooftop", href: "/collection/highbar" },
-      { label: "Riviera", sublabel: "Fort Lauderdale Beach", href: "/collection/riviera" },
     ],
   },
   {
