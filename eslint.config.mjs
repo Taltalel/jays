@@ -12,6 +12,8 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Separate app with its own config (see marketing-hub/README.md).
+    "marketing-hub/**",
   ]),
 ]);
 
