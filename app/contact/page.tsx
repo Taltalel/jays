@@ -72,6 +72,14 @@ export default function ContactPage() {
             <address className="mt-6 flex flex-col gap-2 not-italic text-sage">
               <span>Fort Lauderdale, Florida</span>
               <a href={`mailto:${group.email}`} className="text-champagne underline underline-offset-4 decoration-champagne/40 hover:text-gold">{group.email}</a>
+              <a
+                href={group.linkedin.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-champagne underline underline-offset-4 decoration-champagne/40 hover:text-gold"
+              >
+                {group.linkedin.label}
+              </a>
             </address>
             <Link
               href="/collection"

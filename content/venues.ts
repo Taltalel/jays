@@ -203,10 +203,10 @@ export const venues: Venue[] = [
     instagram: { handle: "@highbar305", url: "https://instagram.com/highbar305" },
     menuUrl: "https://lovenakedtaco.com/highbar",
     socials: [{ label: "Instagram", url: "https://instagram.com/highbar305" }],
-    reservation: {
-      provider: "OpenTable",
-      url: "https://www.opentable.com/restref/client/?restref=1524856",
-    },
+    // Reserve link intentionally omitted: HIGHBAR was sharing Naked Taco's
+    // OpenTable listing (restref=1524856). Awaiting HIGHBAR's own booking URL.
+    // reserveLinks, the hero/visit CTAs and the JSON-LD reservation action
+    // all key off this field, so they drop out until it is restored.
     hours: [
       { label: "Sun–Thu", value: "9AM–9PM" },
       { label: "Fri–Sat", value: "9AM–11PM" },

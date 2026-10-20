@@ -1,7 +1,7 @@
 # Room 7 — room7hospitality.com
 
 The website for **Room 7**, a Fort Lauderdale hospitality group — the house
-behind **Jay's**, **Naked Taco**, **HighBar** and **Riviera**. Tagline:
+behind **Jay's**, **Naked Taco** and **HighBar**. Tagline:
 _Elevated Hospitality._ Founder: Jay Shirodkar.
 
 Green + gold. Restraint as luxury. The photography does the talking.
@@ -46,7 +46,7 @@ components/
 content/
   group.ts              Group identity, manifesto, values ("the standard"),
                         founder teaser, press outlets + quotes, boilerplate
-  venues.ts             The four rooms — VERIFIED data + group-voice copy
+  venues.ts             The three rooms — VERIFIED data + group-voice copy
   nav.ts                Navigation + per-venue Reserve links
 lib/
   schema.ts             JSON-LD builders (Organization / Restaurant / NewsArticle)
@@ -149,7 +149,7 @@ thing. Still to replace:
 **Complete — 27 statically-exported routes:**
 
 - Homepage (all sections)
-- `/collection` + the four venue pages (`/collection/{jays,naked-taco,highbar,riviera}`)
+- `/collection` + the three venue pages (`/collection/{jays,naked-taco,highbar}`)
   with rich, unique copy, the _The Room / The Table / The Night_ scene
   sequence, gallery lightbox, live map, and `Restaurant` schema
 - `/about` (with the "Why Room 7" story + the standard) and the dedicated
@@ -171,11 +171,11 @@ thing. Still to replace:
   design — no separate store to wire.)
 - Private-event data for Naked Taco + HighBar (three Collins Ave spaces,
   50–275 guests, catering collections, booking terms) is filled from the real
-  Catering & Events deck. **Confirm Jay's and Riviera capacities** in
+  Catering & Events deck. **Confirm Jay's capacity** in
   `content/events.ts` (their decks were >10 MB and couldn't be pulled).
 - **The backlink plan (highest-leverage SEO):** add a footer link — _"A Room 7
   venue" → room7hospitality.com_ — on each venue's own site
-  (jaysfortlauderdale.com, lovenakedtaco.com, therivierarestaurant.com). Replace
+  (jaysfortlauderdale.com, lovenakedtaco.com). Replace
   lovenakedtaco.com's "Yes Hospitality Group" footer/`publisher` with Room 7,
   and **fix its broken canonical** (currently points at the Vercel preview URL).
 - Legal pages (privacy, terms, cookies) are complete and CCPA/GDPR-aware —

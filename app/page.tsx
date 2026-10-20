@@ -32,7 +32,7 @@ export default function Home() {
       <CTABand
         eyebrow="Careers"
         headline="Join the house."
-        sub="We hire for warmth first and teach the rest. If you make rooms feel good, there is a seat for you."
+        sub="We seek experienced hospitality professionals who set the standard. If that's you, there is a seat for you."
         cta={{ label: "See open roles", href: "/careers" }}
         tone="riot"
         placeholder="The team, working, real people, mid-service"

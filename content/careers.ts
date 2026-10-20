@@ -27,7 +27,7 @@ export const venueLocations: Record<VenueKey, string> = {
 export const teams = ["Front of House", "Kitchen", "Bar", "Management", "Events & Group"];
 
 export const whyRoom7Careers = [
-  { title: "Warmth is the skill", line: "We hire for how you make a room feel. The rest we'll teach." },
+  { title: "Service is the standard", line: "We seek experienced professionals who deliver fine-dining polish with genuine warmth." },
   { title: "Rooms worth working in", line: "A restored church, a rooftop, the beach. Your office has a view." },
   { title: "Room to move", line: "Three rooms, one house. Grow across the collection, not out of it." },
 ];

@@ -3,13 +3,14 @@ import Link from "next/link";
 import { PageHero } from "@/components/ui/PageHero";
 import { Reveal } from "@/components/ui/Reveal";
 import { InquiryForm } from "@/components/ui/InquiryForm";
+import { CTA } from "@/components/ui/CTA";
 import { whyRoom7Careers, teams, venueLabels, venueLocations, careersFields, type VenueKey } from "@/content/careers";
 import { group } from "@/content/group";
 
 export const metadata: Metadata = {
   title: "Careers, Join the house",
   description:
-    "Apply to work at any Room 7 room, Jay's, Naked Taco or HIGHBAR, for any position. We hire for warmth first and teach the rest.",
+    "Apply to work at any Room 7 room, Jay's, Naked Taco or HIGHBAR. We are building service teams for some of South Florida's most distinctive rooms.",
   alternates: { canonical: "https://room7hospitality.com/careers/" },
 };
 
@@ -21,7 +22,7 @@ export default function CareersPage() {
       <PageHero
         eyebrow="Careers"
         title="Join the house."
-        sub="We hire for warmth first and teach the rest. Pick a room, apply for any position, and we'll take it from there."
+        sub="We are building service teams for some of South Florida's most distinctive rooms. Select a venue, choose a position, and our team will be in touch."
         tone="riot"
         placeholder="The team, working, real people, mid-service"
         image="/venues/naked-taco-hero.webp"
@@ -72,6 +73,16 @@ export default function CareersPage() {
           <p className="mt-8 text-sm text-sage">
             We hire across {teams.slice(0, -1).join(", ")} and {teams[teams.length - 1].toLowerCase()}. No open role listed is no problem, apply for any position and tell us where you shine.
           </p>
+          <div className="mt-6">
+            <CTA
+              href={group.linkedin.jobs}
+              external
+              variant="outline"
+              analytics={{ event: "linkedin_jobs_click" }}
+            >
+              View open positions on LinkedIn
+            </CTA>
+          </div>
         </div>
       </section>
 

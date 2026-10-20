@@ -25,7 +25,7 @@ export async function generateMetadata({ params }: { params: Promise<{ venue: st
   const label = venueLabels[venue as VenueKey];
   return {
     title: `Careers, ${label}`,
-    description: `Apply to work at ${label}, any position. Join Room 7; we hire for warmth first and teach the rest.`,
+    description: `Apply to work at ${label}, any position. Join Room 7; we seek experienced hospitality professionals who set the standard.`,
     alternates: { canonical: `https://room7hospitality.com/careers/${venue}/` },
   };
 }
@@ -41,7 +41,7 @@ export default async function VenueCareersPage({ params }: { params: Promise<{ v
       <PageHero
         eyebrow={`Careers · ${label}`}
         title={`Work at ${label}.`}
-        sub={`${venueLocations[key]} · apply for any position. We hire for warmth first and teach the rest.`}
+        sub={`${venueLocations[key]} · apply for any position. We seek experienced hospitality professionals who set the standard.`}
         tone="riot"
         placeholder="The team at work, mid-service"
         image={CAREERS_IMAGE[key]}

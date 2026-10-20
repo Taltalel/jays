@@ -20,6 +20,12 @@ export const group = {
     careers: "marketing@yesfbm.com",
     press: "marketing@yesfbm.com",
   },
+  // Group LinkedIn: the company page and its jobs tab (used on Careers).
+  linkedin: {
+    label: "Room 7 on LinkedIn",
+    url: "https://www.linkedin.com/company/room7hospitality/",
+    jobs: "https://www.linkedin.com/company/room7hospitality/jobs/",
+  },
   founder: {
     name: "Jay Shirodkar",
     site: "https://jayshirodkar.com",

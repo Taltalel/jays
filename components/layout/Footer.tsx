@@ -109,6 +109,19 @@ export function Footer() {
                   </a>
                 </li>
               ))}
+              <li>
+                <a
+                  href={group.linkedin.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group inline-flex items-baseline gap-2 text-sm text-champagne/85 transition-colors hover:text-gold"
+                >
+                  <span>{group.linkedin.label}</span>
+                  <span className="text-[10px] uppercase tracking-[0.14em] text-sage" style={{ fontFamily: "var(--font-label)" }}>
+                    The Group
+                  </span>
+                </a>
+              </li>
             </ul>
           </div>
         </div>
