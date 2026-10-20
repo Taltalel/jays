@@ -1,6 +1,6 @@
 /**
  * Reads seed/Jays-Marketing-Spend-Log.xlsx into plain records. Pure (no DB),
- * so the column mapping can be checked with `npm run seed -- --dry-run`.
+ * so the column mapping can be previewed before anything is written.
  *
  * Headers are matched loosely (case, punctuation and word order don't matter),
  * because the sheet is maintained by hand.
@@ -313,9 +313,11 @@ function splitPeriod(s: string | null, year?: number): [string | null, string | 
 
 // ---------------------------------------------------------------------------
 
-export async function parseSeedWorkbook(file: string): Promise<SeedData> {
+/** Accepts a file path (scripts) or the uploaded file's bytes (in-app import). */
+export async function parseSeedWorkbook(input: string | ArrayBuffer): Promise<SeedData> {
   const wb = new ExcelJS.Workbook();
-  await wb.xlsx.readFile(file);
+  if (typeof input === "string") await wb.xlsx.readFile(input);
+  else await wb.xlsx.load(input);
 
   const wsMonthly = findSheet(wb, ["monthly payment", "monthly"]);
   const wsOut = findSheet(wb, ["outstanding", "to pay"]);

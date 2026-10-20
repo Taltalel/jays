@@ -4,7 +4,7 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { test } from "node:test";
 import ExcelJS from "exceljs";
-import { parseSeedWorkbook } from "../scripts/seed-parse";
+import { parseSeedWorkbook } from "@/lib/spend/seed-parse";
 
 /** Synthetic workbook shaped like the real one (made-up rows). */
 async function makeWorkbook() {

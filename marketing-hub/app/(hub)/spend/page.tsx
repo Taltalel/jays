@@ -44,6 +44,7 @@ export default async function SpendPage({ searchParams }: { searchParams: Promis
                 Needs review <Badge tone="warn">{review.length}</Badge>
               </ButtonLink>
             )}
+            <ButtonLink href="/spend/import">Import spreadsheet</ButtonLink>
             <ButtonLink href="/spend/upload">Upload receipt</ButtonLink>
             <ButtonLink href="/spend?tab=log&add=1#add" variant="primary">
               Add expense

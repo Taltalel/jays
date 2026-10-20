@@ -38,8 +38,7 @@ export const INTEGRATIONS: IntegrationDef[] = [
     steps: [
       "Create a new Supabase project (do not reuse the Review Hub's).",
       "SQL editor → paste and run supabase/migrations/0001_init.sql.",
-      "Add the three env vars in Vercel → Project → Settings → Environment Variables.",
-      "Run `npm run owners` once (locally, with .env.local filled in) to load the sign-in allowlist into the database.",
+      "Add the three env vars in Vercel → Project → Settings → Environment Variables, then redeploy.",
     ],
     access: "Row-level security is on for every table; only allowlisted emails can read or write.",
     hasCheck: true,

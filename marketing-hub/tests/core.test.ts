@@ -88,6 +88,7 @@ test("gmail query is receipt-focused and dated", () => {
   assert.ok(q.startsWith("after:2026/09/01 {"));
   assert.ok(q.includes("subject:invoice"));
   assert.ok(q.includes('subject:"past due"'));
+  assert.ok(q.includes("-from:noreply@order.eventbrite.com"), "ticket sales are not spend");
 });
 
 test("vendor matching ignores case, punctuation and suffixes", () => {

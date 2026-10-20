@@ -1,25 +1,14 @@
 /**
- * Sync the sign-in allowlist (ALLOWED_EMAIL_PRIMARY + BACKUP_ADMIN_EMAIL)
- * into app_owners, which RLS checks. Run after changing either env var:
+ * Sync the sign-in allowlist into app_owners. The app also does this on every
+ * sign-in and health check, so this is only for developers.
  *   npm run owners
  */
-import { allowedEmails } from "@/lib/allowlist";
+import { syncOwners } from "@/lib/owners";
 import { adminClient } from "./lib";
 
-async function main() {
-  const db = adminClient();
-  const emails = allowedEmails();
-  const { error } = await db.from("app_owners").upsert(emails.map((email) => ({ email })));
-  if (error) throw new Error(error.message);
-  const { error: delErr } = await db
-    .from("app_owners")
-    .delete()
-    .not("email", "in", `(${emails.map((e) => `"${e}"`).join(",")})`);
-  if (delErr) throw new Error(delErr.message);
-  console.log(`Owners: ${emails.join(", ")}`);
-}
-
-main().catch((e) => {
-  console.error(e instanceof Error ? e.message : e);
-  process.exit(1);
-});
+syncOwners(adminClient())
+  .then((emails) => console.log(`Owners: ${emails.join(", ")}`))
+  .catch((e) => {
+    console.error(e instanceof Error ? e.message : e);
+    process.exit(1);
+  });

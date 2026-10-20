@@ -1,7 +1,8 @@
 import "server-only";
 import Anthropic from "@anthropic-ai/sdk";
 import { RECEIPT_MODEL } from "@/lib/ai/receipt";
-import { allowedEmails, env, missingEnv, requireEnv } from "@/lib/env";
+import { env, missingEnv, requireEnv } from "@/lib/env";
+import { syncOwners } from "@/lib/owners";
 import { getProfile } from "@/lib/gmail/client";
 import { errorMessage } from "@/lib/redact";
 import { supabaseAdmin } from "@/lib/supabase/admin";
@@ -11,11 +12,10 @@ import { INTEGRATIONS } from "./registry";
 const CHECKS: Record<string, () => Promise<void>> = {
   async supabase() {
     const db = supabaseAdmin();
-    const { data, error } = await db.from("app_owners").select("email");
-    if (error) throw new Error(`Database not reachable or migration not run: ${error.message}`);
-    const owners = new Set((data ?? []).map((r) => r.email));
-    const missing = allowedEmails().filter((e) => !owners.has(e));
-    if (missing.length) throw new Error(`Allowlist not loaded into the database (${missing.join(", ")}). Run \`npm run owners\`.`);
+    const { error } = await db.from("vendors").select("id", { head: true, count: "exact" });
+    if (error) throw new Error(`Database not reachable or setup SQL not run: ${error.message}`);
+    // Keep the database's owner list in step with the env allowlist.
+    await syncOwners(db);
   },
   async anthropic() {
     const client = new Anthropic({ apiKey: requireEnv("ANTHROPIC_API_KEY") });

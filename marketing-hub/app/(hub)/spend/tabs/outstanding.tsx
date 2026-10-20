@@ -42,7 +42,7 @@ export async function OutstandingTab({ db, show }: { db: SupabaseClient; show?: 
             reason={
               all.length
                 ? "Every payable is paid, disputed-and-closed or cancelled."
-                : "No payables yet. They load from the “Outstanding — To Pay” sheet (npm run seed), or add one on the right."
+                : "No payables yet. They load from the “Outstanding — To Pay” sheet (Spend → Import spreadsheet), or add one on the right."
             }
           />
         ) : (

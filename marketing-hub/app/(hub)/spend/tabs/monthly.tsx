@@ -25,7 +25,7 @@ export async function MonthlyTab({ db, year: yearParam }: { db: SupabaseClient; 
     return (
       <Empty
         title="No subscriptions, retainers or ad accounts yet"
-        reason="This tab fills from the Monthly Payments sheet in seed/Jays-Marketing-Spend-Log.xlsx (run `npm run seed`), or from any vendor you mark monthly, annual or variable."
+        reason="This tab fills from the Monthly Payments sheet of Jays-Marketing-Spend-Log.xlsx (Spend → Import spreadsheet), or from any vendor you mark monthly, annual or variable."
       />
     );
   }

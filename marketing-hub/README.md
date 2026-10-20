@@ -49,34 +49,15 @@ Vercel + Vercel Cron · Claude API (`claude-sonnet-5-5`) for receipt parsing.
   - receipts needing review.
 - **Integrations**: status and exact connect steps for all 14 sources plus Supabase and Claude.
 
-## Setup (steps only Tal can do)
+## Setup
 
-1. **Supabase**: create a new project, then open the SQL editor and run
-   `supabase/migrations/0001_init.sql`.
-2. **Google Cloud**:
-   - Create a project and enable the **Gmail API**.
-   - OAuth consent screen: **Internal** (yesfbm.com Workspace), scope `gmail.readonly`.
-   - Create an OAuth client (Web) with these redirect URIs:
-     - `https://<project>.supabase.co/auth/v1/callback`
-     - `https://<hub-domain>/integrations/gmail/callback`
-3. **Supabase → Authentication**:
-   - Providers → Google: paste the client ID and secret.
-   - URL Configuration: set Site URL to `https://<hub-domain>` and add
-     `https://<hub-domain>/auth/callback` to Redirect URLs.
-4. **Vercel**:
-   - New project from this repo with **Root Directory = `marketing-hub`**.
-   - Add the env vars from `.env.example`.
-5. **Local, once**:
-   - `cp .env.example .env.local` and fill it in.
-   - `npm run owners` loads the allowlist into the database.
-   - `npm run seed -- --dry-run`, then `npm run seed`.
-6. **In the Hub**:
-   - Integrations → **Connect Gmail**, signed in as marketing@yesfbm.com.
-   - Paste the refresh token into Vercel as `GMAIL_REFRESH_TOKEN` and redeploy.
-   - Press **Check now**.
+Step-by-step, browser-only checklist: **[SETUP.md](SETUP.md)**. No local commands are needed:
+
+- the sign-in allowlist syncs into the database on sign-in and on every health check;
+- the spreadsheet is imported in the app (Spend → Import spreadsheet), with a preview first.
 
 Cron note: `vercel.json` runs `/api/cron/sync` every 3 hours, which needs a Vercel **Pro** plan
-(Hobby allows only daily crons). On Hobby, change the schedule to `0 11 * * *`.
+(Hobby allows only daily crons, and only non-commercial use).
 
 ## Commands
 
@@ -86,8 +67,8 @@ npm run lint
 npm run typecheck
 npm test             # unit tests (money, redaction, receipt rules, seed importer)
 npm run build
-npm run owners       # sync allowlist → app_owners (uses .env.local)
-npm run seed         # import seed/Jays-Marketing-Spend-Log.xlsx (idempotent; --dry-run first)
+npm run owners       # developer-only: sync allowlist → app_owners (the app also does this)
+npm run seed         # developer-only: same as Spend → Import spreadsheet (--dry-run first)
 ```
 
 ## Layout
@@ -103,5 +84,6 @@ lib/alerts.ts                    "Needs action today"
 lib/integrations/                registry (steps, env vars), live checks, status
 app/(hub)/                       pages (Home, Spend, Integrations)
 app/api/cron/sync                health checks + Gmail sync
-scripts/                         seed importer, owners sync
+lib/spend/seed-*.ts              spreadsheet parser + idempotent import
+scripts/                         command-line seed + owners (developer-only)
 ```

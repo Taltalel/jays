@@ -35,6 +35,13 @@ const SUBJECT_TERMS = [
   "overdue",
 ];
 
+/**
+ * Senders that match the subject terms but are never spend. Eventbrite
+ * "order" emails are ticket SALES (income); Phase 3 reads those from the
+ * Eventbrite API. Skipping them here saves AI cost.
+ */
+const EXCLUDED_SENDERS = ["noreply@order.eventbrite.com"];
+
 const MAX_PER_RUN = 30;
 const MAX_PDF_BYTES = 10 * 1024 * 1024;
 const TIME_BUDGET_MS = 240_000;
@@ -53,7 +60,8 @@ export interface GmailSyncSummary {
 /** Gmail search query for receipt-like emails since `after` (YYYY-MM-DD). */
 export function receiptQuery(after: string): string {
   const subj = SUBJECT_TERMS.map((t) => (t.includes(" ") ? `subject:"${t}"` : `subject:${t}`)).join(" ");
-  return `after:${after.replace(/-/g, "/")} {${subj}} -in:chats -in:drafts -in:sent`;
+  const excluded = EXCLUDED_SENDERS.map((f) => `-from:${f}`).join(" ");
+  return `after:${after.replace(/-/g, "/")} {${subj}} ${excluded} -in:chats -in:drafts -in:sent`;
 }
 
 export async function runGmailSync(): Promise<GmailSyncSummary> {

@@ -95,7 +95,7 @@ export async function LogTab({ db, sp }: { db: SupabaseClient; sp: SP }) {
           reason={
             filtered
               ? "Try clearing a filter. Receipts in “Needs review” are not shown here until approved."
-              : "Transactions arrive from the Spend Log sheet (npm run seed), Gmail sync, uploads and “Add expense”. None have been loaded yet."
+              : "Transactions arrive from the Spend Log sheet (Import spreadsheet), Gmail sync, uploads and “Add expense”. None have been loaded yet."
           }
         />
       ) : (
