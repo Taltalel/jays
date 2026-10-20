@@ -1,0 +1,205 @@
+/* eslint-disable @next/next/no-img-element */
+"use client";
+
+import Link from "next/link";
+import { useEffect, useRef } from "react";
+
+/**
+ * HOME HERO, a cinematic, layered composition over the gold engraving.
+ *
+ * Top to bottom: the Room 7 wordmark, ELEVATED HOSPITALITY, a gold diamond
+ * rule, the "Three rooms. One house." statement, then the vintage-engraving
+ * venue panorama fading up into the forest, and a scroll cue. Everything is
+ * real, responsive HTML over the artwork, nothing is flattened into an image.
+ *
+ * The three venues in the engraving are keyboard-focusable links (Jay's, Naked
+ * Taco, and HIGHBAR, Naked Taco's rooftop). Panorama parallax and
+ * the atmospheric drift are motion-gated by prefers-reduced-motion.
+ */
+
+// Hotspots over the panorama. Positioned bottom-anchored (in %) so they stay
+// aligned with the buildings as the artwork is object-cover cropped from the
+// top on wide viewports. Tuned against the 1210×818 engraving.
+const VENUES = [
+  { slug: "jays", name: "Jay's", label: "Jay's, The Cathedral, Fort Lauderdale", left: "9.5%", width: "36.5%", bottom: "6%", height: "58%" },
+  { slug: "naked-taco", name: "Naked Taco", label: "Naked Taco, The Riot, 1111 Collins Avenue, Miami Beach", left: "52.4%", width: "30.2%", bottom: "6%", height: "34%" },
+  { slug: "highbar", name: "HIGHBAR", label: "HIGHBAR, The View, the rooftop above Naked Taco", left: "82.6%", width: "17.4%", bottom: "40%", height: "26%" },
+] as const;
+
+export function Hero() {
+  const panoRef = useRef<HTMLDivElement>(null);
+
+  // Gentle parallax: the panorama drifts up a touch slower than the page.
+  useEffect(() => {
+    const el = panoRef.current;
+    if (!el) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    let raf = 0;
+    const update = () => {
+      raf = 0;
+      const y = window.scrollY;
+      // Gentle parallax, the engraving lags the scroll a touch. Kept small; any
+      // exposed sliver is forest green (== the page), so it stays invisible.
+      const shift = Math.min(y * 0.05, 18);
+      el.style.setProperty("--pano-shift", `${shift}px`);
+    };
+    const onScroll = () => {
+      if (!raf) raf = requestAnimationFrame(update);
+    };
+    update();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      if (raf) cancelAnimationFrame(raf);
+    };
+  }, []);
+
+  return (
+    <section className="hero relative h-[100svh] min-h-[600px] w-full overflow-hidden bg-forest-deep">
+      {/* ---- engraving backdrop: as large as fits with nothing cropped, anchored
+             to the bottom. The wordmark is layered on top of it (below). ---- */}
+      {/* tablet/desktop, the whole panorama, centred; width is bounded by the
+          viewport so the full artwork always shows and the hotspots stay aligned. */}
+      <div className="absolute inset-x-0 bottom-0 z-0 hidden justify-center sm:flex">
+        <div
+          ref={panoRef}
+          className="hero-pano relative overflow-hidden"
+          style={{ width: "min(100vw, calc(64svh * 1210 / 818))", aspectRatio: "1210 / 818" }}
+        >
+          <img
+            src="/brand/engraving-panorama-v2.webp"
+            alt=""
+            aria-hidden="true"
+            width={1210}
+            height={818}
+            decoding="async"
+            className="hero-pano__img absolute inset-0 h-full w-full object-cover"
+          />
+          <Atmosphere />
+          <nav aria-label="Our three rooms" className="absolute inset-0">
+            {VENUES.map((v) => (
+              <Link
+                key={v.slug}
+                href={`/collection/${v.slug}`}
+                aria-label={v.label}
+                className="hero-venue group absolute"
+                style={{ left: v.left, width: v.width, bottom: v.bottom, height: v.height }}
+              >
+                <span className="hero-venue__name" aria-hidden="true">
+                  {v.name}
+                </span>
+              </Link>
+            ))}
+          </nav>
+        </div>
+      </div>
+
+      {/* mobile, framed on the iconic Art Deco corner so the full NAKED TACO /
+          TUDOR signage reads; the same panorama, cover-cropped to a portrait slice */}
+      <div className="absolute inset-0 z-0 sm:hidden">
+        <img
+          src="/brand/engraving-panorama-v2.webp"
+          alt=""
+          aria-hidden="true"
+          width={1210}
+          height={818}
+          decoding="async"
+          className="h-full w-full object-cover"
+          style={{ objectPosition: "62% 60%" }}
+        />
+      </div>
+
+      {/* ---- legibility veil: only across the top (the sky), fading to nothing well
+             above the buildings so the artwork itself is never dimmed ---- */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 z-10"
+        style={{
+          background:
+            "linear-gradient(to bottom, rgba(15,36,23,0.94) 0%, rgba(15,36,23,0.7) 18%, rgba(15,36,23,0.28) 34%, rgba(15,36,23,0) 50%)",
+        }}
+      />
+
+      {/* ---- overlay: wordmark → tagline → rule, laid over the sky of the engraving ---- */}
+      <div className="absolute inset-x-0 top-0 z-20 flex flex-col items-center px-6 pt-[calc(var(--header-h)+3vh)] text-center sm:pt-[calc(var(--header-h)+9vh)]">
+        <img
+          src="/brand/wordmark-v3.webp"
+          alt="Room 7"
+          width={841}
+          height={420}
+          fetchPriority="high"
+          decoding="async"
+          className="hero-rise hero-logo w-[min(80vw,440px)] max-w-full"
+          style={{ animationDelay: "80ms" }}
+        />
+
+        <p
+          className="hero-rise mt-6 text-[0.7rem] uppercase tracking-[0.4em] text-gold sm:text-[0.8rem] sm:tracking-[0.5em]"
+          style={{ fontFamily: "var(--font-label)", animationDelay: "260ms" }}
+        >
+          Elevated Hospitality
+        </p>
+
+        <DiamondRule className="hero-rise mt-5" style={{ animationDelay: "420ms" }} />
+
+        {/* Visually-hidden page heading, keeps a single h1 for SEO / screen readers. */}
+        <h1 className="sr-only">Room 7, Elevated Hospitality</h1>
+      </div>
+
+      {/* ---- scroll cue, pinned near the bottom ---- */}
+      <a
+        href="#statement"
+        aria-label="Scroll to discover"
+        className="hero-rise hero-scroll group absolute bottom-6 left-1/2 z-20 flex -translate-x-1/2 flex-col items-center gap-2 sm:bottom-8"
+        style={{ animationDelay: "560ms" }}
+      >
+        <span
+          className="text-[10px] uppercase tracking-[0.3em] text-champagne/70 transition-colors group-hover:text-gold"
+          style={{ fontFamily: "var(--font-label)" }}
+        >
+          Scroll to discover
+        </span>
+        <svg width="16" height="22" viewBox="0 0 16 22" fill="none" aria-hidden="true" className="hero-chev text-gold">
+          <path d="M2 6l6 6 6-6" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" />
+          <path d="M2 12l6 6 6-6" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" opacity="0.45" />
+        </svg>
+      </a>
+    </section>
+  );
+}
+
+/** Thin gold rule with a centered open diamond. */
+function DiamondRule({ className = "", style }: { className?: string; style?: React.CSSProperties }) {
+  return (
+    <div className={`flex items-center justify-center gap-3 ${className}`} style={style} aria-hidden="true">
+      <span className="block h-px w-16 bg-gradient-to-r from-transparent to-gold/70 sm:w-24" />
+      <svg width="9" height="9" viewBox="0 0 10 10" className="text-gold" fill="none">
+        <path d="M5 0.6L9.4 5 5 9.4 0.6 5 5 0.6Z" stroke="currentColor" strokeWidth="1" />
+      </svg>
+      <span className="block h-px w-16 bg-gradient-to-l from-transparent to-gold/70 sm:w-24" />
+    </div>
+  );
+}
+
+/** Faint, slow atmosphere over the engraving. All motion is CSS + reduced-motion gated. */
+function Atmosphere() {
+  return (
+    <div className="hero-atmos pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
+      {/* moon glow, bottom-right where the moon sits in the art */}
+      <span
+        className="hero-glow absolute"
+        style={{ left: "93%", bottom: "26%", width: "120px", height: "120px", background: "radial-gradient(circle, rgba(216,190,120,0.5), transparent 68%)", animationDelay: "0ms" }}
+      />
+      {/* warm window embers */}
+      <span className="hero-glow absolute" style={{ left: "19%", bottom: "16%", width: "70px", height: "60px", background: "radial-gradient(circle, rgba(216,168,90,0.32), transparent 70%)", animationDelay: "900ms" }} />
+      <span className="hero-glow absolute" style={{ left: "42%", bottom: "12%", width: "90px", height: "50px", background: "radial-gradient(circle, rgba(216,168,90,0.28), transparent 72%)", animationDelay: "1700ms" }} />
+      <span className="hero-glow absolute" style={{ left: "75%", bottom: "12%", width: "90px", height: "50px", background: "radial-gradient(circle, rgba(216,168,90,0.26), transparent 72%)", animationDelay: "2500ms" }} />
+      {/* drifting sparks */}
+      <span className="hero-spark absolute" style={{ left: "22%", bottom: "20%", animationDelay: "0ms" }} />
+      <span className="hero-spark absolute" style={{ left: "48%", bottom: "16%", animationDelay: "2200ms" }} />
+      <span className="hero-spark absolute" style={{ left: "68%", bottom: "24%", animationDelay: "3600ms" }} />
+      <span className="hero-spark absolute" style={{ left: "88%", bottom: "30%", animationDelay: "5200ms" }} />
+    </div>
+  );
+}
