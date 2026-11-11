@@ -251,6 +251,29 @@ end;
 $$;
 
 -- ---------------------------------------------------------------------------
+-- Data API grants. Since Oct 30 2026 Supabase no longer grants new tables in
+-- "public" to the API roles automatically, so every table is granted here.
+-- The signed-in user ("authenticated") still only sees rows RLS allows, and
+-- "anon" (signed out) gets nothing at all. app_owners stays service-role only.
+-- ---------------------------------------------------------------------------
+do $$
+declare
+  t text;
+begin
+  foreach t in array array[
+    'vendors', 'transactions', 'payables', 'budgets', 'processed_emails',
+    'campaigns', 'campaign_links', 'daily_metrics', 'social_comments',
+    'events', 'ticket_snapshots', 'integrations', 'sync_runs'
+  ]
+  loop
+    execute format('grant select, insert, update, delete on public.%I to authenticated, service_role', t);
+  end loop;
+end;
+$$;
+grant select, insert, update, delete on public.app_owners to service_role;
+revoke all on all tables in schema public from anon;
+
+-- ---------------------------------------------------------------------------
 -- Storage: private bucket for uploaded receipts. Uploads go through signed
 -- URLs minted server-side, so no storage policies are granted to users.
 -- ---------------------------------------------------------------------------
