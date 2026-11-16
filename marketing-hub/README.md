@@ -49,6 +49,14 @@ Vercel + Vercel Cron · Claude API (`claude-sonnet-5-5`) for receipt parsing.
   - receipts needing review.
 - **Integrations**: status and exact connect steps for all 14 sources plus Supabase and Claude.
 
+## Booking tracking
+
+Every channel gets a **tracked link** (`/go/<code>`). It's public, counts real clicks (link
+previews and bots excluded, no IP stored), adds UTM tags (plus `aff=` for Eventbrite) and
+forwards the guest. **Bookings** combines those clicks with OpenTable and Eventbrite imports and
+host-stand / offer-code tallies, by channel, next to spend. OpenTable bookings with no usable source
+are shared out by clicks and shown as **estimated**. Where each link goes: **[TRACKING.md](TRACKING.md)**.
+
 ## Setup
 
 Step-by-step, browser-only checklist: **[SETUP.md](SETUP.md)**. No local commands are needed:

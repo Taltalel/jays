@@ -16,6 +16,19 @@ export async function proxy(request: NextRequest) {
   // Cron routes authenticate with CRON_SECRET inside the handler.
   if (pathname.startsWith("/api/cron/")) return NextResponse.next();
 
+  // Public tracked links. They only redirect, and read nothing but the link itself.
+  if (pathname.startsWith("/go/")) return NextResponse.next();
+
+  // A dedicated short-link domain (e.g. go.jaysfortlauderdale.com/ig-bio)
+  // serves codes at the root and nothing else.
+  const shortHost = shortLinkHost();
+  if (shortHost && request.headers.get("host") === shortHost) {
+    const code = pathname.replace(/^\/+|\/+$/g, "");
+    const to = request.nextUrl.clone();
+    to.pathname = code ? `/go/${code}` : "/go/-";
+    return NextResponse.rewrite(to);
+  }
+
   let response = NextResponse.next({ request });
 
   const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
@@ -52,6 +65,16 @@ export async function proxy(request: NextRequest) {
     return NextResponse.json({ error: "unauthorized" }, { status: 401 });
   }
   return redirectToLogin(request, email ? "not_allowed" : undefined);
+}
+
+function shortLinkHost(): string | null {
+  const base = process.env.SHORT_LINK_BASE;
+  if (!base || !/\/\/go\./.test(base)) return null;
+  try {
+    return new URL(base).host;
+  } catch {
+    return null;
+  }
 }
 
 function redirectToLogin(request: NextRequest, error?: string) {

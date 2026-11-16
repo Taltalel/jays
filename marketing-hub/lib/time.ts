@@ -78,3 +78,14 @@ export function timeAgo(iso: string | null | undefined, now: Date = new Date()):
 export function isIsoDate(s: unknown): s is string {
   return typeof s === "string" && /^\d{4}-\d{2}-\d{2}$/.test(s) && !Number.isNaN(Date.parse(s));
 }
+
+/** The UTC instant at which a New York calendar date begins (handles DST). */
+export function nyStartOfDay(date: string): Date {
+  const [y, m, d] = date.split("-").map(Number);
+  for (const offset of [4, 5]) {
+    const t = new Date(Date.UTC(y, m - 1, d, offset));
+    const hour = new Intl.DateTimeFormat("en-US", { timeZone: TZ, hour: "numeric", hourCycle: "h23" }).format(t);
+    if (nyDate(t) === date && Number(hour) === 0) return t;
+  }
+  return new Date(Date.UTC(y, m - 1, d, 5));
+}

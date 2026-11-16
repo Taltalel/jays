@@ -32,6 +32,7 @@ failed-payments@vercel.com). Until that's fixed, Vercel may block new projects.
    - Plan: **Free** is fine to start.
 2. When the project is ready: **SQL Editor → New query**. Paste the whole contents of
    `supabase/migrations/0001_init.sql` from the repo, then press **Run**. It should say "Success. No rows returned".
+   Then do the same with `supabase/migrations/0002_booking_attribution.sql` (booking tracking).
 3. **Project Settings → API** (or "API Keys"). Copy these three values somewhere safe; you'll paste them into Vercel in step 6:
    - Project URL → `NEXT_PUBLIC_SUPABASE_URL`
    - `anon` / public key → `NEXT_PUBLIC_SUPABASE_ANON_KEY`
@@ -108,5 +109,8 @@ Press **Deploy**. If Vercel gives an address other than `tal-marketing-hub.verce
 5. **Spend → Import spreadsheet** → choose `Jays-Marketing-Spend-Log.xlsx` → **Preview** → check
    the columns it found → **Import**.
 
-That's Phase 1. Tell Claude what you see, and it moves on to Phase 2 (Meta Ads, Instagram, GA4,
+6. Put the tracked links where they belong: see **[TRACKING.md](TRACKING.md)** (Instagram bio,
+   LinkMe, Google Business Profile, QR codes, and a new link for every email and text).
+
+That's Phase 1 plus booking tracking. Tell Claude what you see, and it moves on to Phase 2 (Meta Ads, Instagram, GA4,
 Business Profile) after your OK.
